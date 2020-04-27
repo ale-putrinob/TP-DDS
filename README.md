@@ -9,7 +9,7 @@
 
 | Nombre                    | Legajo   | E-mail                      | Curso  |
 | ------------------------- |:--------:| --------------------------- | ------ |
-| Akiyoshi, Joel Pablo      | 14986880 | joelakiy.23@gmail.com       | K-3003 |
+| Akiyoshi, Joel Pablo      | 1498680 | joelakiy.23@gmail.com       | K-3003 |
 | Cardozo, Agustín Adrián       | 1571965 | agustincardozo8@yahoo.com      | K-3003 |
 | Lozano Nembrot, Octavio León       | 1580784 | olozanonembrot@gmail.com       | K-3003 |
 | Putrino Biscayart, Alejandro Mateo         | 1674663 | alejandroputrinob@hotmail.com      | K-3003 |
