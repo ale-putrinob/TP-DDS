@@ -2,23 +2,27 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestDummyDesign {
-	DummyDesign dummyDesing = new DummyDesign();
+	
+	DummyDesign dummyDesign = new DummyDesign();
 
 	@Test
 	public void testIntegrante1() {
-		Assert.assertEquals(1, dummyDesing.integrante1());
+		Assert.assertEquals(1, dummyDesign.integrante1());
 	}
 	@Test 
 	public void testIntegrante2() {
-		Assert.assertEquals(2,dummyDesing.integrante2());
+		Assert.assertEquals(2,dummyDesign.integrante2());
+	}
+	@Test
+	public void testIntegrante3() {
+		Assert.assertEquals(3,dummyDesign.integrante3());
 	}
 	@Test
 	public void testIntegrante4() {
-		Assert.assertEquals(4, dummyDesing.integrante4());
+		Assert.assertEquals(4, dummyDesign.integrante4());
 	}
-	
 	@Test
 	public void testIntegrante5() {
-		Assert.assertEquals(5, dummyDesing.integrante5());
+		Assert.assertEquals(5, dummyDesign.integrante5());
 	}
 }
