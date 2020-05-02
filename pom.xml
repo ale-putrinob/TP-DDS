@@ -1,14 +1,10 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>PruebaDeConcepto</groupId>
-  <artifactId>PruebaDeConcepto</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <groupId>2020-ju-ma-group-04</groupId>
+  <artifactId>2020-ju-ma-group-04</artifactId>
+  <version>1-SNAPSHOT</version>
 
- <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-</properties>
-
-   <dependencies>
+<dependencies>
 
       <dependency>
         <groupId>junit</groupId>
@@ -18,8 +14,7 @@
 
    </dependencies>
 
-
-  <build>
+ <build>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -32,3 +27,4 @@
     </plugins>
   </build>
 </project>
+
