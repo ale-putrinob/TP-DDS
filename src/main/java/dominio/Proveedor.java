@@ -6,4 +6,6 @@ public class Proveedor {
 	int dni;
 	int cuil;
 	int dirPostal;
+	
+	public Proveedor(String nombreApellido,String razonSocial, int dni, int cuil, int dirPostal) {};
 }

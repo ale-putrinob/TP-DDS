@@ -18,7 +18,7 @@ public class OperacionEgreso {
 		this.proveedor = proveedor;
 	}
 	
-	public Double valorTotal() {
+	public double valorTotal() {
 		return items.stream().mapToDouble(item -> item.getValorItem()).sum();
 	}
 	

@@ -1,10 +1,12 @@
 package dominio;
 
 public class Item {
-	Double valorItem;
+	double valorItem;
 	String descripcion;
 	
-	public Double getValorItem() {
+	public Item(double valorItem, String descripcion) {};
+	
+	public double getValorItem() {
 		return valorItem;
 	}
 }
