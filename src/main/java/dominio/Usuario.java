@@ -1,6 +1,7 @@
 package dominio;
 
 import java.io.IOException;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class Usuario {
 	String nombreUsuario;
@@ -10,6 +11,10 @@ public class Usuario {
 		ValidadorPassword.validarPassword(password);
 		
 		this.nombreUsuario = nombreUsuario;
-		this.password = password;
+		this.password = DigestUtils.md5Hex(password);
+	}
+	
+	public String getPassword() {
+		return password;
 	}
 }
