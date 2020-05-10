@@ -8,10 +8,10 @@ public class ValidadorPassword {
 	static List<String> caracteresRepetidos;
 
 	public static void validarPassword(String password) throws IOException{
-		//validarSiEstaEntrePasswordsMasInseguras(password);
-		//validarLongitudPassword(password);
+		validarSiEstaEntrePasswordsMasInseguras(password);
+		validarLongitudPassword(password);
 		validarCaracteresConsecutivos(password);
-		//validarCaracteresRepetidos(password);
+		validarCaracteresRepetidos(password);
 	}
 
 	private static void validarCaracteresRepetidos(String password) throws IOException {

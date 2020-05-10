@@ -15,7 +15,22 @@ public class TestValidacionDePasswords {
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
-	public void testPasswordInsegura() throws IOException {
-		usuario = new Usuario("usuario", "12303923");
+	public void testPasswordEntreLasMasInseguras() throws IOException {
+		usuario = new Usuario("usuario", "baseball");
+	}
+	
+	@Test (expected = PasswordInseguraException.class)
+	public void testPasswordCorta() throws IOException {
+		usuario = new Usuario("usuario", "luna");
+	}
+	
+	@Test (expected = PasswordInseguraException.class)
+	public void testPasswordConCaracteresConsecutivos() throws IOException {
+		usuario = new Usuario("usuario", "lunas123");
+	}
+	
+	@Test (expected = PasswordInseguraException.class)
+	public void testPasswordConCaracteresRepetidos() throws IOException {
+		usuario = new Usuario("usuario", "estrellaaa");
 	}
 }
