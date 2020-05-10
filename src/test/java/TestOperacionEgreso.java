@@ -10,7 +10,9 @@ import dominio.Item;
 import dominio.OperacionEgreso;
 import dominio.Proveedor;
 
+
 public class TestOperacionEgreso {
+	
 	
 	@SuppressWarnings("deprecation")
 	@Test 
@@ -29,5 +31,7 @@ public class TestOperacionEgreso {
 		
 		Assert.assertEquals(200,operacion.valorTotal(),0.0);
 	}
+	
+	
 }
 
