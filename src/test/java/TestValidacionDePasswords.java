@@ -39,6 +39,6 @@ public class TestValidacionDePasswords {
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresRepetidos() throws IOException {
-		usuario = new Usuario("usuario", "estrellaaa");
+		usuario = new Usuario("usuario", "estrellla");
 	}
 }

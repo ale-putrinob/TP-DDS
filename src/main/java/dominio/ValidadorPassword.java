@@ -1,11 +1,11 @@
 package dominio;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ValidadorPassword {
-	static List<String> caracteresConsecutivos;
-	static List<String> caracteresRepetidos;
+	
 
 	public static void validarPassword(String password) throws IOException{
 		validarSiEstaEntrePasswordsMasInseguras(password);
@@ -15,7 +15,11 @@ public class ValidadorPassword {
 	}
 
 	private static void validarCaracteresRepetidos(String password) throws IOException {
-		BuscadorEnArchivo.encontrarInclusion(password, "caracteresRepetidos.txt");
+		Pattern pat = Pattern.compile(".*((\\w)\\2\\2).*");
+		Matcher mat = pat.matcher(password);
+		
+		if(mat.matches())
+			throw new PasswordInseguraException("La contraseña ingresada es insegura");
 	}
 
 	private static void validarCaracteresConsecutivos(String password) throws IOException {
@@ -30,5 +34,6 @@ public class ValidadorPassword {
 	private static void validarSiEstaEntrePasswordsMasInseguras(String password) throws IOException {
 		BuscadorEnArchivo.encontrarIgualdad(password, "10k-most-common-passwords.txt");
 	}
+	
 
 }
