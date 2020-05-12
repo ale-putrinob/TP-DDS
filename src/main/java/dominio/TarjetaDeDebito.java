@@ -10,4 +10,8 @@ public class TarjetaDeDebito implements MedioDePago{
         this.nroDeTarjeta = unNroDeTarjeta;
     }
 
+    public void pagar(OperacionEgreso egreso){
+        //Comportamiento !=
+        System.out.println("El pago se hará con Tarjeta de Débito.");
+    }
 }

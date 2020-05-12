@@ -7,4 +7,9 @@ public class Efectivo implements MedioDePago{
     public Efectivo (String unaRedDeCobranza){
         this.redDeCobranza = unaRedDeCobranza;
     }
+
+    public void pagar(OperacionEgreso egreso){
+        //Comportamiento !=
+        System.out.println("El pago se hará en Efectivo.");
+    }
 }

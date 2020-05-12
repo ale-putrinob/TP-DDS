@@ -7,4 +7,9 @@ public class CajeroAutomatico implements MedioDePago{
     public CajeroAutomatico (String unaRedInterbancaria){
         this.redInterbancaria = unaRedInterbancaria;
     }
+
+    public void pagar(OperacionEgreso egreso){
+        //Comportamiento !=
+        System.out.println("El pago se hará mediante Cajero automático.");
+    }
 }
