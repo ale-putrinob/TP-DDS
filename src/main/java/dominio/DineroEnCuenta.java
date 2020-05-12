@@ -1,12 +1,10 @@
 package dominio;
 
-import java.math.BigDecimal;
-
 public class DineroEnCuenta implements MedioDePago{
-    BigDecimal dineroAPagar;
+    int nroCuenta;
 
-    public DineroEnCuenta (BigDecimal unaCantidad){
-        this.dineroAPagar = unaCantidad;
+    public DineroEnCuenta (int nroCuenta){
+        this.nroCuenta = nroCuenta;
     }
 
     public void pagar(OperacionEgreso egreso){

@@ -3,9 +3,11 @@ package dominio;
 public class Efectivo implements MedioDePago{
     //Para diferenciar si es Rapipago, Pago fácil u otra
     String redDeCobranza;
+    int nroTransaccion;
 
-    public Efectivo (String unaRedDeCobranza){
+    public Efectivo (String unaRedDeCobranza, int nroTransaccion){
         this.redDeCobranza = unaRedDeCobranza;
+        this.nroTransaccion = nroTransaccion;
     }
 
     public void pagar(OperacionEgreso egreso){
