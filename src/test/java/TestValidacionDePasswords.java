@@ -1,5 +1,6 @@
 import java.io.IOException;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,17 +29,44 @@ public class TestValidacionDePasswords {
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
-	public void testPasswordCorta() throws IOException {
-		usuario = new Usuario("usuario", "luna");
+	public void testPassword7Caracteres() throws IOException {
+		usuario = new Usuario("usuario", "septimo");
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test (expected = PasswordInseguraException.class)
+	public void testPassword8Caracteres() throws IOException {
+		usuario = new Usuario("usuario", "septimo");
+		Assert.assertEquals(DigestUtils.md5Hex("septimo"), usuario.getPassword());
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
-	public void testPasswordConCaracteresConsecutivos() throws IOException {
+	public void testPasswordConCaracteresConsecutivosAlFinal() throws IOException {
 		usuario = new Usuario("usuario", "lunas123");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
-	public void testPasswordConCaracteresRepetidos() throws IOException {
+	public void testPasswordConCaracteresConsecutivosAlPrincipio() throws IOException {
+		usuario = new Usuario("usuario", "123lunas");
+	}
+	
+	@Test (expected = PasswordInseguraException.class)
+	public void testPasswordConCaracteresConsecutivosEnElMedio() throws IOException {
+		usuario = new Usuario("usuario", "lunabcs");
+	}
+	
+	@Test (expected = PasswordInseguraException.class)
+	public void testPasswordConCaracteresRepetidosEnElMedio() throws IOException {
 		usuario = new Usuario("usuario", "estrellla");
+	}
+	
+	@Test (expected = PasswordInseguraException.class)
+	public void testPasswordConCaracteresRepetidosEnAlPrincipio() throws IOException {
+		usuario = new Usuario("usuario", "eeestrella");
+	}
+	
+	@Test (expected = PasswordInseguraException.class)
+	public void testPasswordConCaracteresRepetidosEnAlFinal() throws IOException {
+		usuario = new Usuario("usuario", "estrellaaa");
 	}
 }
