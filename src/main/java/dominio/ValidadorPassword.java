@@ -15,7 +15,7 @@ public class ValidadorPassword {
 	}
 
 	private static void validarCaracteresRepetidos(String password) throws IOException {
-		Pattern pat = Pattern.compile(".*((\\w)\\2\\2).*");
+		Pattern pat = Pattern.compile(".*((\\w)\\2\\2).*"); 
 		Matcher mat = pat.matcher(password);
 		
 		if(mat.matches())
