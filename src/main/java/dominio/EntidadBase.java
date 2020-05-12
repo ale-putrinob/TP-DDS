@@ -1,6 +1,7 @@
 package dominio;
 
 public class EntidadBase implements Entidad {
+	String nombreFicticio;
 	String descripcion;
 	EntidadJuridica dependencia;
 

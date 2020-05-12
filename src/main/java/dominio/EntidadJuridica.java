@@ -2,6 +2,7 @@ package dominio;
 
 
 abstract class EntidadJuridica implements Entidad {
+	String nombreFicticio;
 	int razonSocial;
 	int cuit;
 	String dirPostal;
