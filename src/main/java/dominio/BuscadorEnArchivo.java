@@ -28,7 +28,7 @@ public class BuscadorEnArchivo {
 				throw new PasswordInseguraException("La contaseña ingresada es insegura");
 			}
 			
-		} catch(SecurityException e) {
+		} catch(IOException e) {
 			System.out.println(e.getMessage());
 		}
 	}
