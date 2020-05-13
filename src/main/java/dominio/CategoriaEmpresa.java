@@ -1,3 +1,3 @@
 package dominio;
 
-public interface Categoria_Empresa {}
+public interface CategoriaEmpresa {}

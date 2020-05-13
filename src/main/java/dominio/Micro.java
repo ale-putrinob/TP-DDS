@@ -1,3 +1,3 @@
 package dominio;
 
-public class Micro implements Categoria_Empresa {}
+public class Micro implements CategoriaEmpresa {}
