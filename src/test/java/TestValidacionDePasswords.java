@@ -4,6 +4,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import dominio.Estandar;
 import dominio.PasswordInseguraException;
 import dominio.Usuario;
 import junit.framework.Assert;
@@ -19,54 +20,53 @@ public class TestValidacionDePasswords {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testPasswordEncriptada() throws IOException {
-		usuario = new Usuario("usuario", "passwordsegura");
+		usuario = new Estandar("usuario", "passwordsegura");
 		Assert.assertNotSame(usuario.getPassword(), "passwordsegura");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordEntreLasMasInseguras() throws IOException {
-		usuario = new Usuario("usuario", "baseball");
+		usuario = new Estandar("usuario", "baseball");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPassword7Caracteres() throws IOException {
-		usuario = new Usuario("usuario", "septimo");
+		usuario = new Estandar("usuario", "septimo");
 	}
 	
 	@SuppressWarnings("deprecation")
 	@Test (expected = PasswordInseguraException.class)
 	public void testPassword8Caracteres() throws IOException {
-		usuario = new Usuario("usuario", "septimo");
-		Assert.assertEquals(DigestUtils.md5Hex("septimo"), usuario.getPassword());
+		usuario = new Estandar("usuario", "septimo");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresConsecutivosAlFinal() throws IOException {
-		usuario = new Usuario("usuario", "lunas123");
+		usuario = new Estandar("usuario", "lunas123");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresConsecutivosAlPrincipio() throws IOException {
-		usuario = new Usuario("usuario", "123lunas");
+		usuario = new Estandar("usuario", "123lunas");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresConsecutivosEnElMedio() throws IOException {
-		usuario = new Usuario("usuario", "lunabcs");
+		usuario = new Estandar("usuario", "lunabcs");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresRepetidosEnElMedio() throws IOException {
-		usuario = new Usuario("usuario", "estrellla");
+		usuario = new Estandar("usuario", "estrellla");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresRepetidosEnAlPrincipio() throws IOException {
-		usuario = new Usuario("usuario", "eeestrella");
+		usuario = new Estandar("usuario", "eeestrella");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresRepetidosEnAlFinal() throws IOException {
-		usuario = new Usuario("usuario", "estrellaaa");
+		usuario = new Estandar("usuario", "estrellaaa");
 	}
 }

@@ -3,7 +3,7 @@ package dominio;
 import java.io.IOException;
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class Usuario {
+public abstract class Usuario {
 	String nombreUsuario;
 	String password;
 	
