@@ -16,7 +16,7 @@ public class TestOperacionEgreso {
 	MedioDePago medioDePago;
 	
 	@Before
-	void init() {
+	public void init() {
 		documento = new DocumentoComercial("Factura", 5);
 		proveedor = new Proveedor("Juan Per�n","JDP",45678978,2045678889,1567);
 		medioDePago = new Efectivo("Red Link", 199000015);
