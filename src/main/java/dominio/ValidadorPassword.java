@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 public class ValidadorPassword {
 	
-
 	public static void validarPassword(String password) throws IOException{
 		validarSiEstaEntrePasswordsMasInseguras(password);
 		validarLongitudPassword(password);
@@ -23,7 +22,9 @@ public class ValidadorPassword {
 	}
 
 	private static void validarCaracteresConsecutivos(String password) throws IOException {
-		BuscadorEnArchivo.encontrarInclusion(password, "caracteresConsecutivos.txt");
+		if(BuscadorEnArchivo.encontrarInclusion(password, "caracteresConsecutivos.txt"))
+			throw new PasswordInseguraException("La contraseña ingresada es insegura");
+			
 	}
 
 	private static void validarLongitudPassword(String password) {
@@ -32,7 +33,8 @@ public class ValidadorPassword {
 	}
 
 	private static void validarSiEstaEntrePasswordsMasInseguras(String password) throws IOException {
-		BuscadorEnArchivo.encontrarIgualdad(password, "10k-most-common-passwords.txt");
+		if(BuscadorEnArchivo.encontrarIgualdad(password, "10k-most-common-passwords.txt"))
+			throw new PasswordInseguraException("La contraseña ingresada es insegura");
 	}
 	
 
