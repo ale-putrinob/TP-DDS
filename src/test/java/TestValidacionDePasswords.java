@@ -4,9 +4,14 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import dominio.SinCaracteresConsecutivos;
+import dominio.SinCaracteresRepetidos;
+import dominio.NoEstaEntrePasswordsMasInseguras;
 import dominio.Estandar;
+import dominio.LongitudPassword;
 import dominio.PasswordInseguraException;
 import dominio.Usuario;
+import dominio.ValidadorPassword;
 import junit.framework.Assert;
 
 public class TestValidacionDePasswords {
@@ -14,7 +19,10 @@ public class TestValidacionDePasswords {
 	
 	@Before
 	public void init() {
-		
+		ValidadorPassword.agregarValidaciones(new SinCaracteresRepetidos());
+		ValidadorPassword.agregarValidaciones(new SinCaracteresConsecutivos());
+		ValidadorPassword.agregarValidaciones(new LongitudPassword());
+		ValidadorPassword.agregarValidaciones(new NoEstaEntrePasswordsMasInseguras());
 	}
 	
 	@SuppressWarnings("deprecation")
