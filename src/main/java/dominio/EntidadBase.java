@@ -5,7 +5,8 @@ public class EntidadBase implements Entidad {
 	String descripcion;
 	EntidadJuridica dependencia;
 
-	public EntidadBase(String unaDescripcion, EntidadJuridica unaDependencia) {
+	public EntidadBase(String nombreFicticio, String unaDescripcion, EntidadJuridica unaDependencia) {
+		this.nombreFicticio = nombreFicticio;
 		this.descripcion = unaDescripcion;
 		this.dependencia = unaDependencia;
 	}

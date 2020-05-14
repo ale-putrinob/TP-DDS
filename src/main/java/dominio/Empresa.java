@@ -8,8 +8,8 @@ public class Empresa extends EntidadJuridica{
 		this.categoria=categoria;
 	}
 
-	public Empresa(CategoriaEmpresa categoria,int razonSocial, int cuit, String dirPostal) {
-		super(razonSocial, cuit, dirPostal);
+	public Empresa(String nombreFicticio, CategoriaEmpresa categoria,int razonSocial, int cuit, String dirPostal) {
+		super(nombreFicticio, razonSocial, cuit, dirPostal);
 		this.categoria=categoria;
 	}	
 }	

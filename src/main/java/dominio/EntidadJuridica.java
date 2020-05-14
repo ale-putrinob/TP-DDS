@@ -16,7 +16,8 @@ abstract class EntidadJuridica implements Entidad {
 	}
 	
 	// Para crear una Entidad Juridica sin codigo de inscripcion en IGJ
-	public EntidadJuridica(int razonSocial, int cuit, String dirPostal) {
+	public EntidadJuridica(String nombreFicticio, int razonSocial, int cuit, String dirPostal) {
+		this.nombreFicticio = nombreFicticio;
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.dirPostal = dirPostal;
