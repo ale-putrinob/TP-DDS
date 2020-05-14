@@ -35,9 +35,10 @@ public class TestValidacionDePasswords {
 	}
 	
 	@SuppressWarnings("deprecation")
-	@Test (expected = PasswordInseguraException.class)
+	@Test
 	public void testPassword8Caracteres() throws IOException {
-		usuario = new Estandar("usuario", "septimo");
+		usuario = new Estandar("usuario", "septimo1");
+		Assert.assertEquals(DigestUtils.md5Hex("septimo1"), usuario.getPassword());
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
