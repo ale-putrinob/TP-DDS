@@ -6,8 +6,8 @@ public class OSC extends EntidadJuridica{
 		super(razonSocial, cuit, dirPostal, codInscripto);
 	}
 
-	public OSC(int razonSocial, int cuit, String dirPostal) {
-		super(razonSocial, cuit, dirPostal);
+	public OSC(String nombreFicticio, int razonSocial, int cuit, String dirPostal) {
+		super(nombreFicticio, razonSocial, cuit, dirPostal);
 	}
 	
 }

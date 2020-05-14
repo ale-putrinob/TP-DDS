@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Organizacion {
 	List<Entidad> entidades;
 	List<OperacionEgreso> operacionesEgreso;
-	List<Usuario> usuarios; // a revisar
+	List<Usuario> usuarios; 
 	
 	public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso) {
 		this.entidades = new ArrayList<>();
