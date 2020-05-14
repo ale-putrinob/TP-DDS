@@ -1,4 +1,4 @@
-package dominio;
+package dominio.documentoComercial;
 
 public class DocumentoComercial {
 	String tipo;

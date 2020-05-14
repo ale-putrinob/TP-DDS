@@ -1,4 +1,4 @@
-package dominio;
+package dominio.buscador;
 
 
 import java.io.IOException;
