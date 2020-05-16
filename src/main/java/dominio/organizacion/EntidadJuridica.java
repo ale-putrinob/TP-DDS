@@ -1,4 +1,4 @@
-package dominio;
+package dominio.organizacion;
 
 
 abstract class EntidadJuridica implements Entidad {

@@ -1,4 +1,5 @@
-package dominio;
+package dominio.medioDePago;
+import dominio.operacionDeEgreso.*;
 
 public class Efectivo implements MedioDePago{
     //Para diferenciar si es Rapipago, Pago fácil u otra

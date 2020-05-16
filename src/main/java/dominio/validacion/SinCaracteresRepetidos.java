@@ -1,4 +1,4 @@
-package dominio;
+package dominio.validacion;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

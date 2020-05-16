@@ -4,14 +4,15 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import dominio.SinCaracteresConsecutivos;
-import dominio.SinCaracteresRepetidos;
-import dominio.NoEstaEntrePasswordsMasInseguras;
-import dominio.LongitudPassword;
-import dominio.PasswordInseguraException;
-import dominio.Usuario;
-import dominio.ValidadorPassword;
+import dominio.excepcion.PasswordInseguraException;
+import dominio.usuario.Usuario;
+import dominio.validacion.LongitudPassword;
+import dominio.validacion.NoEstaEntrePasswordsMasInseguras;
+import dominio.validacion.SinCaracteresConsecutivos;
+import dominio.validacion.SinCaracteresRepetidos;
+import dominio.validacion.ValidadorPassword;
 import junit.framework.Assert;
+
 
 public class TestValidacionDePasswords {
 	Usuario usuario;

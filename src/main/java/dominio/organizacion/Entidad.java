@@ -1,4 +1,4 @@
-package dominio;
+package dominio.organizacion;
 
 public interface Entidad {
 	

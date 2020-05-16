@@ -1,4 +1,4 @@
-package dominio;
+package dominio.proveedor;
 
 public class Proveedor {
 	String nombreApellido;

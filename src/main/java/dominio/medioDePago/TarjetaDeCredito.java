@@ -1,4 +1,5 @@
-package dominio;
+package dominio.medioDePago;
+import dominio.operacionDeEgreso.*;
 
 public class TarjetaDeCredito implements MedioDePago {
     //Si es VISA o MC, según MercadoPago

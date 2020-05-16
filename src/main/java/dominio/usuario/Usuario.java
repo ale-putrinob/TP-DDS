@@ -1,6 +1,10 @@
-package dominio;
+package dominio.usuario;
 
 import org.apache.commons.codec.digest.DigestUtils;
+
+import dominio.validacion.ValidadorPassword;
+
+
 
 public class Usuario {
 	String nombreUsuario;

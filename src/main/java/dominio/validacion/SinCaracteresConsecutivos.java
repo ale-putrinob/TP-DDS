@@ -1,4 +1,6 @@
-package dominio;
+package dominio.validacion;
+
+import dominio.buscador.BuscadorEnArchivo;
 
 public class SinCaracteresConsecutivos implements Validacion{
 

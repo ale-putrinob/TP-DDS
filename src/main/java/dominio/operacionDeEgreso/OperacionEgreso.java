@@ -1,6 +1,12 @@
-package dominio;
+package dominio.operacionDeEgreso;
 
 import java.util.List;
+
+import dominio.documentoComercial.DocumentoComercial;
+import dominio.item.Item;
+import dominio.medioDePago.MedioDePago;
+import dominio.proveedor.Proveedor;
+
 import java.util.ArrayList;
 import java.util.Date;
 

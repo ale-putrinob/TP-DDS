@@ -1,4 +1,5 @@
-package dominio;
+package dominio.medioDePago;
+import dominio.operacionDeEgreso.*;
 
 public class DineroEnCuenta implements MedioDePago{
     int nroCuenta;

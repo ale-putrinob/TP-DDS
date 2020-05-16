@@ -1,6 +1,10 @@
-package dominio;
+package dominio.organizacion;
 
 import java.util.List;
+
+import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.usuario.Usuario;
+
 import java.util.ArrayList;
 
 public class Organizacion {

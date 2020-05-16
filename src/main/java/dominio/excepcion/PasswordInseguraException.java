@@ -1,7 +1,7 @@
-package dominio;
+package dominio.excepcion;
 
 public class PasswordInseguraException extends RuntimeException {
-	PasswordInseguraException(String msg){
+	public PasswordInseguraException(String msg){
 		super(msg);
 	}
 }

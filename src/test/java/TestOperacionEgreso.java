@@ -1,4 +1,10 @@
-import dominio.*;
+import dominio.documentoComercial.DocumentoComercial;
+import dominio.item.Item;
+import dominio.medioDePago.Efectivo;
+import dominio.medioDePago.MedioDePago;
+import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.proveedor.Proveedor;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +21,7 @@ public class TestOperacionEgreso {
 	OperacionEgreso operacion;
 	MedioDePago medioDePago;
 	
+	@SuppressWarnings("deprecation")
 	@Before
 	public void init() {
 		documento = new DocumentoComercial("Factura", 5);
@@ -23,7 +30,6 @@ public class TestOperacionEgreso {
 		operacion = new OperacionEgreso(new Date(2000,13,05), items, documento, proveedor, medioDePago);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testValorTotal() {
 		items.add(new Item (100,"carne"));

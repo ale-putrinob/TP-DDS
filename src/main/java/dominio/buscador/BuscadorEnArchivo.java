@@ -1,4 +1,5 @@
 package dominio.buscador;
+import dominio.validacion.*;
 
 
 import java.io.IOException;

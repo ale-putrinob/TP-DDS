@@ -1,4 +1,5 @@
-package dominio;
+package dominio.medioDePago;
+import dominio.operacionDeEgreso.*;
 
 public class CajeroAutomatico implements MedioDePago{
     //Para diferenciar si es Link, o Banelco

@@ -1,4 +1,4 @@
-package dominio;
+package dominio.item;
 
 public class Item {
 	double valorItem;
