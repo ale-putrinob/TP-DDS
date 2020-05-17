@@ -7,6 +7,7 @@ abstract class EntidadJuridica implements Entidad {
 	int cuit;
 	String dirPostal;
 	int codInscripto;
+	Tipo categoria;
 	
 	public EntidadJuridica(int razonSocial, int cuit, String dirPostal, int codInscripto) {
 		this.razonSocial = razonSocial;
