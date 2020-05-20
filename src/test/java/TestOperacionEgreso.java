@@ -33,6 +33,7 @@ public class TestOperacionEgreso {
 	public void testValorTotal() {
 		items.add(new Item (100,"carne"));
 		items.add(new Item (100,"sopa"));
+		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		
 		Assert.assertEquals(200,operacion.valorTotal(),0.0);
 	}

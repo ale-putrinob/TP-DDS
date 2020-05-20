@@ -1,10 +1,10 @@
 package dominio.medioDePago;
 
-public abstract class MedioDePago {
+public class MedioDePago {
     TiposDePago tipo;
-    String identificador;
+    int identificador;
 
-    public MedioDePago(TiposDePago tipo, String identificador) {
+    public MedioDePago(TiposDePago tipo, int identificador) {
         this.tipo = tipo;
         this.identificador = identificador;
     }
