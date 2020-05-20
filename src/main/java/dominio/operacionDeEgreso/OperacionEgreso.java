@@ -30,7 +30,4 @@ public class OperacionEgreso {
 		return items.stream().mapToDouble(item -> item.getValorItem()).sum();
 	}
 
-	public void pagar(){
-		this.medioDePago.pagar(this);
-	}
 }

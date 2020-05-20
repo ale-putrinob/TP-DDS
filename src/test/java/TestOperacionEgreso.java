@@ -1,6 +1,6 @@
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
-import dominio.medioDePago.Efectivo;
+import dominio.medioDePago.TiposDePago;
 import dominio.medioDePago.MedioDePago;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.proveedor.Proveedor;
@@ -26,7 +26,6 @@ public class TestOperacionEgreso {
 	public void init() {
 		documento = new DocumentoComercial("Factura", 5);
 		proveedor = new Proveedor("Juan Per�n","JDP",45678978,2045678889,1567);
-		medioDePago = new Efectivo("Red Link", 199000015);
 		operacion = new OperacionEgreso(new Date(2000,13,05), items, documento, proveedor, medioDePago);
 	}
 	

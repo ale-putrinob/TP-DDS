@@ -1,6 +1,11 @@
 package dominio.medioDePago;
-import dominio.operacionDeEgreso.*;
 
-public interface MedioDePago {
-    void pagar(OperacionEgreso egreso);
+public abstract class MedioDePago {
+    TiposDePago tipo;
+    String identificador;
+
+    public MedioDePago(TiposDePago tipo, String identificador) {
+        this.tipo = tipo;
+        this.identificador = identificador;
+    }
 }
