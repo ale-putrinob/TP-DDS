@@ -2,7 +2,7 @@ package dominio.usuario;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import dominio.validacion.ValidadorPassword;
+import dominio.validacionPassword.ValidadorPassword;
 
 
 

@@ -6,11 +6,11 @@ import org.junit.Test;
 
 import dominio.excepcion.PasswordInseguraException;
 import dominio.usuario.Usuario;
-import dominio.validacion.LongitudPassword;
-import dominio.validacion.NoEstaEntrePasswordsMasInseguras;
-import dominio.validacion.SinCaracteresConsecutivos;
-import dominio.validacion.SinCaracteresRepetidos;
-import dominio.validacion.ValidadorPassword;
+import dominio.validacionPassword.LongitudPassword;
+import dominio.validacionPassword.NoEstaEntrePasswordsMasInseguras;
+import dominio.validacionPassword.SinCaracteresConsecutivos;
+import dominio.validacionPassword.SinCaracteresRepetidos;
+import dominio.validacionPassword.ValidadorPassword;
 import junit.framework.Assert;
 
 

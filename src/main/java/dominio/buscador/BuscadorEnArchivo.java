@@ -1,13 +1,10 @@
 package dominio.buscador;
-import dominio.validacion.*;
-
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.concurrent.Callable;
-import java.util.function.Function;
 import java.util.stream.Stream;
+
+import dominio.validacionPassword.*;
 
 public class BuscadorEnArchivo {
     

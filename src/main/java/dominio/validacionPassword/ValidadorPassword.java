@@ -1,10 +1,9 @@
-package dominio.validacion;
+package dominio.validacionPassword;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dominio.excepcion.PasswordInseguraException;
-import dominio.excepcion.*;
 
 public class ValidadorPassword {
 	public static List<Validacion> validaciones = new ArrayList<>();

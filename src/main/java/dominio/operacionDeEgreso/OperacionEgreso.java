@@ -5,7 +5,6 @@ import java.util.List;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
-import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 
 import java.util.ArrayList;
@@ -17,9 +16,6 @@ public class OperacionEgreso {
 	DocumentoComercial documentoComercial;
 	Proveedor proveedor;
 	MedioDePago medioDePago;
-	List<Presupuesto> presupuestos = new ArrayList<>();
-	//A REVISAR
-	static int presupuestosRequeridos;
 	
 	public OperacionEgreso(Date fechaOp, List<Item> items,DocumentoComercial documentoComercial,Proveedor proveedor,
 						   MedioDePago medioDePago) {
@@ -31,10 +27,6 @@ public class OperacionEgreso {
 		this.medioDePago = medioDePago;
 	}
 	
-	//A REVISAR
-	public static void setPresupuestosRequeridos(int cantidadPresupuestos) {
-		presupuestosRequeridos = cantidadPresupuestos;
-	}
 	
 	public double valorTotal() {
 		return items.stream().mapToDouble(item -> item.getValorItem()).sum();

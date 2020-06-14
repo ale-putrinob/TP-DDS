@@ -1,4 +1,4 @@
-package dominio.validacion;
+package dominio.validacionPassword;
 
 import dominio.buscador.BuscadorEnArchivo;
 

@@ -1,4 +1,4 @@
-package dominio.validacion;
+package dominio.validacionPassword;
 
 public class LongitudPassword implements Validacion{
 
