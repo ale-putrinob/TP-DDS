@@ -14,6 +14,7 @@ import dominio.proveedor.Proveedor;
 
 public class OperacionEgresoConPresupuesto extends OperacionEgreso{
 	List<Presupuesto> presupuestos = new ArrayList<>();
+	//Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 	
@@ -33,9 +34,9 @@ public class OperacionEgresoConPresupuesto extends OperacionEgreso{
 	
 	private void validarSeleccionDeProveedor() {
 		if(!(this.seEligioProveedorSegunCriterio())) {
-			throw new OperacionEgresoInvalidaException("¡No se respetó el criterio seleccionado para elegir al proveedor!");
+			throw new OperacionEgresoInvalidaException("ï¿½No se respetï¿½ el criterio seleccionado para elegir al proveedor!");
 		}
-		
+
 	}
 
 	private boolean seEligioProveedorSegunCriterio() {
@@ -44,19 +45,22 @@ public class OperacionEgresoConPresupuesto extends OperacionEgreso{
 
 	//Revisar Si es mejor que sea el criterio el que haga el get del proveedor
 	private Proveedor proveedorSegunCriterio() {
-		return criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos).getProveedor();
+		return criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos);
 	}
 
 	private void validarAplicacionDePresupuesto() {
-		if(false) //Agregar Condición para Verificar que se Aplicó alguno de los Presupuestos 
-			throw new OperacionEgresoInvalidaException("¡No se aplicó ninguno de los presupuestos en la compra!");
+		if(this.aplicaAlgunPresupuesto()) //Agregar Condiciï¿½n para Verificar que se Aplicï¿½ alguno de los Presupuestos
+			throw new OperacionEgresoInvalidaException("ï¿½No se aplicï¿½ ninguno de los presupuestos en la compra!");
 	}
 
 	private void validarCantidadDePresupuestos() {
 		if(presupuestos.size() != presupuestosRequeridos) 
-			throw new OperacionEgresoInvalidaException("¡Faltan cargar presupuestos!");
+			throw new OperacionEgresoInvalidaException("ï¿½Faltan cargar presupuestos!");
 	}
 
+	private boolean aplicaAlgunPresupuesto() {
+		return this.presupuestos.stream().anyMatch(presupuesto -> presupuesto.contieneItems(items));
+	}
 
 	public int getPresupuestosRequeridos() {
 		return presupuestosRequeridos;

@@ -3,7 +3,9 @@ package dominio.criterioDeSeleccionDeProveedor;
 import java.util.List;
 
 import dominio.presupuesto.Presupuesto;
+import dominio.proveedor.Proveedor;
 
+//
 public interface CriterioDeSeleccionDeProveedor {
-	public Presupuesto elegirSegunCriterio(List<Presupuesto> presupuestos);
+	public Proveedor elegirSegunCriterio(List<Presupuesto> presupuestos);
 }

@@ -22,7 +22,7 @@ public class Presupuesto {
 	
 	public void validarItemsAsignadosAEgreso(List<Item> items) {
 		if(!(items.stream().allMatch(item->item.estaAsociadoAEgreso()))) {
-			throw new PresupuestoException("Alguno de los Items Cargados no est·n asociados a un egreso");
+			throw new PresupuestoException("Alguno de los Items Cargados no est√°n asociados a un egreso");
 		}
 	}
 	
@@ -32,6 +32,11 @@ public class Presupuesto {
 
 	public Proveedor getProveedor() {
 		return proveedor;
+	}
+
+	public boolean contieneItems (List<Item> items){
+		//Revisar
+		return this.items.equals(items);
 	}
 	
 }

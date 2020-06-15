@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+/*
 public class TestOperacionEgreso {
 	DocumentoComercial documento;
 	List<Item> items = new ArrayList<Item>();
@@ -36,8 +36,9 @@ public class TestOperacionEgreso {
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		
 		Assert.assertEquals(200,operacion.valorTotal(),0.0);
-	}*/
+	}
 	
 	
 }
+*/
 
