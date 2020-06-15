@@ -10,9 +10,10 @@ import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
+import dominio.usuario.Usuario;
 
 //A REVISAR
-public class OperacionEgresoConPresupuestoPendienteDeValidacion {
+public class OperacionEgresoPendienteDeValidacion {
 
 	Date fechaOp = new Date();
 	List<Item> items = new ArrayList<>();
@@ -20,6 +21,7 @@ public class OperacionEgresoConPresupuestoPendienteDeValidacion {
 	Proveedor proveedor;
 	MedioDePago medioDePago;
 	List<Presupuesto> presupuestos = new ArrayList<>();
+	Usuario revisor;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 	
 	void especificarFecha(Date fechaOp) {
@@ -46,13 +48,17 @@ public class OperacionEgresoConPresupuestoPendienteDeValidacion {
 		this.presupuestos = presupuestos;
 	}
 	
+	void especificarUsuario(Usuario revisor) {
+		this.revisor = revisor;
+	}
+	
 	void especificarCriterioDeSeleccionDeProveedor(CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor) {
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
 	}
 	
-	OperacionEgresoConPresupuesto construir(){
-		OperacionEgresoConPresupuesto operacionDeEgresoConPresupuesto = new OperacionEgresoConPresupuesto(fechaOp, items, 
-				documentoComercial, proveedor, medioDePago, presupuestos, criterioDeSeleccionDeProveedor);
+	OperacionEgreso construir(){
+		OperacionEgreso operacionDeEgresoConPresupuesto = new OperacionEgreso(fechaOp, items, 
+				documentoComercial, proveedor, medioDePago, presupuestos, revisor, criterioDeSeleccionDeProveedor);
 		
 		return operacionDeEgresoConPresupuesto;
 	}

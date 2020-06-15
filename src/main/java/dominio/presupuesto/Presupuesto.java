@@ -34,9 +34,9 @@ public class Presupuesto {
 		return proveedor;
 	}
 
-	public boolean contieneItems (List<Item> items){
-		//Revisar
-		return this.items.equals(items);
+	public boolean contieneItems (List<Item> items1){
+		/*aca se verifica que las listas contengan los mismo items, y que sean del mismo tamaño, para que los presupuestos sean iguales*/
+		return this.items.containsAll(items1) && this.items.size()==items1.size();
 	}
 	
 }
