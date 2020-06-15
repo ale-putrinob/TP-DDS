@@ -1,4 +1,4 @@
-package dominio.validacionPassword;
+package dominio.buscador;
 
 @FunctionalInterface
 public interface Condicion {

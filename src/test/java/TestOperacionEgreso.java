@@ -21,7 +21,7 @@ public class TestOperacionEgreso {
 	OperacionEgreso operacion;
 	MedioDePago medioDePago;
 	
-	@SuppressWarnings("deprecation")
+	/*@SuppressWarnings("deprecation")
 	@Before
 	public void init() {
 		documento = new DocumentoComercial("Factura", 5);
@@ -36,7 +36,7 @@ public class TestOperacionEgreso {
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		
 		Assert.assertEquals(200,operacion.valorTotal(),0.0);
-	}
+	}*/
 	
 	
 }

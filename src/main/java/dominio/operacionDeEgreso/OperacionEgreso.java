@@ -27,7 +27,7 @@ public class OperacionEgreso {
 		this.medioDePago = medioDePago;
 	}
 	
-	
+
 	public double valorTotal() {
 		return items.stream().mapToDouble(item -> item.getValorItem()).sum();
 	}

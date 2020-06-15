@@ -6,9 +6,9 @@ import java.util.List;
 import dominio.excepcion.PasswordInseguraException;
 
 public class ValidadorPassword {
-	public static List<Validacion> validaciones = new ArrayList<>();
+	public static List<ValidacionPassword> validaciones = new ArrayList<>();
 	
-	public static void agregarValidaciones(Validacion validacion) {
+	public static void agregarValidaciones(ValidacionPassword validacion) {
 		validaciones.add(validacion);
 	}
 	

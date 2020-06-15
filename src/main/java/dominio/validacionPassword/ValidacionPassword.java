@@ -1,5 +1,5 @@
 package dominio.validacionPassword;
 
-public interface Validacion {
+public interface ValidacionPassword {
 	public boolean cumpleCondicion(String password);
 }
