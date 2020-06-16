@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dominio.excepcion.PasswordInseguraException;
+import dominio.mensajes.BandejaDeMensajes;
 import dominio.usuario.Usuario;
 import dominio.validacionPassword.LongitudPassword;
 import dominio.validacionPassword.NoEstaEntrePasswordsMasInseguras;
@@ -16,9 +17,11 @@ import junit.framework.Assert;
 
 public class TestValidacionDePasswords {
 	Usuario usuario;
+	BandejaDeMensajes bandejaDeMensajes;
 	
 	@Before
 	public void init() {
+		bandejaDeMensajes = new BandejaDeMensajes();
 		ValidadorPassword.agregarValidaciones(new SinCaracteresRepetidos());
 		ValidadorPassword.agregarValidaciones(new SinCaracteresConsecutivos());
 		ValidadorPassword.agregarValidaciones(new LongitudPassword());
@@ -28,54 +31,54 @@ public class TestValidacionDePasswords {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testPasswordEncriptada() throws IOException {
-		usuario = new Usuario("usuario", "passwordsegura", false);
+		usuario = new Usuario("usuario", "passwordsegura", false, bandejaDeMensajes);
 		Assert.assertNotSame(usuario.getPassword(), "passwordsegura");
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordEntreLasMasInseguras() throws IOException {
-		usuario = new Usuario("usuario", "baseball", false);
+		usuario = new Usuario("usuario", "baseball", false, bandejaDeMensajes);
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPassword7Caracteres() throws IOException {
-		usuario = new Usuario("usuario", "septimo", false);
+		usuario = new Usuario("usuario", "septimo", false, bandejaDeMensajes);
 	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testPassword8Caracteres() throws IOException {
-		usuario = new Usuario("usuario", "septimo1", false);
+		usuario = new Usuario("usuario", "septimo1", false, bandejaDeMensajes);
 		Assert.assertEquals(DigestUtils.md5Hex("septimo1"), usuario.getPassword());
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresConsecutivosAlFinal() throws IOException {
-		usuario = new Usuario("usuario", "lunas123", false);
+		usuario = new Usuario("usuario", "lunas123", false, bandejaDeMensajes);
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresConsecutivosAlPrincipio() throws IOException {
-		usuario = new Usuario("usuario", "123lunas", false);
+		usuario = new Usuario("usuario", "123lunas", false, bandejaDeMensajes);
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresConsecutivosEnElMedio() throws IOException {
-		usuario = new Usuario("usuario", "lunabcs", false);
+		usuario = new Usuario("usuario", "lunabcs", false, bandejaDeMensajes);
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresRepetidosEnElMedio() throws IOException {
-		usuario = new Usuario("usuario", "estrellla", false);
+		usuario = new Usuario("usuario", "estrellla", false, bandejaDeMensajes);
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresRepetidosEnAlPrincipio() throws IOException {
-		usuario = new Usuario("usuario", "eeestrella", false);
+		usuario = new Usuario("usuario", "eeestrella", false, bandejaDeMensajes);
 	}
 	
 	@Test (expected = PasswordInseguraException.class)
 	public void testPasswordConCaracteresRepetidosEnAlFinal() throws IOException {
-		usuario = new Usuario("usuario", "estrellaaa", false);
+		usuario = new Usuario("usuario", "estrellaaa", false, bandejaDeMensajes);
 	}
 }

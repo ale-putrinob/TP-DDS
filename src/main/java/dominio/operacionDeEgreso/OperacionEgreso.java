@@ -9,6 +9,7 @@ import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.OperacionEgresoInvalidaException;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
+import dominio.mensajes.Mensaje;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.usuario.Usuario;
@@ -20,14 +21,14 @@ public class OperacionEgreso{
 	Proveedor proveedor;
 	MedioDePago medioDePago;
 	List<Presupuesto> presupuestos = new ArrayList<>();
-	Usuario revisor;
+	List<Usuario> revisores;
 	//Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /*el numero de presupuestos requeridos va de [0; ...) */
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 	
 	public OperacionEgreso(Date fechaOp, List<Item> items, DocumentoComercial documentoComercial, 
 										 Proveedor proveedor, MedioDePago medioDePago, List<Presupuesto> presupuestos, 
-										 Usuario revisor, CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor) {
+										 List<Usuario> revisores, CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor) {
 		this.fechaOp = fechaOp;
 		this.items = items;
 		this.items.forEach(item -> item.asociarAEgreso());
@@ -35,42 +36,51 @@ public class OperacionEgreso{
 		this.proveedor = proveedor;
 		this.medioDePago = medioDePago;
 		this.presupuestos=presupuestos;
-		this.revisor = revisor;
+		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
-		this.validarEgresoConPresupuesto();
+		this.validarEgreso();
 	}
 	
-	public void validarEgresoConPresupuesto() {
+	public void validarEgreso() {
 		this.validarCantidadDePresupuestos();
 		this.validarAplicacionDePresupuesto();
 		this.validarSeleccionDeProveedor();
-		
 	}
 	
 	private void validarSeleccionDeProveedor() {
-		if(!(this.seEligioProveedorSegunCriterio())) {
-			throw new OperacionEgresoInvalidaException("No se respeta el criterio seleccionado para elegir al proveedor!");
+		this.validar(this.seEligioProveedorSegunCriterio(), "No se respeta el criterio seleccionado para elegir al proveedor!",
+				"Se ha seleccionado al proveedor correcto según el criterio elegido");
+	}
+	
+	private void validar(boolean condicion, String mensajeNegativo, String mensajePositivo) {
+		if(condicion) {
+			this.enviarMensajeARevisores(new Mensaje(mensajePositivo, this));
 		}
+		else {
+			this.enviarMensajeARevisores(new Mensaje(mensajeNegativo, this));
+		}
+	}
 
+	private void enviarMensajeARevisores(Mensaje mensaje) {
+		revisores.forEach(revisor -> revisor.recibirMensaje(mensaje));
 	}
 
 	private boolean seEligioProveedorSegunCriterio() {
 		return this.proveedorSegunCriterio().equals(proveedor);
 	}
 
-	//Revisar Si es mejor que sea el criterio el que haga el get del proveedor
 	private Proveedor proveedorSegunCriterio() {
 		return criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos);
 	}
 
 	private void validarAplicacionDePresupuesto() {
-		if(this.aplicaAlgunPresupuesto()) //Agregar condicion para verificar que se aplica alguno de los Presupuestos
-			throw new OperacionEgresoInvalidaException("No se aplica ninguno de los presupuestos en la compra!");
+		this.validar(this.aplicaAlgunPresupuesto(), "¡No se aplica ninguno de los presupuestos en la compra!",
+				"Se está aplicando alguno de los presupuestos en la compra");
 	}
 
 	private void validarCantidadDePresupuestos() {
-		if(presupuestos.size() != presupuestosRequeridos) 
-			throw new OperacionEgresoInvalidaException("Cantidad incorrecta de presupuestos");
+		this.validar(presupuestos.size() == presupuestosRequeridos, "Cantidad incorrecta de presupuestos",
+				"Cantidad correcta de presupuestos cargados");
 	}
 
 	private boolean aplicaAlgunPresupuesto() {

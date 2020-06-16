@@ -21,7 +21,7 @@ public class OperacionEgresoPendienteDeValidacion {
 	Proveedor proveedor;
 	MedioDePago medioDePago;
 	List<Presupuesto> presupuestos = new ArrayList<>();
-	Usuario revisor;
+	List<Usuario> revisores;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 	
 	void especificarFecha(Date fechaOp) {
@@ -48,8 +48,8 @@ public class OperacionEgresoPendienteDeValidacion {
 		this.presupuestos = presupuestos;
 	}
 	
-	void especificarUsuario(Usuario revisor) {
-		this.revisor = revisor;
+	void especificarUsuario(List<Usuario> revisores) {
+		this.revisores = revisores;
 	}
 	
 	void especificarCriterioDeSeleccionDeProveedor(CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor) {
@@ -58,7 +58,7 @@ public class OperacionEgresoPendienteDeValidacion {
 	
 	OperacionEgreso construir(){
 		OperacionEgreso operacionDeEgresoConPresupuesto = new OperacionEgreso(fechaOp, items, 
-				documentoComercial, proveedor, medioDePago, presupuestos, revisor, criterioDeSeleccionDeProveedor);
+				documentoComercial, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor);
 		
 		return operacionDeEgresoConPresupuesto;
 	}
