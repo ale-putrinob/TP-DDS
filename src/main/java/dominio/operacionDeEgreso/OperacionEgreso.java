@@ -13,6 +13,7 @@ import dominio.mensajes.Mensaje;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.usuario.Usuario;
+import dominio.validacionEgresos.ValidadorEgresos;
 
 public class OperacionEgreso{
 	Date fechaOp = new Date();
@@ -25,6 +26,7 @@ public class OperacionEgreso{
 	//Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /*el numero de presupuestos requeridos va de [0; ...) */
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
+	ValidadorEgresos validadorEgresos = new ValidadorEgresos(); //Quizás conviene hacer un SINGLETON
 	
 	public OperacionEgreso(Date fechaOp, List<Item> items, DocumentoComercial documentoComercial, 
 										 Proveedor proveedor, MedioDePago medioDePago, List<Presupuesto> presupuestos, 
@@ -38,52 +40,26 @@ public class OperacionEgreso{
 		this.presupuestos=presupuestos;
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
-		this.validarEgreso();
-	}
-	
-	public void validarEgreso() {
-		this.validarCantidadDePresupuestos();
-		this.validarAplicacionDePresupuesto();
-		this.validarSeleccionDeProveedor();
-	}
-	
-	private void validarSeleccionDeProveedor() {
-		this.validar(this.seEligioProveedorSegunCriterio(), "No se respeta el criterio seleccionado para elegir al proveedor!",
-				"Se ha seleccionado al proveedor correcto según el criterio elegido");
-	}
-	
-	private void validar(boolean condicion, String mensajeNegativo, String mensajePositivo) {
-		if(condicion) {
-			this.enviarMensajeARevisores(new Mensaje(mensajePositivo, this));
-		}
-		else {
-			this.enviarMensajeARevisores(new Mensaje(mensajeNegativo, this));
-		}
+		validadorEgresos.validarEgreso(this);
 	}
 
-	private void enviarMensajeARevisores(Mensaje mensaje) {
+	public void enviarMensajeARevisores(Mensaje mensaje) {
 		revisores.forEach(revisor -> revisor.recibirMensaje(mensaje));
 	}
 
-	private boolean seEligioProveedorSegunCriterio() {
+	public boolean seEligioProveedorSegunCriterio() {
 		return this.proveedorSegunCriterio().equals(proveedor);
 	}
 
 	private Proveedor proveedorSegunCriterio() {
 		return criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos);
 	}
-
-	private void validarAplicacionDePresupuesto() {
-		this.validar(this.aplicaAlgunPresupuesto(), "¡No se aplica ninguno de los presupuestos en la compra!",
-				"Se está aplicando alguno de los presupuestos en la compra");
+	
+	public boolean cumpleConLosPresupuestosRequeridos() {
+		return presupuestos.size() == presupuestosRequeridos;
 	}
 
-	private void validarCantidadDePresupuestos() {
-		this.validar(presupuestos.size() == presupuestosRequeridos, "Cantidad incorrecta de presupuestos",
-				"Cantidad correcta de presupuestos cargados");
-	}
-
-	private boolean aplicaAlgunPresupuesto() {
+	public boolean aplicaAlgunPresupuesto() {
 		return this.presupuestos.stream().anyMatch(presupuesto -> presupuesto.contieneItems(items));
 	}
 	
