@@ -7,6 +7,11 @@ import dominio.operacionDeEgreso.OperacionEgreso;
 
 public class ValidadorEgresos {
 	List<ValidacionEgreso> validaciones;
+	static final ValidadorEgresos INSTANCE = new ValidadorEgresos();
+
+	public static ValidadorEgresos getInstance() {
+		return INSTANCE;
+	}
 	
 	public void validarEgreso(OperacionEgreso egreso){
 		validaciones.forEach(validacion -> this.aplicarValidacion(validacion, egreso));

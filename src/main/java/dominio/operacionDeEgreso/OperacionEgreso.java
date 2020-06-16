@@ -26,7 +26,6 @@ public class OperacionEgreso{
 	//Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /*el numero de presupuestos requeridos va de [0; ...) */
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
-	ValidadorEgresos validadorEgresos = new ValidadorEgresos(); //Quizás conviene hacer un SINGLETON
 	
 	public OperacionEgreso(Date fechaOp, List<Item> items, DocumentoComercial documentoComercial, 
 										 Proveedor proveedor, MedioDePago medioDePago, List<Presupuesto> presupuestos, 
@@ -40,7 +39,7 @@ public class OperacionEgreso{
 		this.presupuestos=presupuestos;
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
-		validadorEgresos.validarEgreso(this);
+		ValidadorEgresos.getInstance().validarEgreso(this);
 	}
 
 	public void enviarMensajeARevisores(Mensaje mensaje) {
