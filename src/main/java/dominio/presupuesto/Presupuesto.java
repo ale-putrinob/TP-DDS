@@ -13,11 +13,12 @@ public class Presupuesto {
 	List<Item> items = new ArrayList<>();
 	Proveedor proveedor;
 	
-	public Presupuesto(List<DocumentoComercial> documentosComerciales, List<Item> items) {
+	public Presupuesto(List<DocumentoComercial> documentosComerciales, List<Item> items, Proveedor proveedor) {
 		this.validarItemsAsignadosAEgreso(items);
 		
 		this.documentosComerciales = documentosComerciales;
 		this.items = items;
+		this.proveedor=proveedor;
 	}
 	
 	public void validarItemsAsignadosAEgreso(List<Item> items) {

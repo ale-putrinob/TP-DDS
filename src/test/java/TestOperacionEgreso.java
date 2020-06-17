@@ -22,7 +22,10 @@ import java.util.List;
 public class TestOperacionEgreso {
 	DocumentoComercial documento;
 	List<Item> items = new ArrayList<Item>();
+	List<Item> otrosItems = new ArrayList<Item>();
+	List<Item> otrosItems2 = new ArrayList<Item>();
 	Proveedor proveedor;
+	Proveedor otroProveedor;
 	OperacionEgreso operacion;
 	MedioDePago medioDePago;
 	List<Presupuesto> presupuestos = new ArrayList<>();
@@ -32,6 +35,7 @@ public class TestOperacionEgreso {
 
 	TipoItem carne = new TipoItem();
 	TipoItem sopa = new TipoItem();
+	TipoItem polenta = new TipoItem();
 	
 	@SuppressWarnings("deprecation")
 	@Before
@@ -40,25 +44,31 @@ public class TestOperacionEgreso {
 		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
 		medioDePago = new MedioDePago(TiposDePago.TarjetaDeCredito, 1234567890);
 		criterioDeSeleccionDeProveedor = new MenorValor();
+		otrosItems.add(new Item (200,carne));
+		otrosItems.add(new Item (200,sopa));
+		otrosItems2.add(new Item (100,carne));
+		otrosItems2.add(new Item (100,sopa));
+		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		
 		operacion = new OperacionEgreso(new Date(2000,13,05), items, documento, 
 				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor);
+		
+		operacion.agregarItem(new Item (100,carne));
+		operacion.agregarItem(new Item (100,sopa));
+		
+		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems2,proveedor));
+		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor));
+		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor));
 	}
 	
 	@Test
 	public void testValorTotal() {
-		operacion.agregarItem(new Item (100,carne));
-		operacion.agregarItem(new Item (100,sopa));
-		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		
 		Assert.assertEquals(200,operacion.valorTotal(),0.0);
 	}
 	
 	@Test
-	public void testCompraRequierePresupuesto() {
-		operacion.agregarPresupuesto(new Presupuesto(documentos,items));
-		operacion.agregarPresupuesto(new Presupuesto(documentos,items));
-		operacion.agregarPresupuesto(new Presupuesto(documentos,items));
+	public void testCompraCumpleConPresupuestosRequeridos() {
 		
 		Assert.assertTrue(operacion.cumpleConLosPresupuestosRequeridos());
 	}
@@ -68,9 +78,27 @@ public class TestOperacionEgreso {
 	}
 	
 	@Test
+	public void testNoCompraCumpleConPresupuestosRequeridos() {
+		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor));
+		Assert.assertFalse(operacion.cumpleConLosPresupuestosRequeridos());
+	}
+	@Test
+	public void testNoCompraEnBaseAPresupuesto() {
+		operacion.agregarItem(new Item (300,polenta));
+		Assert.assertFalse(operacion.aplicaAlgunPresupuesto());
+	}
+	
+	@Test
 	public void testValidarElDeMenorValor() {
 		criterioDeSeleccionDeProveedor=new MenorValor();
 		Assert.assertTrue(operacion.seEligioProveedorSegunCriterio());
+	}
+	
+	@Test
+	public void testNoSeEligeElDeMenorValor() {
+		criterioDeSeleccionDeProveedor=new MenorValor();
+		operacion.setProveedor(otroProveedor);
+		Assert.assertFalse(operacion.seEligioProveedorSegunCriterio());
 	}
 }
 
