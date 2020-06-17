@@ -9,7 +9,8 @@ abstract class EntidadJuridica implements Entidad {
 	int codInscripto;
 	Tipo categoria;
 	
-	public EntidadJuridica(int razonSocial, int cuit, String dirPostal, int codInscripto) {
+	public EntidadJuridica(String nombreFicticio, int razonSocial, int cuit, String dirPostal, int codInscripto) {
+		this.nombreFicticio = nombreFicticio;
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.dirPostal = dirPostal;
@@ -22,6 +23,7 @@ abstract class EntidadJuridica implements Entidad {
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.dirPostal = dirPostal;
+		this.codInscripto = 0;
 	}
 	
 }
