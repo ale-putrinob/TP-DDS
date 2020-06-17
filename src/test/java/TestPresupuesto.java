@@ -18,26 +18,33 @@ import java.util.List;
 public class TestPresupuesto {
 	List<DocumentoComercial> documentosComerciales;
 	List<Item> items;
+	Proveedor proveedor; 
 	Presupuesto presupuesto; 
 	TipoItem carne = new TipoItem();
-	DocumentoComercial documento= new DocumentoComercial("Factura", 5); 
-	Item item= new Item (100,carne);
+	TipoItem polenta = new TipoItem();
+	DocumentoComercial documento1,documento2; 
+	Item item1,item2; 
 	
 	@Before
     public void init(){
-		documentosComerciales.add(documento);
-    	items.add(item);
+		documento1=new DocumentoComercial("Factura A",100);
+		documento2=new DocumentoComercial("Factura",200);
+		
+		item1=new Item(100,carne);
+		item2=new Item(50,polenta); 
+		
+		proveedor=new Proveedor("Juan","Juan SA",45678978,2045678889,1567);
+		
+		documentosComerciales.add(documento1); 
+		documentosComerciales.add(documento2);
+		items.add(item1);
+		items.add(item2);
+		
+		presupuesto=new Presupuesto(documentosComerciales,items,proveedor);
     }
-    
-    /*@Test
-    public void testCrearPresupuesto(){
-    	presupuesto = new Presupuesto(documentosComerciales,items);
-    	Assert.assertNotNull(presupuesto);
-    }*/
+	
     @Test
     public void testPresupuestoTotal() {
-		presupuesto=(new Presupuesto(documentosComerciales,items));
-		double total=presupuesto.presupuestoTotal();
-    	Assert.assertEquals(100, total); 
+    	Assert.assertEquals(150, presupuesto.presupuestoTotal());
 	}
 }
