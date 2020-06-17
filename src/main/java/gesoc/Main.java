@@ -1,4 +1,4 @@
-package main;
+package gesoc;
 
 import dominio.validacionEgresos.ValidadorEgresos;
 
