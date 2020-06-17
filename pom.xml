@@ -53,7 +53,7 @@
               </descriptorRefs>
               <archive>
                 <manifest>
-                  <mainClass>/2020-ju-ma-group-04/src/main/java/gesoc/Main.java</mainClass>
+                  <mainClass>gesoc.Main</mainClass>
                 </manifest>
               </archive>
             </configuration>

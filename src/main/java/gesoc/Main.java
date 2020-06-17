@@ -1,11 +1,11 @@
 package gesoc;
 
-import dominio.validacionEgresos.ValidadorEgresos;
-
 public class Main {
 
 	public static void main(String[] args) {
-		ValidadorEgresos validador = ValidadorEgresos.getInstance();
+		
+		System.out.println(" - Bienvenido a GeSoc - ");
+		System.out.println("Gestion de Proyectos Sociales");
 		
 		//validar todos los ingresos pendientes de una organizacion
 		
