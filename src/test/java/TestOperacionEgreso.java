@@ -28,6 +28,10 @@ public class TestOperacionEgreso {
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores = new ArrayList<>();
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
+	List<DocumentoComercial> documentos; 
+
+	TipoItem carne = new TipoItem();
+	TipoItem sopa = new TipoItem();
 	
 	@SuppressWarnings("deprecation")
 	@Before
@@ -36,13 +40,13 @@ public class TestOperacionEgreso {
 		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
 		medioDePago = new MedioDePago(TiposDePago.TarjetaDeCredito, 1234567890);
 		criterioDeSeleccionDeProveedor = new MenorValor();
-		operacion = new OperacionEgreso(new Date(2000,13,05), items, documento, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor);
+		
+		operacion = new OperacionEgreso(new Date(2000,13,05), items, documento, 
+				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor);
 	}
 	
 	@Test
 	public void testValorTotal() {
-		TipoItem carne = new TipoItem();
-		TipoItem sopa = new TipoItem();
 		operacion.agregarItem(new Item (100,carne));
 		operacion.agregarItem(new Item (100,sopa));
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
@@ -50,7 +54,24 @@ public class TestOperacionEgreso {
 		Assert.assertEquals(200,operacion.valorTotal(),0.0);
 	}
 	
+	@Test
+	public void testCompraRequierePresupuesto() {
+		operacion.agregarPresupuesto(new Presupuesto(documentos,items));
+		operacion.agregarPresupuesto(new Presupuesto(documentos,items));
+		operacion.agregarPresupuesto(new Presupuesto(documentos,items));
+		
+		Assert.assertTrue(operacion.cumpleConLosPresupuestosRequeridos());
+	}
+	@Test
+	public void testCompraEnBaseAPresupuesto() {
+		Assert.assertTrue(operacion.aplicaAlgunPresupuesto());
+	}
 	
+	@Test
+	public void testValidarElDeMenorValor() {
+		criterioDeSeleccionDeProveedor=new MenorValor();
+		Assert.assertTrue(operacion.seEligioProveedorSegunCriterio());
+	}
 }
 
 
