@@ -19,6 +19,18 @@ public class Organizacion {
 		this.operacionesEgreso = new ArrayList<>();
 		this.operacionesEgreso = operacionesEgreso;
 	}
+
+	public void validarOperacionesPendientes() {
+		operacionesEgresoPendientesDeValidacion.forEach(operacion -> this.ejecutarValidaciones(operacion));
+		}
+
+	private void ejecutarValidaciones(OperacionEgreso operacion) {
+		operacion.validarse();
+		if(operacion.esValida()) {
+			operacionesEgresoPendientesDeValidacion.remove(operacion);
+			operacionesEgreso.add(operacion);
+		}
+	}
 	
 	
 }
