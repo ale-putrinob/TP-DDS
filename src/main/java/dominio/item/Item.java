@@ -1,24 +1,33 @@
 package dominio.item;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import dominio.operacionDeEgreso.OperacionEgreso;
+
 public class Item {
 	double valorItem;
-	String descripcion;
-	boolean asociadoAEgreso = false;
+	TipoItem tipo;
 	
-	public Item(double valorItem, String descripcion) {
+	
+	public Item(double valorItem, TipoItem tipo) {
 		this.valorItem=valorItem;
-		this.descripcion=descripcion;
+		this.tipo=tipo;
 	};
 	
 	public double getValorItem() {
 		return this.valorItem;
 	}
 	
-	public void asociarAEgreso() {
-		this.asociadoAEgreso = true;
+	public void asociarAEgreso(OperacionEgreso egreso) {
+		tipo.asociarAEgreso(egreso);
+	}
+	
+	public void desasociarDeEgreso(OperacionEgreso egreso) {
+		tipo.desasociarDeEgreso(egreso);
 	}
 	
 	public boolean estaAsociadoAEgreso() {
-		return this.asociadoAEgreso;
+		return tipo.estaAsociadoAEgreso();
 	}
 }

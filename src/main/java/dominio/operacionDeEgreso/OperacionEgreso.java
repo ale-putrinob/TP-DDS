@@ -23,51 +23,88 @@ public class OperacionEgreso{
 	MedioDePago medioDePago;
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores;
+	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 	//Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /*el numero de presupuestos requeridos va de [0; ...) */
-	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
+	
 	
 	public OperacionEgreso(Date fechaOp, List<Item> items, DocumentoComercial documentoComercial, 
 										 Proveedor proveedor, MedioDePago medioDePago, List<Presupuesto> presupuestos, 
 										 List<Usuario> revisores, CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor) {
 		this.fechaOp = fechaOp;
 		this.items = items;
-		this.items.forEach(item -> item.asociarAEgreso());
+		this.items.forEach(item -> item.asociarAEgreso(this));
 		this.documentoComercial = documentoComercial;
 		this.proveedor = proveedor;
 		this.medioDePago = medioDePago;
 		this.presupuestos=presupuestos;
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
+	}
+	
+	public void validarse() {
 		ValidadorEgresos.getInstance().validarEgreso(this);
 	}
-
+	
+	public void agregarItem(Item item) {
+		this.items.add(item);
+		item.asociarAEgreso(this);
+	}
+	
+	public void quitarItem(Item item) {
+		this.items.remove(item);
+		item.desasociarDeEgreso(this);
+	}
+	
+	public void agregarPresupuesto(Presupuesto presupuesto) {
+		this.presupuestos.add(presupuesto);
+	}
+	
+	public void quitarPresupuesto(Presupuesto presupuesto) {
+		this.presupuestos.remove(presupuesto);
+	}
+	
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+	
 	public void enviarMensajeARevisores(Mensaje mensaje) {
-		revisores.forEach(revisor -> revisor.recibirMensaje(mensaje));
+		this.revisores.forEach(revisor -> revisor.recibirMensaje(mensaje));
 	}
 
 	public boolean seEligioProveedorSegunCriterio() {
-		return this.proveedorSegunCriterio().equals(proveedor);
+		if(presupuestosRequeridos > 0)
+			return this.proveedorSegunCriterio().equals(proveedor);
+		else
+			return true;
 	}
 
 	private Proveedor proveedorSegunCriterio() {
-		return criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos);
+		return this.criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos);
 	}
 	
 	public boolean cumpleConLosPresupuestosRequeridos() {
-		return presupuestos.size() == presupuestosRequeridos;
+		return this.presupuestos.size() == presupuestosRequeridos;
 	}
 
 	public boolean aplicaAlgunPresupuesto() {
-		return this.presupuestos.stream().anyMatch(presupuesto -> presupuesto.contieneItems(items));
+		if(presupuestosRequeridos > 0)
+			return this.presupuestos.stream().anyMatch(presupuesto -> presupuesto.contieneItems(items));
+		else
+			return true;
 	}
 	
 	public double valorTotal() {
-		return items.stream().mapToDouble(item -> item.getValorItem()).sum();
+		return this.items.stream().mapToDouble(item -> item.getValorItem()).sum();
 	}
 
 	public int getPresupuestosRequeridos() {
 		return presupuestosRequeridos;
+	}
+	
+	public boolean esValida() {
+		return ValidadorEgresos.getInstance().pasaTodasLasValidaciones(this);
+		
 	}
 	
 }

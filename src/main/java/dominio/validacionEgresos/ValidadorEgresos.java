@@ -23,4 +23,8 @@ public class ValidadorEgresos {
 		else
 			egreso.enviarMensajeARevisores(new Mensaje(validacion.mensajeNegativo(), egreso));
 	}
+
+	public boolean pasaTodasLasValidaciones(OperacionEgreso egreso) {
+		return validaciones.stream().allMatch(validacion -> validacion.pasaValidacion(egreso));
+	}
 }
