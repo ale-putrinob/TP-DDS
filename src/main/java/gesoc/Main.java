@@ -34,7 +34,7 @@ public class Main {
 		List<OperacionEgreso> operacionesEgreso = new ArrayList<>();
 		List<OperacionEgreso> operacionesEgresoPendientesDeValidacion = new ArrayList<>();
 		List<Usuario> usuarios = new ArrayList<>();
-		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso);
+		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso, operacionesEgresoPendientesDeValidacion, usuarios);
 
 		/* datos de la operacion */
 		Date fechaOp = new Date();
@@ -63,17 +63,17 @@ public class Main {
 		revisores.add(new Usuario("pepe","890754983gh",false,new BandejaDeMensajes()));
 		
 		/*presupuestos*/
-		presupuestos.add(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		presupuestos.add(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		presupuestos.add(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		presupuestos.add(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		presupuestos2.add(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		presupuestos2.add(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		presupuestos2.add(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
 		
 		
-		organizacion.operacionesEgresoPendientesDeValidacion.add(operacion1);
-		organizacion.operacionesEgresoPendientesDeValidacion.add(operacion2);
+		organizacion.agregarOperacionesPendientes(operacion1);
+		organizacion.agregarOperacionesPendientes(operacion2);
 		organizacion.validarOperacionesPendientes();
 		if (operacionesEgresoPendientesDeValidacion.size() == 1)
 			System.out.println("Se han realizado las validaciones correctamente.");
