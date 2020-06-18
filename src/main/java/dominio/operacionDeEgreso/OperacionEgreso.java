@@ -2,10 +2,10 @@ package dominio.operacionDeEgreso;
 
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
+import dominio.generadorDeObjetoFromJson.GeneradorDeObjetoFromJson;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.mensajes.Mensaje;
-import dominio.moneda.GeneradorDeMonedasFromJson;
 import dominio.moneda.TipoMoneda;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
@@ -27,7 +27,7 @@ public class OperacionEgreso {
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
-	GeneradorDeMonedasFromJson generadorDeMonedas = new GeneradorDeMonedasFromJson();
+	GeneradorDeObjetoFromJson generadorDeMonedas = new GeneradorDeObjetoFromJson();
 	// Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
 
