@@ -9,4 +9,8 @@ public class BandejaDeMensajes {
 	public void agregarMensaje(Mensaje mensaje) {
 		mensajes.add(mensaje);
 	}
+
+	public boolean tieneMensajeConEseContenido(String contenido) {
+		return mensajes.stream().anyMatch(mensaje -> mensaje.coincideContenido(contenido));
+	}
 }
