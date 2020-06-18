@@ -27,4 +27,10 @@ public class ValidadorEgresos {
 	public boolean pasaTodasLasValidaciones(OperacionEgreso egreso) {
 		return validaciones.stream().allMatch(validacion -> validacion.pasaValidacion(egreso));
 	}
+	
+	public void agregarValidacion(ValidacionEgreso validacion) {
+		validaciones.add(validacion);
+	}
 }
+
+

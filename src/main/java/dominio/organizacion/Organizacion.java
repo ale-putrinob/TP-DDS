@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class Organizacion {
 	List<Entidad> entidades;
-	List<OperacionEgreso> operacionesEgreso;
-	List<OperacionEgreso> operacionesEgresoPendientesDeValidacion;
+	public List<OperacionEgreso> operacionesEgreso;
+	public List<OperacionEgreso> operacionesEgresoPendientesDeValidacion;
 	List<Usuario> usuarios; 
 	
 	public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso) {
@@ -34,3 +34,4 @@ public class Organizacion {
 	
 	
 }
+
