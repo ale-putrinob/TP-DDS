@@ -1,6 +1,6 @@
 package dominio.item;
 
-import dominio.moneda.GeneradorDeMonedasFromJson;
+import dominio.generadorDeObjetoFromJson.GeneradorDeObjetoFromJson;
 import dominio.moneda.TipoMoneda;
 import dominio.operacionDeEgreso.OperacionEgreso;
 
@@ -8,7 +8,7 @@ public class Item {
 	double valorItem;
 	TipoItem tipo;
 	TipoMoneda moneda;
-	GeneradorDeMonedasFromJson generadorDeMonedas = new GeneradorDeMonedasFromJson();
+	GeneradorDeObjetoFromJson generadorDeMonedas = new GeneradorDeObjetoFromJson();
 
 	public Item(double valorItem, TipoItem tipo, String idMoneda) {
 		this.valorItem=valorItem;

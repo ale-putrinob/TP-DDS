@@ -1,5 +1,6 @@
 package dominio.direccionPostal;
 
+import dominio.generadorDeObjetoFromJson.GeneradorDeObjetoFromJson;
 import dominio.repositorioApiML.CiudadFromJson;
 
 public class DireccionPostal {
@@ -11,7 +12,7 @@ public class DireccionPostal {
     String provincia;
     String pais;
     CiudadFromJson ciudadFromJson;
-    GeneradorDeCiudadesFromJson generadorDeCiudad = new GeneradorDeCiudadesFromJson();
+    GeneradorDeObjetoFromJson generadorDeCiudad = new GeneradorDeObjetoFromJson();
 
     public DireccionPostal(String calle, int altura, int piso, char departamento, String idCiudad) {
         ciudadFromJson = generadorDeCiudad.transformarACiudad(idCiudad);

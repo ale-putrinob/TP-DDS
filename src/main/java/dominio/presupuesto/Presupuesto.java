@@ -2,8 +2,8 @@ package dominio.presupuesto;
 
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.PresupuestoException;
+import dominio.generadorDeObjetoFromJson.GeneradorDeObjetoFromJson;
 import dominio.item.Item;
-import dominio.moneda.GeneradorDeMonedasFromJson;
 import dominio.moneda.TipoMoneda;
 import dominio.proveedor.Proveedor;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class Presupuesto {
 	List<Item> items = new ArrayList<>();
 	Proveedor proveedor;
 	TipoMoneda moneda;
-	GeneradorDeMonedasFromJson generadorDeMonedas = new GeneradorDeMonedasFromJson();
+	GeneradorDeObjetoFromJson generadorDeMonedas = new GeneradorDeObjetoFromJson();
 
 	public Presupuesto(List<DocumentoComercial> documentosComerciales, List<Item> items, Proveedor proveedor,
 						String idMoneda) {
