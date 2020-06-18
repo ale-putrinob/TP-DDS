@@ -1,15 +1,14 @@
 package dominio.operacionDeEgreso;
 
-import com.google.gson.Gson;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.mensajes.Mensaje;
+import dominio.moneda.GeneradorDeMonedasFromJson;
 import dominio.moneda.TipoMoneda;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
-import dominio.repositorioApiML.ClienteRepositorio;
 import dominio.usuario.Usuario;
 import dominio.validacionEgresos.ValidadorEgresos;
 
@@ -28,8 +27,7 @@ public class OperacionEgreso {
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
-	Gson gson = new Gson();
-	String json;
+	GeneradorDeMonedasFromJson generadorDeMonedas = new GeneradorDeMonedasFromJson();
 	// Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
 
@@ -46,8 +44,7 @@ public class OperacionEgreso {
 		this.presupuestos = presupuestos;
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
-		this.json = ClienteRepositorio.getUnaMoneda(idMoneda);
-		this.moneda = gson.fromJson(this.json, TipoMoneda.class);
+		this.moneda = generadorDeMonedas.transformarAMoneda(idMoneda);
 
 	}
 

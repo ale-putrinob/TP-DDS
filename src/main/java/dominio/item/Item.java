@@ -1,22 +1,19 @@
 package dominio.item;
 
-import com.google.gson.Gson;
+import dominio.moneda.GeneradorDeMonedasFromJson;
 import dominio.moneda.TipoMoneda;
 import dominio.operacionDeEgreso.OperacionEgreso;
-import dominio.repositorioApiML.ClienteRepositorio;
 
 public class Item {
 	double valorItem;
 	TipoItem tipo;
 	TipoMoneda moneda;
-	String json;
+	GeneradorDeMonedasFromJson generadorDeMonedas = new GeneradorDeMonedasFromJson();
 
 	public Item(double valorItem, TipoItem tipo, String idMoneda) {
-		Gson gson = new Gson();
 		this.valorItem=valorItem;
 		this.tipo=tipo;
-		this.json = ClienteRepositorio.getUnaMoneda(idMoneda);
-		this.moneda = gson.fromJson(this.json, TipoMoneda.class);
+		this.moneda = generadorDeMonedas.transformarAMoneda(idMoneda);
 	};
 	
 	public double getValorItem() {
