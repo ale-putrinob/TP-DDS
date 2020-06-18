@@ -74,10 +74,6 @@ public class TestOperacionEgreso {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor,null));
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor,null));
 		
-		mensaje1 = new Mensaje("Se estï¿½ aplicando alguno de los presupuestos en la compra", operacion);
-		mensaje2 = new Mensaje("Cantidad correcta de presupuestos cargados", operacion);
-		mensaje3 = new Mensaje("Se ha seleccionado al proveedor correcto segï¿½n el criterio elegido", operacion);
-		
 	}
 	
 	@Test
@@ -133,9 +129,9 @@ public class TestOperacionEgreso {
 	public void revisorRecibeTodosMensajesDeValidacionesPositivas() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se estï¿½ aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto segï¿½n el criterio elegido"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
 	}
 	
 	@Test
