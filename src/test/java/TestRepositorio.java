@@ -1,27 +1,36 @@
-import com.sun.jersey.api.client.ClientResponse;
+import dominio.direccionPostal.DireccionPostal;
 import dominio.repositorioApiML.ClienteRepositorio;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 
 public class TestRepositorio {
-
+    DireccionPostal direccionPostal;
     ClienteRepositorio solicitudCliente;
 
     @Before
     public void init() {this.solicitudCliente = new ClienteRepositorio();}
 
     @Test
-    public void obtenemosPaisConParametro(){
-        //Vamos a testear como funciona la API cuando damos los datos de un País
-        ClientResponse respuesta = this.solicitudCliente.getPaises("argentina");
-        //Acordemosnos lo que significaban las respuestas que obteníamos desde HTTP
-        Assert.assertEquals(respuesta.getStatus(),200);
-        String json = respuesta.getEntity(String.class);
-        Assert.assertTrue(json.contains(""));
-        Assert.assertTrue(json.contains(""));
-
+    public void laCiudadEsCorrecta(){
+        direccionPostal = new DireccionPostal("cualquiera", 1231, 12, 'A',
+                "TUxBQ0NBUGZlZG1sYQ");
+        Assert.assertEquals(direccionPostal.getCiudad(), "Capital Federal");
     }
+
+    @Test
+    public void laProvinciaEsCorrecta(){
+        direccionPostal = new DireccionPostal("cualquiera", 1231, 12, 'A',
+                "TUxVQ0NBQjY1MmQ1");
+        Assert.assertEquals(direccionPostal.getProvincia(), "Rocha");
+    }
+
+    @Test
+    public void elPaisEsCorrecto(){
+        direccionPostal = new DireccionPostal("cualquiera", 1231, 12, 'A',
+                "TUxVQ0NBQjY1MmQ1");
+        Assert.assertEquals(direccionPostal.getPais(), "Uruguay");
+    }
+
 }
