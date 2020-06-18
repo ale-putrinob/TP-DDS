@@ -1,17 +1,5 @@
 package dominio.repositorioApiML;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-@JsonPropertyOrder (
-        {
-                "id",
-                "name",
-                "state",
-                "country",
-                "geo_information"
-        }
-)
-
 public class Ciudad {
     private String id;
     private String name;
