@@ -10,4 +10,8 @@ public class Mensaje {
 		this.contenido = contenido;
 		this.operacionEgreso = operacionEgreso;
 	}
+	
+	public boolean coincideContenido(String otroContenido) {
+		return contenido.equals(otroContenido);
+	}
 }

@@ -1,12 +1,13 @@
 package dominio.validacionEgresos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.OperacionEgreso;
 
 public class ValidadorEgresos {
-	List<ValidacionEgreso> validaciones;
+	List<ValidacionEgreso> validaciones = new ArrayList<>();
 	static final ValidadorEgresos INSTANCE = new ValidadorEgresos();
 
 	public static ValidadorEgresos getInstance() {
@@ -27,4 +28,10 @@ public class ValidadorEgresos {
 	public boolean pasaTodasLasValidaciones(OperacionEgreso egreso) {
 		return validaciones.stream().allMatch(validacion -> validacion.pasaValidacion(egreso));
 	}
+	
+	public void agregarValidacion(ValidacionEgreso validacion) {
+		validaciones.add(validacion);
+	}
 }
+
+
