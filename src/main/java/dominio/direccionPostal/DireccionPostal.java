@@ -1,8 +1,6 @@
 package dominio.direccionPostal;
 
-import com.google.gson.Gson;
 import dominio.repositorioApiML.CiudadFromJson;
-import dominio.repositorioApiML.ClienteRepositorio;
 
 public class DireccionPostal {
     String calle;
@@ -12,13 +10,11 @@ public class DireccionPostal {
     String ciudad;
     String provincia;
     String pais;
-    String json;
     CiudadFromJson ciudadFromJson;
-    Gson gson = new Gson();
+    GeneradorDeCiudadesFromJson generadorDeCiudad = new GeneradorDeCiudadesFromJson();
 
     public DireccionPostal(String calle, int altura, int piso, char departamento, String idCiudad) {
-        this.json = ClienteRepositorio.getCiudad(idCiudad);
-        ciudadFromJson = gson.fromJson(this.json, CiudadFromJson.class);
+        ciudadFromJson = generadorDeCiudad.transformarACiudad(idCiudad);
         this.calle = calle;
         this.altura = altura;
         this.piso = piso;

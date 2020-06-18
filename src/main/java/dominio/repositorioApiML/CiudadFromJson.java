@@ -38,7 +38,7 @@ public class CiudadFromJson {
     public Object getGeoInformation() {
         return geoInformation;
     }
-    public void setGeoInformation(Object geo_information) {
+    public void setGeoInformation(Object geoInformation) {
         this.geoInformation = geoInformation;
     }
 
