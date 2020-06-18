@@ -19,7 +19,6 @@ public class DireccionPostal {
     public DireccionPostal(String calle, int altura, int piso, char departamento, String idCiudad) {
         this.json = ClienteRepositorio.getCiudad(idCiudad);
         ciudadFromJson = gson.fromJson(this.json, Ciudad.class);
-        System.out.printf("2");
         this.calle = calle;
         this.altura = altura;
         this.piso = piso;

@@ -4,19 +4,16 @@ import dominio.excepcion.PresupuestoException;
 import dominio.item.Item;
 import dominio.item.TipoItem;
 import dominio.medioDePago.MedioDePago;
-import dominio.medioDePago.TiposDePago;
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.usuario.Usuario;
-import dominio.presupuesto.Presupuesto;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 
@@ -43,15 +40,15 @@ public class TestPresupuesto {
 		carne = new TipoItem();
 		polenta = new TipoItem();
 		arroz = new TipoItem();
-		item1 = new Item(100,carne);
-		item2 = new Item(50,polenta);
-		otroItem = new Item(150,arroz);
+		item1 = new Item(100, carne, null);
+		item2 = new Item(50, polenta, null);
+		otroItem = new Item(150, arroz, null);
 		item1.asociarAEgreso(operacion);
 		item2.asociarAEgreso(operacion);
 		
 		proveedor = new Proveedor("Juan","Juan SA",45678978,2045678889,1567);
 		
-		operacion = new OperacionEgreso(new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor);
+		operacion = new OperacionEgreso(new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null);
 		
 		documentosComerciales.add(documento1); 
 		documentosComerciales.add(documento2);
@@ -59,7 +56,7 @@ public class TestPresupuesto {
 		items.add(item2);
 		otrosItems.add(otroItem);
 		
-		presupuesto = new Presupuesto(documentosComerciales,items,proveedor);		
+		presupuesto = new Presupuesto(documentosComerciales,items,proveedor,null);
     }
     
 	@Test 
@@ -69,7 +66,7 @@ public class TestPresupuesto {
     
     @Test(expected = PresupuestoException.class)
     public void testCrearPresupuestoInvalido() {
-	    presupuesto2 = new Presupuesto(documentosComerciales,otrosItems,proveedor);
+	    presupuesto2 = new Presupuesto(documentosComerciales,otrosItems,proveedor,null);
     }
     
 	@Test 

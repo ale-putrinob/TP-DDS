@@ -20,7 +20,6 @@ public class ClienteRepositorio {
         respuesta = cliente.resource(API_MERCADOLIBRE).path(CIUDADES+id)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class);
-
         String json = respuesta.getEntity(String.class);
         //System.out.printf(json);
         return json;
@@ -59,11 +58,14 @@ public class ClienteRepositorio {
     }
 
     //Traemos una única moneda de la api mediante su ID
-    public ClientResponse getUnaMoneda(String idMoneda){
-        respuesta = this.cliente.resource(API_MERCADOLIBRE).path(MONEDAS)
-                .queryParam("id", idMoneda)
+    public static String getUnaMoneda(String unaMoneda){
+        cliente = Client.create();
+        String moneda = unaMoneda;
+        respuesta = cliente.resource(API_MERCADOLIBRE).path(MONEDAS+moneda)
                 .accept(MediaType.APPLICATION_JSON)
                 .get(ClientResponse.class);
-        return respuesta;
+        String json = respuesta.getEntity(String.class);
+        //System.out.printf(json);
+        return json;
     }
 }

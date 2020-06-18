@@ -1,9 +1,5 @@
 package gesoc;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
@@ -21,6 +17,10 @@ import dominio.validacionEgresos.ValidacionAplicacionPresupuesto;
 import dominio.validacionEgresos.ValidacionCantidadPresupuestos;
 import dominio.validacionEgresos.ValidacionSeleccionProveedor;
 import dominio.validacionEgresos.ValidadorEgresos;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Main {
 
@@ -48,10 +48,10 @@ public class Main {
 		List<Presupuesto> presupuestos2 = new ArrayList<>();
 		
 		OperacionEgreso operacion1 = new OperacionEgreso(fechaOp
-				,items, documentoComercial, proveedor,medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor);
+				,items, documentoComercial, proveedor,medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null);
 		
 		OperacionEgreso operacion2 = new OperacionEgreso(fechaOp
-				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor);
+				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor, null);
 		
 		/*validaciones*/
 		ValidadorEgresos validador = ValidadorEgresos.getInstance();
@@ -63,13 +63,13 @@ public class Main {
 		revisores.add(new Usuario("pepe","890754983gh",false,new BandejaDeMensajes()));
 		
 		/*presupuestos*/
-		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
-		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
+		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
+		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
+		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
+		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
 		
 		
 		organizacion.agregarOperacionesPendientes(operacion1);

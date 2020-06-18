@@ -1,34 +1,42 @@
 package dominio.operacionDeEgreso;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import com.google.gson.Gson;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.mensajes.Mensaje;
+import dominio.moneda.TipoMoneda;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
+import dominio.repositorioApiML.ClienteRepositorio;
 import dominio.usuario.Usuario;
 import dominio.validacionEgresos.ValidadorEgresos;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class OperacionEgreso {
 	Date fechaOp = new Date();
 	List<Item> items = new ArrayList<>();
+	//moneda va a tener todos los campos del JSON
+	TipoMoneda moneda;
 	DocumentoComercial documentoComercial;
 	Proveedor proveedor;
 	MedioDePago medioDePago;
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
+	Gson gson = new Gson();
+	String json;
 	// Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
 
-	public OperacionEgreso(Date fechaOp, List<Item> items, DocumentoComercial documentoComercial, Proveedor proveedor,
+	public OperacionEgreso(Date fechaOp, List<Item> items,  DocumentoComercial documentoComercial, Proveedor proveedor,
 			MedioDePago medioDePago, List<Presupuesto> presupuestos, List<Usuario> revisores,
-			CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor) {
+			CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor, String idMoneda) {
+
 		this.fechaOp = fechaOp;
 		this.items = items;
 		this.items.forEach(item -> item.asociarAEgreso(this));
@@ -38,6 +46,9 @@ public class OperacionEgreso {
 		this.presupuestos = presupuestos;
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
+		this.json = ClienteRepositorio.getUnaMoneda(idMoneda);
+		this.moneda = gson.fromJson(this.json, TipoMoneda.class);
+
 	}
 
 	public void validarse() {
