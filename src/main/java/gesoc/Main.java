@@ -25,7 +25,7 @@ import dominio.validacionEgresos.ValidadorEgresos;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println(" - Bienvenido a GeSoc - ");
+		System.out.println("   - Bienvenido a GeSoc - ");
 		System.out.println("Gestion de Proyectos Sociales");
 		System.out.println("");
 
@@ -75,18 +75,18 @@ public class Main {
 		organizacion.agregarOperacionesPendientes(operacion1);
 		organizacion.agregarOperacionesPendientes(operacion2);
 		organizacion.validarOperacionesPendientes();
-		if (operacionesEgresoPendientesDeValidacion.size() == 1)
-			System.out.println("Se han realizado las validaciones correctamente.");
-		else
-			System.out.println("No se han realizado las validaciones correctamente.");
 		
-		if (operacionesEgreso.size() == 1)
-			System.out.println("Se han realizado las validaciones correctamente.");
-		else
-			System.out.println("No se han realizado las validaciones correctamente.");
+		System.out.println("Se terminaron de procesar las validaciones exitosamente!");
 		
-
-
+		System.out.print(" -> Operaciones de egreso validadas: ");
+		System.out.println(operacionesEgreso.size());
+		
+		System.out.print(" -> Operaciones de egreso que requieren revision: ");
+		System.out.println(operacionesEgresoPendientesDeValidacion.size());
+		System.out.println(" -> Se notificó a los revisores de cada operacion.");
+		
+		System.out.println("");
+		System.out.println(" - Fin del procesamiento - ");
 	}
 
 }
