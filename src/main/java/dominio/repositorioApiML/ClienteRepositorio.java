@@ -9,9 +9,9 @@ public class ClienteRepositorio {
     private static Client cliente;
     private static final String API_MERCADOLIBRE = "https://api.mercadolibre.com";
     private static final String PAISES = "/classified_locations/countries";
-    private static final String PROVINCIAS = "";
+    private static final String PROVINCIAS = "/classified_locations/states/";
     private static final String CIUDADES = "/classified_locations/cities/";
-    private static final String MONEDAS = "";
+    private static final String MONEDAS = "/currencies/";
     private static ClientResponse respuesta;
 
     public static String getCiudad(String ciudad){

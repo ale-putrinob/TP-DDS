@@ -4,7 +4,7 @@ public class TipoMoneda {
     String id;
     String description;
     String symbol;
-    int decimal_places;
+    int decimal_places;id
 
     public String getId() {
         return id;
