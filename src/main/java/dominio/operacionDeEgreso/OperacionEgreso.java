@@ -2,13 +2,13 @@ package dominio.operacionDeEgreso;
 
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
-import dominio.generadorDeObjetoFromJson.GeneradorDeObjetoFromJson;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.mensajes.Mensaje;
 import dominio.moneda.TipoMoneda;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
+import dominio.repositorioApiML.MerLibAPI;
 import dominio.usuario.Usuario;
 import dominio.validacionEgresos.ValidadorEgresos;
 
@@ -27,14 +27,13 @@ public class OperacionEgreso {
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
-	GeneradorDeObjetoFromJson generadorDeMonedas = new GeneradorDeObjetoFromJson();
+
 	// Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
 
 	public OperacionEgreso(Date fechaOp, List<Item> items,  DocumentoComercial documentoComercial, Proveedor proveedor,
 			MedioDePago medioDePago, List<Presupuesto> presupuestos, List<Usuario> revisores,
 			CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor, String idMoneda) {
-
 		this.fechaOp = fechaOp;
 		this.items = items;
 		this.items.forEach(item -> item.asociarAEgreso(this));
@@ -44,8 +43,7 @@ public class OperacionEgreso {
 		this.presupuestos = presupuestos;
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
-		this.moneda = generadorDeMonedas.transformarAMoneda(idMoneda);
-
+		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
 	}
 
 	public void validarse() {

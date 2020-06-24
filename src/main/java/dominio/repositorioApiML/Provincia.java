@@ -1,6 +1,6 @@
 package dominio.repositorioApiML;
 
-public class PaisFromJson {
+public class Provincia {
     String id;
     String name;
 

@@ -2,10 +2,11 @@ package dominio.presupuesto;
 
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.PresupuestoException;
-import dominio.generadorDeObjetoFromJson.GeneradorDeObjetoFromJson;
 import dominio.item.Item;
 import dominio.moneda.TipoMoneda;
 import dominio.proveedor.Proveedor;
+import dominio.repositorioApiML.MerLibAPI;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ public class Presupuesto {
 	List<Item> items = new ArrayList<>();
 	Proveedor proveedor;
 	TipoMoneda moneda;
-	GeneradorDeObjetoFromJson generadorDeMonedas = new GeneradorDeObjetoFromJson();
 
 	public Presupuesto(List<DocumentoComercial> documentosComerciales, List<Item> items, Proveedor proveedor,
 						String idMoneda) {
@@ -22,7 +22,7 @@ public class Presupuesto {
 		this.documentosComerciales = documentosComerciales;
 		this.items = items;
 		this.proveedor=proveedor;
-		this.moneda = generadorDeMonedas.transformarAMoneda(idMoneda);
+		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
 	}
 	
 	public void validarItemsAsignadosAEgreso(List<Item> items) {

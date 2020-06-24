@@ -129,9 +129,9 @@ public class TestOperacionEgreso {
 	public void revisorRecibeTodosMensajesDeValidacionesPositivas() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se estï¿½ aplicando alguno de los presupuestos en la compra"));
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto segï¿½n el criterio elegido"));
 	}
 	
 	@Test

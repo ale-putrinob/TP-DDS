@@ -1,10 +1,10 @@
 package dominio.repositorioApiML;
 
-public class CiudadFromJson {
+public class Ciudad {
     private String id;
     private String name;
-    private ProvinciaFromJson state;
-    private PaisFromJson country;
+    private Provincia state;
+    private Pais country;
     private Object geoInformation;
 
     public String getId() {
@@ -21,17 +21,17 @@ public class CiudadFromJson {
         this.name = name;
     }
 
-    public ProvinciaFromJson getState() {
+    public Provincia getState() {
         return state;
     }
-    public void setState(ProvinciaFromJson state) {
+    public void setState(Provincia state) {
         this.state = state;
     }
 
-    public PaisFromJson getCountry() {
+    public Pais getCountry() {
         return country;
     }
-    public void setCountry(PaisFromJson country) {
+    public void setCountry(Pais country) {
         this.country = country;
     }
 

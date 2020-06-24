@@ -1,19 +1,18 @@
 package dominio.item;
 
-import dominio.generadorDeObjetoFromJson.GeneradorDeObjetoFromJson;
 import dominio.moneda.TipoMoneda;
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.repositorioApiML.MerLibAPI;
 
 public class Item {
 	double valorItem;
 	TipoItem tipo;
 	TipoMoneda moneda;
-	GeneradorDeObjetoFromJson generadorDeMonedas = new GeneradorDeObjetoFromJson();
 
 	public Item(double valorItem, TipoItem tipo, String idMoneda) {
 		this.valorItem=valorItem;
 		this.tipo=tipo;
-		this.moneda = generadorDeMonedas.transformarAMoneda(idMoneda);
+		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
 	};
 	
 	public double getValorItem() {
