@@ -27,6 +27,9 @@ public class OperacionEgreso {
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores;
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
+	EstadoEgreso estado = EstadoEgreso.SIN_VALIDAR;
+	List<String> resultadosDeValidaciones = new ArrayList<>();
+	ValidadorEgresos validador = new ValidadorEgresos();
 
 	// Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
@@ -47,7 +50,13 @@ public class OperacionEgreso {
 	}
 
 	public void validarse() {
-		ValidadorEgresos.getInstance().validarEgreso(this);
+		validador.validarEgreso(this);
+		this.actualizarEstado();
+	}
+
+	private void actualizarEstado() {
+		if(validador.pasaTodasLasValidaciones(this)) estado = EstadoEgreso.VALIDO;
+		else estado = EstadoEgreso.INVALIDO;
 	}
 
 	public void agregarItem(Item item) {
@@ -101,8 +110,15 @@ public class OperacionEgreso {
 	}
 
 	public boolean esValida() {
-		return ValidadorEgresos.getInstance().pasaTodasLasValidaciones(this);
+		return this.estado == EstadoEgreso.VALIDO;
+	}
 
+	public boolean estaPendienteDeValidacion() {
+		return this.estado == EstadoEgreso.SIN_VALIDAR;
+	}
+
+	public void cargarResultadoDeValidacion(String resultado) {
+		resultadosDeValidaciones.add(resultado);
 	}
 
 }

@@ -39,7 +39,7 @@ public class TestOperacionEgreso {
 
 	List<DocumentoComercial> documentos; 
 	BandejaDeMensajes bandejaDeMensajes = new BandejaDeMensajes();
-	ValidadorEgresos validador = ValidadorEgresos.getInstance();
+	ValidadorEgresos validador = new ValidadorEgresos();
 	Mensaje mensaje1;
 	Mensaje mensaje2;
 	Mensaje mensaje3;
@@ -122,16 +122,16 @@ public class TestOperacionEgreso {
 	@Test
 	public void testPasaTodasLasValidaciones() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
-		Assert.assertTrue(operacion.esValida());
+		Assert.assertTrue(validador.pasaTodasLasValidaciones(operacion));
 	}
 	
 	@Test
 	public void revisorRecibeTodosMensajesDeValidacionesPositivas() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se estï¿½ aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto segï¿½n el criterio elegido"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
 	}
 	
 	@Test
@@ -139,6 +139,7 @@ public class TestOperacionEgreso {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
+		//Assert.assertTrue((bandejaDeMensajes.getMensajes().size())==0);
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad incorrecta de presupuestos cargados"));
 	}
 }

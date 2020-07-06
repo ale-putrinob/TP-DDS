@@ -13,4 +13,8 @@ public class BandejaDeMensajes {
 	public boolean tieneMensajeConEseContenido(String contenido) {
 		return mensajes.stream().anyMatch(mensaje -> mensaje.coincideContenido(contenido));
 	}
+	
+	public List<Mensaje> getMensajes(){
+		return this.mensajes;
+	}
 }

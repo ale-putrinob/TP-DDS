@@ -32,9 +32,8 @@ public class Main {
 		/* datos de la organizacion */
 		List<Entidad> entidades = new ArrayList<>();
 		List<OperacionEgreso> operacionesEgreso = new ArrayList<>();
-		List<OperacionEgreso> operacionesEgresoPendientesDeValidacion = new ArrayList<>();
 		List<Usuario> usuarios = new ArrayList<>();
-		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso, operacionesEgresoPendientesDeValidacion, usuarios);
+		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso, usuarios);
 
 		/* datos de la operacion */
 		Date fechaOp = new Date();
@@ -54,7 +53,7 @@ public class Main {
 				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor, null);
 		
 		/*validaciones*/
-		ValidadorEgresos validador = ValidadorEgresos.getInstance();
+		ValidadorEgresos validador = new ValidadorEgresos();
 		validador.agregarValidacion(new ValidacionAplicacionPresupuesto());
 		validador.agregarValidacion(new ValidacionCantidadPresupuestos());
 		validador.agregarValidacion(new ValidacionSeleccionProveedor());
@@ -72,17 +71,17 @@ public class Main {
 		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
 		
 		
-		organizacion.agregarOperacionesPendientes(operacion1);
-		organizacion.agregarOperacionesPendientes(operacion2);
+		organizacion.agregarOperacionesEgreso(operacion1);
+		organizacion.agregarOperacionesEgreso(operacion2);
 		organizacion.validarOperacionesPendientes();
 		
 		System.out.println("Se terminaron de procesar las validaciones exitosamente!");
 		
-		System.out.print(" -> Operaciones de egreso validadas: ");
-		System.out.println(operacionesEgreso.size());
+		System.out.print(" -> Operaciones de egreso validas: ");
+		System.out.println(organizacion.operacionesEgresoValidas().size());
 		
 		System.out.print(" -> Operaciones de egreso que requieren revision: ");
-		System.out.println(operacionesEgresoPendientesDeValidacion.size());
+		System.out.println(organizacion.operacionesEgresoPendientesDeValidacion().size());
 		System.out.println(" -> Se notificó a los revisores de cada operacion.");
 		
 		System.out.println("");
