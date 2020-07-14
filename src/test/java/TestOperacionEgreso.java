@@ -17,6 +17,7 @@ import dominio.validacionEgresos.ValidacionSeleccionProveedor;
 import dominio.validacionEgresos.ValidadorEgresos;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class TestOperacionEgreso {
 	TipoItem polenta = new TipoItem();
 	
 	@SuppressWarnings("deprecation")
-	@Before
+	@Before 
 	public void init() {
 		validador.agregarValidacion(new ValidacionAplicacionPresupuesto());
 		validador.agregarValidacion(new ValidacionCantidadPresupuestos());
@@ -81,7 +82,6 @@ public class TestOperacionEgreso {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		Assert.assertEquals(200,operacion.valorTotal(),0.0);
 	}
-	
 	@Test
 	public void testCompraCumpleConPresupuestosRequeridos() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));

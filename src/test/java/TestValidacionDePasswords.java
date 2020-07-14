@@ -1,7 +1,7 @@
 import java.io.IOException;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dominio.excepcion.PasswordInseguraException;
@@ -17,10 +17,10 @@ import junit.framework.Assert;
 
 public class TestValidacionDePasswords {
 	Usuario usuario;
-	BandejaDeMensajes bandejaDeMensajes;
+	static BandejaDeMensajes bandejaDeMensajes;
 	
-	@Before
-	public void init() {
+	@BeforeClass 
+	public static void init() {
 		bandejaDeMensajes = new BandejaDeMensajes();
 		ValidadorPassword.agregarValidaciones(new SinCaracteresRepetidos());
 		ValidadorPassword.agregarValidaciones(new SinCaracteresConsecutivos());

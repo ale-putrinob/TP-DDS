@@ -1,16 +1,16 @@
 import dominio.direccionPostal.DireccionPostal;
 import dominio.repositorioApiML.MerLibAPI;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 
 public class TestRepositorio {
     DireccionPostal direccionPostal;
-    MerLibAPI solicitudCliente;
+    static MerLibAPI solicitudCliente;
 
-    @Before
-    public void init() {this.solicitudCliente = new MerLibAPI();}
+    @BeforeClass 
+    public static void init() {solicitudCliente = new MerLibAPI();}
 
     @Test
     public void laCiudadEsCorrecta(){

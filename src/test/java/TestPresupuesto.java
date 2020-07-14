@@ -9,7 +9,7 @@ import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.usuario.Usuario;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,22 +18,23 @@ import java.util.List;
 
 
 public class TestPresupuesto {
-	OperacionEgreso operacion;
-	List<DocumentoComercial> documentosComerciales = new ArrayList<>();
-	List<Item> items = new ArrayList<>();
-	List<Item> otrosItems = new ArrayList<>();
-	Proveedor proveedor; 
-	Presupuesto presupuesto, presupuesto2;
-	MedioDePago medioDePago;
-	List<Presupuesto> presupuestos = new ArrayList<>();
-	List<Usuario> revisores = new ArrayList<>();
-	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
-	TipoItem carne, polenta, arroz;
-	DocumentoComercial documento1,documento2; 
-	Item item1,item2,otroItem;
+	static OperacionEgreso operacion;
+	static List<DocumentoComercial> documentosComerciales = new ArrayList<>();
+	static List<Item> items = new ArrayList<>();
+	static List<Item> otrosItems = new ArrayList<>();
+	static Proveedor proveedor; 
+	static Presupuesto presupuesto;
+	static Presupuesto presupuesto2;
+	static MedioDePago medioDePago;
+	static List<Presupuesto> presupuestos = new ArrayList<>();
+	static List<Usuario> revisores = new ArrayList<>();
+	static CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
+	static TipoItem carne, polenta, arroz;
+	static DocumentoComercial documento1,documento2; 
+	static Item item1,item2,otroItem;
 	
-	@Before
-    public void init(){
+	@BeforeClass //Antes tardaba 13,722s, ahora 0.013s
+    public static void init(){
 		documento1 = new DocumentoComercial("Factura A",150);
 		documento2 = new DocumentoComercial("Factura",200);
 		
