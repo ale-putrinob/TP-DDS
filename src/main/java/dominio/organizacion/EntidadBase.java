@@ -1,6 +1,6 @@
 package dominio.organizacion;
 
-public class EntidadBase implements Entidad {
+public class EntidadBase extends Entidad {
 	String nombreFicticio;
 	String descripcion;
 	EntidadJuridica dependencia;
@@ -10,5 +10,9 @@ public class EntidadBase implements Entidad {
 		this.descripcion = unaDescripcion;
 		this.dependencia = unaDependencia;
 	}
+	
+	
+	
+	
 	
 }

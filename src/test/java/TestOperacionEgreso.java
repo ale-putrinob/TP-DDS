@@ -7,6 +7,7 @@ import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
 import dominio.mensajes.BandejaDeMensajes;
 import dominio.mensajes.Mensaje;
+import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
@@ -26,6 +27,7 @@ import java.util.List;
 
 
 public class TestOperacionEgreso {
+	List<Etiqueta> etiquetas;
 	DocumentoComercial documento;
 	List<Item> items = new ArrayList<Item>();
 	List<Item> otrosItems = new ArrayList<Item>();
@@ -55,6 +57,7 @@ public class TestOperacionEgreso {
 		validador.agregarValidacion(new ValidacionAplicacionPresupuesto());
 		validador.agregarValidacion(new ValidacionCantidadPresupuestos());
 		validador.agregarValidacion(new ValidacionSeleccionProveedor());
+		etiquetas = new ArrayList<>();
 		documento = new DocumentoComercial("Factura", 5);
 		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
 		medioDePago = new MedioDePago(TiposDePago.TarjetaDeCredito, 1234567890);
@@ -64,9 +67,10 @@ public class TestOperacionEgreso {
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		criterioDeSeleccionDeProveedor=new MenorValor();
 		revisores.add(new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes));
+		etiquetas.add(Etiqueta.AMOBLAMIENTO);
 		
-		operacion = new OperacionEgreso(new Date(2000,13,05), items, documento, 
-				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null);
+		operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, documento, 
+				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, null);
 		
 		operacion.agregarItem(new Item (100,carne, null));
 		operacion.agregarItem(new Item (100,sopa, null));

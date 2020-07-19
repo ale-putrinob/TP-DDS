@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Organizacion {
 	List<Entidad> entidades = new ArrayList<>();
 	public List<OperacionEgreso> operacionesEgreso = new ArrayList<>();
-	List<Usuario> usuarios = new ArrayList<>(); 
+	List<Usuario> usuarios = new ArrayList<>();
 	
 	public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso, List<Usuario> usuarios) {
 		this.entidades = entidades;
@@ -33,6 +33,7 @@ public class Organizacion {
 	
 	public void agregarOperacionesEgreso(OperacionEgreso egreso) {
 		operacionesEgreso.add(egreso);
+		RepositorioEgresos.add(egreso);
 	}
 }
 

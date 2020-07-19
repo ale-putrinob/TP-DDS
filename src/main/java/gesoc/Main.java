@@ -7,6 +7,7 @@ import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
 import dominio.mensajes.BandejaDeMensajes;
+import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.organizacion.Entidad;
 import dominio.organizacion.Organizacion;
@@ -36,6 +37,7 @@ public class Main {
 		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso, usuarios);
 
 		/* datos de la operacion */
+		List<Etiqueta> etiquetas = new ArrayList<>();
 		Date fechaOp = new Date();
 		List<Item> items = new ArrayList<>();
 		DocumentoComercial documentoComercial = new DocumentoComercial("DNI", 43545454);
@@ -45,12 +47,13 @@ public class Main {
 		List<Usuario> revisores = new ArrayList<>();
 		CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor = new MenorValor();
 		List<Presupuesto> presupuestos2 = new ArrayList<>();
+		etiquetas.add(Etiqueta.AMOBLAMIENTO);
 		
-		OperacionEgreso operacion1 = new OperacionEgreso(fechaOp
-				,items, documentoComercial, proveedor,medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null);
+		OperacionEgreso operacion1 = new OperacionEgreso(etiquetas, fechaOp
+				,items, documentoComercial, proveedor,medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, null);
 		
-		OperacionEgreso operacion2 = new OperacionEgreso(fechaOp
-				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor, null);
+		OperacionEgreso operacion2 = new OperacionEgreso(etiquetas, fechaOp
+				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor, null, null);
 		
 		/*validaciones*/
 		ValidadorEgresos validador = new ValidadorEgresos();

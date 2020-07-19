@@ -6,6 +6,7 @@ import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.mensajes.Mensaje;
 import dominio.moneda.TipoMoneda;
+import dominio.organizacion.Entidad;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.repositorioApiML.MerLibAPI;
@@ -17,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 public class OperacionEgreso {
+	List<Etiqueta> etiquetas = new ArrayList<>(); 
 	Date fechaOp = new Date();
 	List<Item> items = new ArrayList<>();
 	//moneda va a tener todos los campos del JSON
@@ -30,13 +32,15 @@ public class OperacionEgreso {
 	EstadoEgreso estado = EstadoEgreso.SIN_VALIDAR;
 	List<String> resultadosDeValidaciones = new ArrayList<>();
 	ValidadorEgresos validador = new ValidadorEgresos();
-
+	Entidad entidad;
+	
 	// Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
 
-	public OperacionEgreso(Date fechaOp, List<Item> items,  DocumentoComercial documentoComercial, Proveedor proveedor,
-			MedioDePago medioDePago, List<Presupuesto> presupuestos, List<Usuario> revisores,
-			CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor, String idMoneda) {
+	public OperacionEgreso(List<Etiqueta> etiquetas ,Date fechaOp, List<Item> items,  DocumentoComercial documentoComercial, 
+			Proveedor proveedor, MedioDePago medioDePago, List<Presupuesto> presupuestos, List<Usuario> revisores,
+			CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor, String idMoneda,Entidad entidad) {
+		this.etiquetas = etiquetas;
 		this.fechaOp = fechaOp;
 		this.items = items;
 		this.items.forEach(item -> item.asociarAEgreso(this));
@@ -47,6 +51,7 @@ public class OperacionEgreso {
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
 		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
+		this.entidad = entidad;
 	}
 
 	public void validarse() {
@@ -119,6 +124,14 @@ public class OperacionEgreso {
 
 	public void cargarResultadoDeValidacion(String resultado) {
 		resultadosDeValidaciones.add(resultado);
+	}
+	
+	public boolean tieneEtiqueta(Etiqueta etiqueta) {
+		return etiquetas.contains(etiqueta);
+	}
+	
+	public Entidad getEntidad() {
+		return entidad;
 	}
 
 }

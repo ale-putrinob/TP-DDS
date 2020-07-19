@@ -1,7 +1,7 @@
 package dominio.organizacion;
 
 
-abstract class EntidadJuridica implements Entidad {
+abstract class EntidadJuridica extends Entidad {
 	String nombreFicticio;
 	int razonSocial;
 	int cuit;
