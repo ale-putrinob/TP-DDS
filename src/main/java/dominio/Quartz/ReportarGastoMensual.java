@@ -12,6 +12,7 @@ public class ReportarGastoMensual implements Job{
 	
 	public void execute(JobExecutionContext context) throws JobExecutionException{
 		entidad.ReporteGastosMensuales(etiqueta);
+		System.out.println("Generando reporte de gastos mensuales...");
 	}
 
 }
