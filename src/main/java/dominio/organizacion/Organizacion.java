@@ -12,7 +12,7 @@ public class Organizacion {
 	List<Entidad> entidades = new ArrayList<>();
 	public List<OperacionEgreso> operacionesEgreso = new ArrayList<>();
 	List<Usuario> usuarios = new ArrayList<>();
-	
+
 	public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso, List<Usuario> usuarios) {
 		this.entidades = entidades;
 		this.operacionesEgreso = operacionesEgreso;
@@ -21,19 +21,21 @@ public class Organizacion {
 
 	public void validarOperacionesPendientes() {
 		this.operacionesEgresoPendientesDeValidacion().forEach(operacion -> operacion.validarse());
-		}
+	}
 
 	public List<OperacionEgreso> operacionesEgresoValidas() {
-		return operacionesEgresoPendientesDeValidacion().stream().filter(egreso -> egreso.esValida()).collect(Collectors.toList());
+		return operacionesEgresoPendientesDeValidacion().stream().filter(egreso -> egreso.esValida())
+				.collect(Collectors.toList());
 	}
-	
-	public List<OperacionEgreso> operacionesEgresoPendientesDeValidacion(){
-		return operacionesEgreso.stream().filter(egreso -> egreso.estaPendienteDeValidacion()).collect(Collectors.toList());
+
+	public List<OperacionEgreso> operacionesEgresoPendientesDeValidacion() {
+		return operacionesEgreso.stream().filter(egreso -> egreso.estaPendienteDeValidacion())
+				.collect(Collectors.toList());
 	}
-	
+
 	public void agregarOperacionesEgreso(OperacionEgreso egreso) {
 		operacionesEgreso.add(egreso);
+		RepositorioEgresos.getRepo();
 		RepositorioEgresos.add(egreso);
 	}
 }
-

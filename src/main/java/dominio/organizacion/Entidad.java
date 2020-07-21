@@ -1,3 +1,4 @@
+
 package dominio.organizacion;
 
 import dominio.operacionDeEgreso.Etiqueta;
