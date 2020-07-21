@@ -23,7 +23,7 @@ public class EjecutarReporteGastoMensual {
 		
 		CronTrigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity("unTrigger")
-                .withSchedule(CronScheduleBuilder.cronSchedule("* * * ? * *"))
+                .withSchedule(CronScheduleBuilder.cronSchedule("59 59 23 L * ? *"))
                 .build();
 		
 	scheduler.scheduleJob(job,trigger);
