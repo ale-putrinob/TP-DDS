@@ -1,14 +1,25 @@
 package dominio.organizacion;
 
+import dominio.categoriaEntidad.CategoriaEntidad;
+import dominio.excepcion.EntidadException;
 import dominio.operacionDeEgreso.Etiqueta;
+import dominio.operacionDeEgreso.RepositorioEgresos;
 
 public abstract class Entidad {
+	
+	protected CategoriaEntidad categoriaEntidad;
 	
 	public double ReporteGastosMensuales(Etiqueta etiqueta) {
 		return RepositorioEgresos.todos().stream().
 				filter(egreso -> egreso.tieneEtiqueta(etiqueta) && egreso.getEntidad()==this).
 				mapToDouble(egreso -> egreso.valorTotal()).sum();
 	}
+
+	public void validarAgregarEgreso() {
+		if(!categoriaEntidad.aceptaNuevosEgresos(this))
+			throw new EntidadException("No se puede agregar el egreso porque se ha superado el monto establecido");
+	}
+	
 
 /*cada operacionEgreso tendria que tener una entidad asociada, para que cuando la filtre del repo se identifique con la
  * entidad en la que estoy parado, me las filtre, y una vez filtradas me las vuelva filtrar de acuerdo a la categoria o

@@ -51,7 +51,7 @@ public class OperacionEgreso {
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
 		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
-		this.entidad = entidad;
+		entidad.validarAgregarEgreso();
 	}
 
 	public void validarse() {
