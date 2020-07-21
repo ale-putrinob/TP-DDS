@@ -25,5 +25,9 @@ abstract class EntidadJuridica extends Entidad {
 		this.dirPostal = dirPostal;
 		this.codInscripto = 0;
 	}
+
+	public boolean aceptaNuevasEntidadesBase() {
+		return this.categoriaEntidad.aceptaNuevasEntidadesBase();
+	}
 	
 }

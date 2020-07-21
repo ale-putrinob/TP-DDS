@@ -1,9 +1,7 @@
-package dominio.organizacion;
+package dominio.operacionDeEgreso;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import dominio.operacionDeEgreso.OperacionEgreso;
 
 public class RepositorioEgresos {
 	private static List<OperacionEgreso> egresos = new ArrayList<>();	 

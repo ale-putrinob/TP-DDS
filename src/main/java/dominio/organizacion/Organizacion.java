@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.usuario.Usuario;
 
 import java.util.ArrayList;
