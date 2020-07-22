@@ -15,7 +15,4 @@ public abstract class Funcionalidad {
 		return true;
 	}
 
-	public Object aceptaSerParteDeEntidadJuridica() {
-		return true;
-	}
 }

@@ -19,4 +19,12 @@ public class CategoriaEntidad {
 	public boolean aceptaSerParteDeEntidadJuridica() {
 		return funcionalidades.stream().allMatch(funcionalidad->funcionalidad.seaParteDeEntidadJuridica());
 	}
+	
+	public void agregarFuncionalidad(Funcionalidad funcionalidad) {
+		funcionalidades.add(funcionalidad);
+	}
+	
+	public void quitarFuncionalidad(Funcionalidad funcionalidad) {
+		funcionalidades.remove(funcionalidad);
+	}
 }

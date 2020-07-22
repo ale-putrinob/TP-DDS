@@ -1,7 +1,8 @@
 package dominio.organizacion;
 
+import dominio.categoriaEntidad.CategoriaEntidad;
 
-abstract class EntidadJuridica extends Entidad {
+public class EntidadJuridica extends Entidad {
 	String nombreFicticio;
 	int razonSocial;
 	int cuit;
@@ -9,12 +10,14 @@ abstract class EntidadJuridica extends Entidad {
 	int codInscripto;
 	Tipo categoria;
 	
-	public EntidadJuridica(String nombreFicticio, int razonSocial, int cuit, String dirPostal, int codInscripto) {
+	public EntidadJuridica(String nombreFicticio, int razonSocial, int cuit, String dirPostal, int codInscripto, Tipo categoria, CategoriaEntidad categoriaEntidad) {
 		this.nombreFicticio = nombreFicticio;
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.dirPostal = dirPostal;
 		this.codInscripto = codInscripto;
+		this.categoria = categoria;
+		this.categoriaEntidad = categoriaEntidad;
 	}
 	
 	// Para crear una Entidad Juridica sin codigo de inscripcion en IGJ
