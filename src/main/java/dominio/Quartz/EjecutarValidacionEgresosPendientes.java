@@ -2,28 +2,29 @@ package dominio.Quartz;
 
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
-import org.quartz.TriggerBuilder;
-import org.quartz.CronScheduleBuilder;
+import org.quartz.SimpleScheduleBuilder;
+import org.quartz.SimpleTrigger;
 import org.quartz.impl.StdSchedulerFactory;
 import static org.quartz.JobBuilder.newJob;
-import org.quartz.CronTrigger;
+import static org.quartz.TriggerBuilder.newTrigger;
 import org.quartz.JobDetail;
 
-public class EjecutarReporteGastoMensual {
-
+public class EjecutarValidacionEgresosPendientes {
+	
 	public static void main(String[] args) throws SchedulerException {
 
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 		
 		scheduler.start();
 		
-		JobDetail job = newJob(ReportarGastoMensual.class)
-						.withIdentity("reporte-gastos-mensual","group1")
+		JobDetail job = newJob(ValidacionEgresosPendientes.class)
+						.withIdentity("reporte-gastos-mensual")
 						.build();
 		
-		CronTrigger trigger = TriggerBuilder.newTrigger()
+		SimpleTrigger trigger = newTrigger()
                 .withIdentity("unTrigger")
-                .withSchedule(CronScheduleBuilder.cronSchedule("59 59 23 L * ? *"))
+                .startNow()
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(30).repeatForever())
                 .build();
 		
 	scheduler.scheduleJob(job,trigger);

@@ -1,5 +1,6 @@
 package gesoc;
 
+import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
@@ -10,6 +11,7 @@ import dominio.mensajes.BandejaDeMensajes;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.organizacion.Entidad;
+import dominio.organizacion.EntidadJuridica;
 import dominio.organizacion.Organizacion;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
@@ -22,11 +24,13 @@ import dominio.validacionEgresos.ValidadorEgresos;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
 
-	public static void main(String[] args) {
-		System.out.println("   - Bienvenido a GeSoc - ");
+	public static void main(String[] args) throws InterruptedException {
+		System.out.println(" - Bienvenido a GeSoc - ");
 		System.out.println("Gestion de Proyectos Sociales");
 		System.out.println("");
 
@@ -36,6 +40,7 @@ public class Main {
 		List<Usuario> usuarios = new ArrayList<>();
 		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso, usuarios);
 
+		Entidad entidad = new EntidadJuridica(null, 0, 0, null,0,null,new CategoriaEntidad());
 		/* datos de la operacion */
 		List<Etiqueta> etiquetas = new ArrayList<>();
 		Date fechaOp = new Date();
@@ -50,10 +55,10 @@ public class Main {
 		etiquetas.add(Etiqueta.AMOBLAMIENTO);
 		
 		OperacionEgreso operacion1 = new OperacionEgreso(etiquetas, fechaOp
-				,items, documentoComercial, proveedor,medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, null);
+				,items, documentoComercial, proveedor,medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
 		OperacionEgreso operacion2 = new OperacionEgreso(etiquetas, fechaOp
-				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor, null, null);
+				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
 		/*validaciones*/
 		ValidadorEgresos validador = new ValidadorEgresos();
@@ -74,19 +79,31 @@ public class Main {
 		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
 		
 		
-		organizacion.agregarOperacionesEgreso(operacion1);
-		organizacion.agregarOperacionesEgreso(operacion2);
-		organizacion.validarOperacionesPendientes();
 		
-		System.out.println("Se terminaron de procesar las validaciones exitosamente!");
 		
-		System.out.print(" -> Operaciones de egreso validas: ");
-		System.out.println(organizacion.operacionesEgresoValidas().size());
-		
-		System.out.print(" -> Operaciones de egreso que requieren revision: ");
-		System.out.println(organizacion.operacionesEgresoPendientesDeValidacion().size());
-		System.out.println(" -> Se notificó a los revisores de cada operacion.");
-		
+		 TimerTask timerTask = new TimerTask()
+	     {
+	         public void run() {
+	        	 	organizacion.agregarOperacionesEgreso(operacion1);
+	        	 	organizacion.agregarOperacionesEgreso(operacion2);
+	        	 	organizacion.validarOperacionesPendientes();
+	        	 	
+	        	 	System.out.println("Se terminaron de procesar las validaciones exitosamente!");
+	        		
+	        		System.out.print(" -> Operaciones de egreso validas: ");
+	        		System.out.println(organizacion.operacionesEgresoValidas().size());
+	        		
+	        		System.out.print(" -> Operaciones de egreso que requieren revision: ");
+	        		System.out.println(organizacion.operacionesEgresoPendientesDeValidacion().size());
+	        		System.out.println(" -> Se notificó a los revisores de cada operacion.");
+	         }
+	     };
+	     
+	     Timer timer = new Timer();
+	     // Dentro de 0 milisegundos av�same cada 1000 milisegundos
+	     timer.scheduleAtFixedRate(timerTask, 0, 1000);
+	/*     timer.wait();  */
+	     
 		System.out.println("");
 		System.out.println(" - Fin del procesamiento - ");
 	}
