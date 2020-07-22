@@ -1,5 +1,6 @@
 package dominio.categoriaEntidad;
 
+import dominio.excepcion.EntidadException;
 import dominio.organizacion.Entidad;
 
 public class BloquearNuevosEgresos extends Funcionalidad{
@@ -10,7 +11,9 @@ public class BloquearNuevosEgresos extends Funcionalidad{
 	}
 	
 	@Override
-	public boolean aceptaNuevosEgresos(Entidad entidad) {
-		return entidad.totalDeEgresosDeLaEntidad() <= montoMaximo;
+	public void validarNuevosEgresos(Entidad entidad) {
+		if(entidad.totalDeEgresosDeLaEntidad() <= montoMaximo) {
+			throw new EntidadException("No se puede agregar el egreso porque se ha superado el monto establecido");
+		}
 	}
 }

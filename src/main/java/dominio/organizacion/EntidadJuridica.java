@@ -29,8 +29,8 @@ public class EntidadJuridica extends Entidad {
 		this.codInscripto = 0;
 	}
 
-	public boolean aceptaNuevasEntidadesBase() {
-		return this.categoriaEntidad.aceptaNuevasEntidadesBase();
+	public void validarNuevasEntidadesBase() {
+		this.categoriaEntidad.validarNuevasEntidadesBase();
 	}
 	
 }

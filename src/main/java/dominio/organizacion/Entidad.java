@@ -35,8 +35,7 @@ public abstract class Entidad {
 	}
 
 	public void validarAgregarEgreso() {
-		if(!categoriaEntidad.aceptaNuevosEgresos(this))
-			throw new EntidadException("No se puede agregar el egreso porque se ha superado el monto establecido");
+		categoriaEntidad.validarNuevosEgresos(this);	
 	}
 	
 

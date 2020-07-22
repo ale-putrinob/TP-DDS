@@ -8,16 +8,16 @@ import dominio.organizacion.Entidad;
 public class CategoriaEntidad {
 	List<Funcionalidad> funcionalidades = new ArrayList<>();
 	
-	public boolean aceptaNuevosEgresos(Entidad entidad) {
-		return funcionalidades.stream().allMatch(funcionalidad->funcionalidad.aceptaNuevosEgresos(entidad));
+	public void validarNuevosEgresos(Entidad entidad) {
+		funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarNuevosEgresos(entidad));
 	}
 	
-	public boolean aceptaNuevasEntidadesBase() {
-		return funcionalidades.stream().allMatch(funcionalidad->funcionalidad.aceptaNuevasEntidadesBase());
+	public void validarNuevasEntidadesBase() {
+		funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarNuevasEntidadesBase());
 	}
 	
-	public boolean aceptaSerParteDeEntidadJuridica() {
-		return funcionalidades.stream().allMatch(funcionalidad->funcionalidad.seaParteDeEntidadJuridica());
+	public void validarAdicionAEntidadJuridica() {
+		funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarAdicionAEntidadJuridica());
 	}
 	
 	public void agregarFuncionalidad(Funcionalidad funcionalidad) {

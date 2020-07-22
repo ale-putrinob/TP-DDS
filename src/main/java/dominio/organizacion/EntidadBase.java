@@ -18,13 +18,8 @@ public class EntidadBase extends Entidad {
 	}
 
 	private void validarDependencia(EntidadJuridica entidadJuridica) {
-		if(!(this.puedeSerParteDe(entidadJuridica) && entidadJuridica.aceptaNuevasEntidadesBase())) {
-			throw new EntidadException("No se puede asociar la entidad base con la entidad jurídica");
-		}
-	}
-
-	private boolean puedeSerParteDe(EntidadJuridica entidadJuridica) {
-		return this.categoriaEntidad.aceptaSerParteDeEntidadJuridica();
+		this.categoriaEntidad.validarAdicionAEntidadJuridica();
+		entidadJuridica.validarNuevasEntidadesBase();
 	}
 	
 	public EntidadJuridica getDependencia() {
