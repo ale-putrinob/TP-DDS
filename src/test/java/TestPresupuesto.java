@@ -1,3 +1,4 @@
+import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.PresupuestoException;
@@ -6,6 +7,7 @@ import dominio.item.TipoItem;
 import dominio.medioDePago.MedioDePago;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.organizacion.EntidadJuridica;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.usuario.Usuario;
@@ -33,6 +35,7 @@ public class TestPresupuesto {
 	static TipoItem carne, polenta, arroz;
 	static DocumentoComercial documento1,documento2; 
 	static Item item1,item2,otroItem;
+	static EntidadJuridica entidad;
 	
 	@BeforeClass //Antes tardaba 13,722s, ahora 0.013s
     public static void init(){
@@ -52,7 +55,9 @@ public class TestPresupuesto {
 		
 		proveedor = new Proveedor("Juan","Juan SA",45678978,2045678889,1567);
 		
-		operacion = new OperacionEgreso(etiquetas, new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, null);
+		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
+		
+		operacion = new OperacionEgreso(etiquetas, new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
 		documentosComerciales.add(documento1); 
 		documentosComerciales.add(documento2);
