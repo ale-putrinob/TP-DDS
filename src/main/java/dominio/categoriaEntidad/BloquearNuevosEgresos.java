@@ -11,6 +11,6 @@ public class BloquearNuevosEgresos extends Funcionalidad{
 	
 	@Override
 	public boolean aceptaNuevosEgresos(Entidad entidad) {
-		return false;
+		return entidad.totalDeEgresos() <= montoMaximo;
 	}
 }

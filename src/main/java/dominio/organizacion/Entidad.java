@@ -13,6 +13,11 @@ public abstract class Entidad {
 	
 	protected CategoriaEntidad categoriaEntidad;
 	
+	
+	public double totalDeEgresos() {
+		return egresosDeLaEntidad().mapToDouble(egreso -> egreso.valorTotal()).sum();
+	}
+	
 	public double ReporteGastosMensuales(Etiqueta etiqueta, int mes, int anio) {
 		return this.egresosDeLaEntidad().filter(egreso -> egreso.tieneEtiqueta(etiqueta) && egreso.esDelMes(mes,anio)).
 				mapToDouble(egreso -> egreso.valorTotal()).sum();
