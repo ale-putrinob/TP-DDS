@@ -1,19 +1,25 @@
 
 package dominio.organizacion;
 
+import java.util.stream.Stream;
+
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.excepcion.EntidadException;
 import dominio.operacionDeEgreso.Etiqueta;
+import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 
 public abstract class Entidad {
 	
 	protected CategoriaEntidad categoriaEntidad;
 	
-	public double ReporteGastosMensuales(Etiqueta etiqueta) {
-		return RepositorioEgresos.todos().stream().
-				filter(egreso -> egreso.tieneEtiqueta(etiqueta) && egreso.getEntidad()==this).
+	public double ReporteGastosMensuales(Etiqueta etiqueta, int mes, int anio) {
+		return this.egresosDeLaEntidad().filter(egreso -> egreso.tieneEtiqueta(etiqueta) && egreso.esDelMes(mes,anio)).
 				mapToDouble(egreso -> egreso.valorTotal()).sum();
+	}
+	
+	private Stream<OperacionEgreso> egresosDeLaEntidad(){
+		return RepositorioEgresos.todos().stream().filter(egreso -> egreso.getEntidad()==this);
 	}
 
 	public void validarAgregarEgreso() {

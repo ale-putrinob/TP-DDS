@@ -135,4 +135,9 @@ public class OperacionEgreso {
 		return entidad;
 	}
 
+	@SuppressWarnings("deprecation")
+	public boolean esDelMes(int mes, int anio) {
+		return (fechaOp.getMonth() == mes) && (fechaOp.getYear() == anio);
+	}
+
 }
