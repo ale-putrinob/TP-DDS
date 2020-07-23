@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.item.Item;
@@ -22,23 +23,23 @@ import junit.framework.Assert;
 @SuppressWarnings("deprecation")
 public class TestEtiquetadoEgresos {
 	
-	List<Etiqueta> etiquetas1;
-	List<Etiqueta> etiquetas2;
-	List<Etiqueta> etiquetas3;
-	Date fechaOp1;
-	Date fechaOp2;
-	Date fechaOp3;
-	List<Item> items1 = new ArrayList<Item>();
-	List<Item> items2 = new ArrayList<Item>();
-	List<Item> items3 = new ArrayList<Item>();
-	OperacionEgreso operacion1;
-	OperacionEgreso operacion2;
-	OperacionEgreso operacion3;
+	static List<Etiqueta> etiquetas1;
+	static List<Etiqueta> etiquetas2;
+	static List<Etiqueta> etiquetas3;
+	static Date fechaOp1;
+	static Date fechaOp2;
+	static Date fechaOp3;
+	static List<Item> items1 = new ArrayList<Item>();
+	static List<Item> items2 = new ArrayList<Item>();
+	static List<Item> items3 = new ArrayList<Item>();
+	static OperacionEgreso operacion1;
+	static OperacionEgreso operacion2;
+	static OperacionEgreso operacion3;
 	
-	Entidad entidad;
+	static Entidad entidad;
 	
-	@Before 
-	public void init() {
+	@BeforeClass
+	public static void init() {
 		
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null,new CategoriaEntidad());
 		
