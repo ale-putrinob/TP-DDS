@@ -10,6 +10,7 @@ import dominio.medioDePago.TiposDePago;
 import dominio.mensajes.BandejaDeMensajes;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
 import dominio.organizacion.EntidadJuridica;
 import dominio.organizacion.Organizacion;
@@ -66,6 +67,9 @@ public class Main {
 		validador.agregarValidacion(new ValidacionCantidadPresupuestos());
 		validador.agregarValidacion(new ValidacionSeleccionProveedor());
 		
+		operacion1.setValidador(validador);
+		operacion2.setValidador(validador);
+		
 		/*usuarios*/
 		revisores.add(new Usuario("pepe","890754983gh",false,new BandejaDeMensajes()));
 		
@@ -78,9 +82,6 @@ public class Main {
 		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
 		operacion2.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
 		
-		
-		
-		
 		 TimerTask timerTask = new TimerTask()
 	     {
 	         public void run() {
@@ -90,8 +91,14 @@ public class Main {
 	        	 	
 	        	 	System.out.println("Se terminaron de procesar las validaciones exitosamente!");
 	        		
+	        	 	System.out.print(" -> Operaciones de egreso totales: ");
+	        		System.out.println(RepositorioEgresos.getInstance().getEgresos().size());
+	        	 	
 	        		System.out.print(" -> Operaciones de egreso validas: ");
 	        		System.out.println(organizacion.operacionesEgresoValidas().size());
+	        		
+	        		System.out.print(" -> Operaciones de egreso invalidas: ");
+	        		System.out.println(organizacion.operacionesEgresoInvalidas().size());
 	        		
 	        		System.out.print(" -> Operaciones de egreso que requieren revision: ");
 	        		System.out.println(organizacion.operacionesEgresoPendientesDeValidacion().size());
@@ -100,9 +107,10 @@ public class Main {
 	     };
 	     
 	     Timer timer = new Timer();
-	     // Dentro de 0 milisegundos avísame cada 1000 milisegundos
-	     timer.scheduleAtFixedRate(timerTask, 0, 1000);
+	     // Dentro de 0 milisegundos avísame cada 10000 milisegundos
+	     timer.scheduleAtFixedRate(timerTask, 0, 10000);
 	/*     timer.wait();  */
+	     Thread.sleep(600000);
 	     
 		System.out.println("");
 		System.out.println(" - Fin del procesamiento - ");

@@ -74,9 +74,9 @@ public class TestEtiquetadoEgresos {
 		operacion3 = new OperacionEgreso(etiquetas3, fechaOp3, items3, null, 
 				null, null, null, null, null, null, entidad);
 		
-		RepositorioEgresos.add(operacion1);
-		RepositorioEgresos.add(operacion2);
-		RepositorioEgresos.add(operacion3);
+		RepositorioEgresos.getInstance().agregarEgreso(operacion1);
+		RepositorioEgresos.getInstance().agregarEgreso(operacion2);
+		RepositorioEgresos.getInstance().agregarEgreso(operacion3);
 	}
 	
 		@Test

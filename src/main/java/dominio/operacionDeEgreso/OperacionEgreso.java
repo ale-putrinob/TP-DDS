@@ -116,7 +116,11 @@ public class OperacionEgreso {
 	}
 
 	public boolean esValida() {
-		return this.estado == EstadoEgreso.VALIDO;
+		return this.estado.equals(EstadoEgreso.VALIDO);
+	}
+	
+	public boolean esInvalida() {
+		return this.estado == EstadoEgreso.INVALIDO;
 	}
 
 	public boolean estaPendienteDeValidacion() {
@@ -140,4 +144,7 @@ public class OperacionEgreso {
 		return (fechaOp.getMonth() == mes) && (fechaOp.getYear() == anio);
 	}
 
+	public void setValidador(ValidadorEgresos validador) {
+		this.validador = validador;
+	}
 }

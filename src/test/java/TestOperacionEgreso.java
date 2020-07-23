@@ -1,3 +1,4 @@
+import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
@@ -9,6 +10,8 @@ import dominio.mensajes.BandejaDeMensajes;
 import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.organizacion.Entidad;
+import dominio.organizacion.EntidadJuridica;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.usuario.Usuario;
@@ -51,6 +54,8 @@ public class TestOperacionEgreso {
 	TipoItem sopa = new TipoItem();
 	TipoItem polenta = new TipoItem();
 	
+	Entidad entidad;
+	
 	@SuppressWarnings("deprecation")
 	@Before 
 	public void init() {
@@ -68,9 +73,9 @@ public class TestOperacionEgreso {
 		criterioDeSeleccionDeProveedor=new MenorValor();
 		revisores.add(new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes));
 		etiquetas.add(Etiqueta.AMOBLAMIENTO);
-		
+		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
 		operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, documento, 
-				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, null);
+				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
 		operacion.agregarItem(new Item (100,carne, null));
 		operacion.agregarItem(new Item (100,sopa, null));

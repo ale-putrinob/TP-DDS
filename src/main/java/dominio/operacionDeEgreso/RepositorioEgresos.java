@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepositorioEgresos {
-	private static List<OperacionEgreso> egresos = new ArrayList<>();	 
+	
+	private List<OperacionEgreso> egresos = new ArrayList<>();	
+	private final static RepositorioEgresos INSTANCE = new RepositorioEgresos();
 	 
-	public  static RepositorioEgresos getRepo() {
-	 return (RepositorioEgresos) egresos;
-	 }
-
-	public static void add(OperacionEgreso egreso) {
-		egresos.add(egreso);
+	public static RepositorioEgresos getInstance() {
+		return INSTANCE;
 	}
 	
-	public static List<OperacionEgreso> todos(){
+	public List<OperacionEgreso> getEgresos(){
 		return egresos;
+	}
+
+	public void agregarEgreso(OperacionEgreso egreso) {
+		egresos.add(egreso);
 	}
 
 }

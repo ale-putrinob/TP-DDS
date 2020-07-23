@@ -31,7 +31,7 @@ public abstract class Entidad {
 	}
 	
 	private Stream<OperacionEgreso> egresosDeLaEntidad(){
-		return RepositorioEgresos.todos().stream().filter(egreso -> egreso.getEntidad()==this);
+		return RepositorioEgresos.getInstance().getEgresos().stream().filter(egreso -> egreso.getEntidad()==this);
 	}
 
 	public void validarAgregarEgreso() {
