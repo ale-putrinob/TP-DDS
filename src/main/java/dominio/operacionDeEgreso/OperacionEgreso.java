@@ -43,7 +43,6 @@ public class OperacionEgreso {
 		this.etiquetas = etiquetas;
 		this.fechaOp = fechaOp;
 		this.items = items;
-		this.items.forEach(item -> item.asociarAEgreso(this));
 		this.documentoComercial = documentoComercial;
 		this.proveedor = proveedor;
 		this.medioDePago = medioDePago;
@@ -63,16 +62,6 @@ public class OperacionEgreso {
 	private void actualizarEstado() {
 		if(validador.pasaTodasLasValidaciones(this)) estado = EstadoEgreso.VALIDO;
 		else estado = EstadoEgreso.INVALIDO;
-	}
-
-	public void agregarItem(Item item) {
-		this.items.add(item);
-		item.asociarAEgreso(this);
-	}
-
-	public void quitarItem(Item item) {
-		this.items.remove(item);
-		item.desasociarDeEgreso(this);
 	}
 
 	public void agregarPresupuesto(Presupuesto presupuesto) {
@@ -146,5 +135,13 @@ public class OperacionEgreso {
 
 	public void setValidador(ValidadorEgresos validador) {
 		this.validador = validador;
+	}
+
+	public boolean tieneItem(String tipoItem) {
+		return items.stream().anyMatch(item -> item.tieneTipo(tipoItem));
+	}
+
+	public void agregarItem(Item item) {
+		items.add(item);
 	}
 }

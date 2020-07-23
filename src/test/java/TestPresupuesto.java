@@ -6,6 +6,7 @@ import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.EntidadJuridica;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
@@ -44,8 +45,6 @@ public class TestPresupuesto {
 		item1 = new Item(100, "carne", null);
 		item2 = new Item(50, "polenta", null);
 		otroItem = new Item(150, "arroz", null);
-		item1.asociarAEgreso(operacion);
-		item2.asociarAEgreso(operacion);
 		etiquetas.add(Etiqueta.AMOBLAMIENTO);
 		
 		proveedor = new Proveedor("Juan","Juan SA",45678978,2045678889,1567);
@@ -53,6 +52,8 @@ public class TestPresupuesto {
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
 		
 		operacion = new OperacionEgreso(etiquetas, new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
+		
+		RepositorioEgresos.getInstance().agregarEgreso(operacion);
 		
 		documentosComerciales.add(documento1); 
 		documentosComerciales.add(documento2);

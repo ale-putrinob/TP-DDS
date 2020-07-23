@@ -102,7 +102,7 @@ public class Main {
 	        		
 	        		System.out.print(" -> Operaciones de egreso que requieren revision: ");
 	        		System.out.println(organizacion.operacionesEgresoPendientesDeValidacion().size());
-	        		System.out.println(" -> Se notificó a los revisores de cada operacion.");
+	        		System.out.println(" -> Se notifica a los revisores de cada operacion.");
 	         }
 	     };
 	     

@@ -9,6 +9,7 @@ import dominio.mensajes.BandejaDeMensajes;
 import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
 import dominio.organizacion.EntidadJuridica;
 import dominio.presupuesto.Presupuesto;
@@ -74,10 +75,11 @@ public class TestOperacionEgreso {
 		otraOperacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), otrosItems, documento, 
 				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
-		
 		otraOperacion.agregarItem(new Item (200,"carne premium",null));
 		otraOperacion.agregarItem(new Item (200,"sopa premium", null));
 		
+		RepositorioEgresos.getInstance().agregarEgreso(operacion);
+		RepositorioEgresos.getInstance().agregarEgreso(otraOperacion);
 		
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor,null));
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor,null));
@@ -136,9 +138,9 @@ public class TestOperacionEgreso {
 	public void revisorRecibeTodosMensajesDeValidacionesPositivas() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se estï¿½ aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto segï¿½n el criterio elegido"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
 	}
 	
 	@Test
