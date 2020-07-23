@@ -16,7 +16,6 @@ import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.EntidadException;
 import dominio.item.Item;
-import dominio.item.TipoItem;
 import dominio.mensajes.BandejaDeMensajes;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
@@ -44,10 +43,6 @@ public class TestEntidades {
 	List<DocumentoComercial> documentos; 
 	BandejaDeMensajes bandejaDeMensajes = new BandejaDeMensajes();
 	ValidadorEgresos validador = new ValidadorEgresos();
-
-	TipoItem carne = new TipoItem();
-	TipoItem sopa = new TipoItem();
-	TipoItem polenta = new TipoItem();
 	
 	EntidadJuridica entidadJuridica;
 	EntidadBase entidadBase;
@@ -65,8 +60,8 @@ public class TestEntidades {
 		etiquetas = new ArrayList<>();
 		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
 		criterioDeSeleccionDeProveedor = new MenorValor();
-		otrosItems.add(new Item (200,carne,null));
-		otrosItems.add(new Item (200,sopa, null));
+		otrosItems.add(new Item (200,"carne",null));
+		otrosItems.add(new Item (200,"sopa", null));
 		criterioDeSeleccionDeProveedor=new MenorValor();
 		etiquetas.add(Etiqueta.AMOBLAMIENTO);
 		

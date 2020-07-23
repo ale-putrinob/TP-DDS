@@ -10,7 +10,6 @@ import org.junit.Before;
 
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.item.Item;
-import dominio.item.TipoItem;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
@@ -38,10 +37,6 @@ public class TestEtiquetadoEgresos {
 	
 	Entidad entidad;
 	
-	TipoItem carne = new TipoItem();
-	TipoItem sopa = new TipoItem();
-	TipoItem polenta = new TipoItem();
-	
 	@Before 
 	public void init() {
 		
@@ -49,20 +44,20 @@ public class TestEtiquetadoEgresos {
 		
 		etiquetas1 = new ArrayList<>();
 		fechaOp1 = new Date(2000,10,15);
-		items1.add(new Item (200,carne,null));
-		items1.add(new Item (200,sopa, null));
+		items1.add(new Item (200,"carne",null));
+		items1.add(new Item (200,"sopa", null));
 		etiquetas1.add(Etiqueta.AMOBLAMIENTO);
 		
 		etiquetas2 = new ArrayList<>();
 		fechaOp2 = new Date(2000,11,15);
-		items2.add(new Item (300,carne,null));
-		items2.add(new Item (300,sopa, null));
+		items2.add(new Item (300,"carne",null));
+		items2.add(new Item (300,"sopa", null));
 		etiquetas2.add(Etiqueta.INDUMENTARIA);
 		
 		etiquetas3 = new ArrayList<>();
 		fechaOp3 = new Date(2000,10,20);
-		items3.add(new Item (400,carne,null));
-		items3.add(new Item (400,sopa, null));
+		items3.add(new Item (400,"carne",null));
+		items3.add(new Item (400,"sopa", null));
 		etiquetas3.add(Etiqueta.AMOBLAMIENTO);
 		
 		operacion1 = new OperacionEgreso(etiquetas1, fechaOp1, items1, null, 

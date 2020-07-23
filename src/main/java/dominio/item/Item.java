@@ -1,15 +1,19 @@
 package dominio.item;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dominio.moneda.TipoMoneda;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.repositorioApiML.MerLibAPI;
 
 public class Item {
 	double valorItem;
-	TipoItem tipo;
+	String tipo;
 	TipoMoneda moneda;
+	List<OperacionEgreso> egresosAsociados = new ArrayList<>();
 
-	public Item(double valorItem, TipoItem tipo, String idMoneda) {
+	public Item(double valorItem, String tipo, String idMoneda) {
 		this.valorItem=valorItem;
 		this.tipo=tipo;
 		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
@@ -20,14 +24,14 @@ public class Item {
 	}
 	
 	public void asociarAEgreso(OperacionEgreso egreso) {
-		tipo.asociarAEgreso(egreso);
+		this.egresosAsociados.add(egreso);
 	}
 	
 	public void desasociarDeEgreso(OperacionEgreso egreso) {
-		tipo.desasociarDeEgreso(egreso);
+		this.egresosAsociados.remove(egreso);
 	}
 	
 	public boolean estaAsociadoAEgreso() {
-		return tipo.estaAsociadoAEgreso();
+		return this.egresosAsociados.size() > 0;
 	}
 }

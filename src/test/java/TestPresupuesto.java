@@ -3,7 +3,6 @@ import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.PresupuestoException;
 import dominio.item.Item;
-import dominio.item.TipoItem;
 import dominio.medioDePago.MedioDePago;
 import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
@@ -32,7 +31,6 @@ public class TestPresupuesto {
 	static List<Presupuesto> presupuestos = new ArrayList<>();
 	static List<Usuario> revisores = new ArrayList<>();
 	static CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
-	static TipoItem carne, polenta, arroz;
 	static DocumentoComercial documento1,documento2; 
 	static Item item1,item2,otroItem;
 	static EntidadJuridica entidad;
@@ -42,13 +40,10 @@ public class TestPresupuesto {
 		documento1 = new DocumentoComercial("Factura A",150);
 		documento2 = new DocumentoComercial("Factura",200);
 		List<Etiqueta> etiquetas = new ArrayList<>();
-		
-		carne = new TipoItem();
-		polenta = new TipoItem();
-		arroz = new TipoItem();
-		item1 = new Item(100, carne, null);
-		item2 = new Item(50, polenta, null);
-		otroItem = new Item(150, arroz, null);
+
+		item1 = new Item(100, "carne", null);
+		item2 = new Item(50, "polenta", null);
+		otroItem = new Item(150, "arroz", null);
 		item1.asociarAEgreso(operacion);
 		item2.asociarAEgreso(operacion);
 		etiquetas.add(Etiqueta.AMOBLAMIENTO);

@@ -3,7 +3,6 @@ import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
-import dominio.item.TipoItem;
 import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
 import dominio.mensajes.BandejaDeMensajes;
@@ -21,7 +20,6 @@ import dominio.validacionEgresos.ValidacionSeleccionProveedor;
 import dominio.validacionEgresos.ValidadorEgresos;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -34,10 +32,9 @@ public class TestOperacionEgreso {
 	DocumentoComercial documento;
 	List<Item> items = new ArrayList<Item>();
 	List<Item> otrosItems = new ArrayList<Item>();
-	List<Item> otrosItems2 = new ArrayList<Item>();
 	Proveedor proveedor;
 	Proveedor otroProveedor;
-	OperacionEgreso operacion;
+	OperacionEgreso operacion, otraOperacion;
 	MedioDePago medioDePago;
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	List<Usuario> revisores = new ArrayList<>();
@@ -49,15 +46,11 @@ public class TestOperacionEgreso {
 	Mensaje mensaje1;
 	Mensaje mensaje2;
 	Mensaje mensaje3;
-
-	TipoItem carne = new TipoItem();
-	TipoItem sopa = new TipoItem();
-	TipoItem polenta = new TipoItem();
 	
 	Entidad entidad;
 	
 	@SuppressWarnings("deprecation")
-	@Before 
+	@Before
 	public void init() {
 		validador.agregarValidacion(new ValidacionAplicacionPresupuesto());
 		validador.agregarValidacion(new ValidacionCantidadPresupuestos());
@@ -67,18 +60,23 @@ public class TestOperacionEgreso {
 		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
 		medioDePago = new MedioDePago(TiposDePago.TarjetaDeCredito, 1234567890);
 		criterioDeSeleccionDeProveedor = new MenorValor();
-		otrosItems.add(new Item (200,carne,null));
-		otrosItems.add(new Item (200,sopa, null));
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
-		criterioDeSeleccionDeProveedor=new MenorValor();
+		criterioDeSeleccionDeProveedor = new MenorValor();
 		revisores.add(new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes));
 		etiquetas.add(Etiqueta.AMOBLAMIENTO);
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
 		operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, documento, 
 				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
-		operacion.agregarItem(new Item (100,carne, null));
-		operacion.agregarItem(new Item (100,sopa, null));
+		operacion.agregarItem(new Item (100,"carne", null));
+		operacion.agregarItem(new Item (100,"sopa", null));
+		
+		otraOperacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), otrosItems, documento, 
+				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
+		
+		
+		otraOperacion.agregarItem(new Item (200,"carne premium",null));
+		otraOperacion.agregarItem(new Item (200,"sopa premium", null));
 		
 		
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor,null));
@@ -111,7 +109,7 @@ public class TestOperacionEgreso {
 	@Test
 	public void testNoCompraEnBaseAPresupuesto() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,proveedor,null));
-		operacion.agregarItem(new Item (300,polenta, null));
+		operacion.agregarItem(new Item (300,"polenta",null));
 		Assert.assertFalse(operacion.aplicaAlgunPresupuesto());
 	}
 	
@@ -138,9 +136,9 @@ public class TestOperacionEgreso {
 	public void revisorRecibeTodosMensajesDeValidacionesPositivas() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se estï¿½ aplicando alguno de los presupuestos en la compra"));
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto segï¿½n el criterio elegido"));
 	}
 	
 	@Test
@@ -148,7 +146,6 @@ public class TestOperacionEgreso {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		//Assert.assertTrue((bandejaDeMensajes.getMensajes().size())==0);
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad incorrecta de presupuestos cargados"));
 	}
 }
