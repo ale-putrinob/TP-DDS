@@ -15,6 +15,7 @@ import dominio.validacionPassword.ValidadorPassword;
 import junit.framework.Assert;
 
 
+@SuppressWarnings("deprecation")
 public class TestValidacionDePasswords {
 	Usuario usuario;
 	static BandejaDeMensajes bandejaDeMensajes;
@@ -28,7 +29,6 @@ public class TestValidacionDePasswords {
 		ValidadorPassword.agregarValidaciones(new NoEstaEntrePasswordsMasInseguras());
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testPasswordEncriptada() throws IOException {
 		usuario = new Usuario("usuario", "passwordsegura", false, bandejaDeMensajes);
@@ -45,7 +45,6 @@ public class TestValidacionDePasswords {
 		usuario = new Usuario("usuario", "septimo", false, bandejaDeMensajes);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testPassword8Caracteres() throws IOException {
 		usuario = new Usuario("usuario", "septimo1", false, bandejaDeMensajes);

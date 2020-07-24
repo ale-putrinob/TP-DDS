@@ -7,7 +7,6 @@ import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
 import dominio.mensajes.BandejaDeMensajes;
 import dominio.mensajes.Mensaje;
-import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
@@ -29,7 +28,7 @@ import java.util.List;
 
 
 public class TestOperacionEgreso {
-	List<Etiqueta> etiquetas;
+	List<String> etiquetas;
 	DocumentoComercial documento;
 	List<Item> items = new ArrayList<Item>();
 	List<Item> otrosItems = new ArrayList<Item>();
@@ -64,7 +63,7 @@ public class TestOperacionEgreso {
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		criterioDeSeleccionDeProveedor = new MenorValor();
 		revisores.add(new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes));
-		etiquetas.add(Etiqueta.AMOBLAMIENTO);
+		etiquetas.add("AMOBLAMIENTO");
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
 		operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, documento, 
 				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);

@@ -4,8 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import dominio.validacionPassword.*;
-
 public class BuscadorEnArchivo {
     
     public static boolean encontrarIgualdad(String palabraBuscada, String direccionDelArchivo) {

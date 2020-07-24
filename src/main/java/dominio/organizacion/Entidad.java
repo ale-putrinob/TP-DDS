@@ -4,8 +4,6 @@ package dominio.organizacion;
 import java.util.stream.Stream;
 
 import dominio.categoriaEntidad.CategoriaEntidad;
-import dominio.excepcion.EntidadException;
-import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 
@@ -22,11 +20,11 @@ public abstract class Entidad {
 		return egresos.mapToDouble(egreso -> egreso.valorTotal()).sum();
 	}
 	
-	private Stream<OperacionEgreso> egresosDeLaEntidadDelMesConEtiqueta(Etiqueta etiqueta, int mes, int anio) {
+	private Stream<OperacionEgreso> egresosDeLaEntidadDelMesConEtiqueta(String etiqueta, int mes, int anio) {
 		return egresosDeLaEntidad().filter(egreso -> egreso.tieneEtiqueta(etiqueta) && egreso.esDelMes(mes,anio));
 	}
 	
-	public double ReporteGastosMensuales(Etiqueta etiqueta, int mes, int anio) {
+	public double ReporteGastosMensuales(String etiqueta, int mes, int anio) {
 		return totalDeEgresos(this.egresosDeLaEntidadDelMesConEtiqueta(etiqueta, mes, anio));
 	}
 	

@@ -1,7 +1,6 @@
 package dominio.organizacion;
 
 import dominio.categoriaEntidad.CategoriaEntidad;
-import dominio.excepcion.EntidadException;
 
 public class EntidadBase extends Entidad {
 	String nombreFicticio;

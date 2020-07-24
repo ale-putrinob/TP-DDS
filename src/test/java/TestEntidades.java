@@ -1,9 +1,7 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dominio.categoriaEntidad.BloquearNuevasEntidadesBase;
@@ -17,7 +15,6 @@ import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.EntidadException;
 import dominio.item.Item;
 import dominio.mensajes.BandejaDeMensajes;
-import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.organizacion.EntidadBase;
 import dominio.organizacion.EntidadJuridica;
@@ -30,8 +27,9 @@ import dominio.validacionEgresos.ValidacionSeleccionProveedor;
 import dominio.validacionEgresos.ValidadorEgresos;
 import junit.framework.Assert;
 
+@SuppressWarnings("deprecation")
 public class TestEntidades {
-	List<Etiqueta> etiquetas;
+	List<String> etiquetas;
 	List<Item> items = new ArrayList<Item>();
 	List<Item> otrosItems = new ArrayList<Item>();
 	List<Item> otrosItems2 = new ArrayList<Item>();
@@ -63,7 +61,7 @@ public class TestEntidades {
 		otrosItems.add(new Item (200,"carne",null));
 		otrosItems.add(new Item (200,"sopa", null));
 		criterioDeSeleccionDeProveedor=new MenorValor();
-		etiquetas.add(Etiqueta.AMOBLAMIENTO);
+		etiquetas.add("AMOBLAMIENTO");
 		
 		funcionalidad1 = new BloquearNuevasEntidadesBase();
 		funcionalidad2 = new BloquearNuevosEgresos(0);
@@ -97,7 +95,6 @@ public class TestEntidades {
 		operacion = new OperacionEgreso(null, null, items, null, null, null, null, null, null, null, entidadJuridica);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void noSeBloqueanNuevasEntidadesBase() {
 		entidadJuridica = new EntidadJuridica(null, 0, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
@@ -105,7 +102,6 @@ public class TestEntidades {
 		Assert.assertEquals(entidadBase.getDependencia(), entidadJuridica);
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void noSeBloqueanNuevosEgresos() {
 		entidadJuridica = new EntidadJuridica(null, 0, 0, null, 0, Tipo.EmpresaPequenia, categoria1);

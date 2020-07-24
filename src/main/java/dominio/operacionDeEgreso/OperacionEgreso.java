@@ -18,10 +18,10 @@ import java.util.Date;
 import java.util.List;
 
 public class OperacionEgreso {
-	List<Etiqueta> etiquetas = new ArrayList<>(); 
+	List<String> etiquetas = new ArrayList<>(); 
 	Date fechaOp = new Date();
 	List<Item> items = new ArrayList<>();
-	//moneda va a tener todos los campos del JSON
+	// moneda va a tener todos los campos del JSON
 	TipoMoneda moneda;
 	DocumentoComercial documentoComercial;
 	Proveedor proveedor;
@@ -37,7 +37,7 @@ public class OperacionEgreso {
 	// Seteamos valor de prueba
 	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
 
-	public OperacionEgreso(List<Etiqueta> etiquetas ,Date fechaOp, List<Item> items,  DocumentoComercial documentoComercial, 
+	public OperacionEgreso(List<String> etiquetas ,Date fechaOp, List<Item> items,  DocumentoComercial documentoComercial, 
 			Proveedor proveedor, MedioDePago medioDePago, List<Presupuesto> presupuestos, List<Usuario> revisores,
 			CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor, String idMoneda,Entidad entidad) {
 		this.etiquetas = etiquetas;
@@ -120,7 +120,7 @@ public class OperacionEgreso {
 		resultadosDeValidaciones.add(resultado);
 	}
 	
-	public boolean tieneEtiqueta(Etiqueta etiqueta) {
+	public boolean tieneEtiqueta(String etiqueta) {
 		return etiquetas.contains(etiqueta);
 	}
 	

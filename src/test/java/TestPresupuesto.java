@@ -4,7 +4,6 @@ import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.PresupuestoException;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
-import dominio.operacionDeEgreso.Etiqueta;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.EntidadJuridica;
@@ -40,12 +39,12 @@ public class TestPresupuesto {
     public static void init(){
 		documento1 = new DocumentoComercial("Factura A",150);
 		documento2 = new DocumentoComercial("Factura",200);
-		List<Etiqueta> etiquetas = new ArrayList<>();
+		List<String> etiquetas = new ArrayList<>();
 
 		item1 = new Item(100, "carne", null);
 		item2 = new Item(50, "polenta", null);
 		otroItem = new Item(150, "arroz", null);
-		etiquetas.add(Etiqueta.AMOBLAMIENTO);
+		etiquetas.add("AMOBLAMIENTO");
 		
 		proveedor = new Proveedor("Juan","Juan SA",45678978,2045678889,1567);
 		
