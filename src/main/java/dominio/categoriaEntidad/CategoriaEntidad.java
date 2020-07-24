@@ -6,6 +6,7 @@ import java.util.List;
 import dominio.organizacion.Entidad;
 
 public class CategoriaEntidad {
+	String nombre;
 	List<Funcionalidad> funcionalidades = new ArrayList<>();
 	
 	public void validarNuevosEgresos(Entidad entidad) {
@@ -26,5 +27,9 @@ public class CategoriaEntidad {
 	
 	public void quitarFuncionalidad(Funcionalidad funcionalidad) {
 		funcionalidades.remove(funcionalidad);
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre=nombre;
 	}
 }
