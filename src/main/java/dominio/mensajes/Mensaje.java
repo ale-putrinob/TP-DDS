@@ -1,9 +1,23 @@
 package dominio.mensajes;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+
 import dominio.operacionDeEgreso.OperacionEgreso;
 
+@Entity
 public class Mensaje {
+	
+	@Id
+	@GeneratedValue
+	private Long id_mensaje;
+	
+	
 	String contenido;
+	@ManyToOne
 	OperacionEgreso operacionEgreso;
 	
 	public Mensaje(String contenido, OperacionEgreso operacionEgreso) {

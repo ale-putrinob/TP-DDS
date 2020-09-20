@@ -8,11 +8,24 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
-        <properties>
+        <class>dominio.organizacion.Organizacion</class>
+        <class>dominio.mensajes.BandejaDeMensajes</class>
+        <class>dominio.usuario.Usuario</class>
+        <class>dominio.mensajes.Mensaje</class>
+     	<class>dominio.operacionDeEgreso.OperacionEgreso</class>
+        <class>dominio.item.Item</class>
+        <class>dominio.moneda.TipoMoneda</class>
+        <class>dominio.documentoComercial.DocumentoComercial</class>
+        <class>dominio.proveedor.Proveedor</class>
+        <class>dominio.presupuesto.Presupuesto</class>
+        <class>dominio.medioDePago.MedioDePago</class>
+        
+        
+			<properties>
             <property name="hibernate.archive.autodetection" value="class"/>
 
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/proyectodds2020" /> 
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/proyectoDDS2020" /> 
             <property name="hibernate.connection.username" value="root" /> 
             <property name="hibernate.connection.password" value="ruger" /> 
 

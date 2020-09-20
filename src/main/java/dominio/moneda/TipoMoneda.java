@@ -1,7 +1,13 @@
 package dominio.moneda;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class TipoMoneda {
-    String id;
+    @Id
+	String id;
+    
     String description;
     String symbol;
     int decimal_places;

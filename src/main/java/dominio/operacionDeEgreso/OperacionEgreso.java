@@ -13,25 +13,60 @@ import dominio.repositorioApiML.MerLibAPI;
 import dominio.usuario.Usuario;
 import dominio.validacionEgresos.ValidadorEgresos;
 
+import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
 public class OperacionEgreso {
+	
+	@Id
+	@GeneratedValue
+	private Long id_egreso;
+	
+	/*agregar despues*/
+	@Transient
 	List<String> etiquetas = new ArrayList<>(); 
 	Date fechaOp = new Date();
+	@ManyToMany
 	List<Item> items = new ArrayList<>();
 	// moneda va a tener todos los campos del JSON
+	@ManyToOne
 	TipoMoneda moneda;
+	@OneToOne
+	@JoinColumn(name = "id_documento_comercial")
 	DocumentoComercial documentoComercial;
+	@ManyToOne
 	Proveedor proveedor;
+	@ManyToOne
 	MedioDePago medioDePago;
+	@OneToMany
+	@JoinColumn(name = "id_operacion_egreso")
 	List<Presupuesto> presupuestos = new ArrayList<>();
+	@ManyToMany
 	List<Usuario> revisores;
+	@Transient
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
+	@Enumerated
 	EstadoEgreso estado = EstadoEgreso.SIN_VALIDAR;
+	@Transient
 	List<String> resultadosDeValidaciones = new ArrayList<>();
+	@Transient
 	ValidadorEgresos validador = new ValidadorEgresos();
+	/*arreglar lo de la entidad y su herencia*/
+	@Transient
 	Entidad entidad;
 	
 	// Seteamos valor de prueba

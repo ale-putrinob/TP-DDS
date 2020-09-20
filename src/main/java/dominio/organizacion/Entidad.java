@@ -7,7 +7,9 @@ import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 
+
 public abstract class Entidad {
+	
 	
 	protected CategoriaEntidad categoriaEntidad;
 	
