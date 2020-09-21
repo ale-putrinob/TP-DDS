@@ -14,7 +14,7 @@ public class Item {
 	
 	@Id
 	@GeneratedValue
-	private Long id_item;
+	private Long item_id;
 	
 	double valorItem;
 	String tipo;

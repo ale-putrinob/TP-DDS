@@ -14,7 +14,7 @@ public class BandejaDeMensajes {
 	
 	@Id
 	@GeneratedValue
-	private Long id_bandejaDeMensajes;
+	private Long bandejaDeMensajes_id;
 	
 	@ManyToMany
 	List<Mensaje> mensajes = new ArrayList<>();

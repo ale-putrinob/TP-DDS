@@ -9,7 +9,7 @@ public class DocumentoComercial {
 	
 	@Id
 	@GeneratedValue
-	private Long id_documento_comercial;
+	private Long id_documentoComercial;
 	
 	String tipo;
 	int numero;

@@ -21,13 +21,13 @@ public class Organizacion {
 	
 	@Id
 	@GeneratedValue
-	private Long id_organizacion;
+	private Long organizacion_id;
 	
 	/*checkear entidades*/
 	@Transient
 	List<Entidad> entidades = new ArrayList<>();
 	@OneToMany
-	@JoinColumn(name = "id_organizacion")
+	@JoinColumn(name = "organizacion_id")
 	List<Usuario> usuarios = new ArrayList<>();
 
 	public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso, List<Usuario> usuarios) {

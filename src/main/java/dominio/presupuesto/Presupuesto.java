@@ -23,10 +23,10 @@ public class Presupuesto {
 	
 	@Id
 	@GeneratedValue
-	private Long id_presupuesto;
+	private Long presupuesto_id;
 	
 	@OneToMany
-	@JoinColumn(name = "id_presupuesto")
+	@JoinColumn(name = "presupuesto_id")
 	List<DocumentoComercial> documentosComerciales = new ArrayList<>();
 	@ManyToMany
 	List<Item> items = new ArrayList<>();

@@ -10,13 +10,13 @@ import javax.persistence.Transient;
 public class MedioDePago {
 	
 	@Id
-	int identificador;
+	int medioDePago_id;
 	/*agregarlo despues*/
 	@Transient
 	TiposDePago tipo;
 
     public MedioDePago(TiposDePago tipo, int identificador) {
         this.tipo = tipo;
-        this.identificador = identificador;
+        this.medioDePago_id = identificador;
     }
 }

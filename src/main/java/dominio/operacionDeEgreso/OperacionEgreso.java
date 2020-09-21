@@ -34,7 +34,7 @@ public class OperacionEgreso {
 	
 	@Id
 	@GeneratedValue
-	private Long id_egreso;
+	private Long operacionEgreso_id;
 	
 	/*agregar despues*/
 	@Transient
@@ -46,14 +46,14 @@ public class OperacionEgreso {
 	@ManyToOne
 	TipoMoneda moneda;
 	@OneToOne
-	@JoinColumn(name = "id_documento_comercial")
+	@JoinColumn(name = "documentoComercial_id")
 	DocumentoComercial documentoComercial;
 	@ManyToOne
 	Proveedor proveedor;
 	@ManyToOne
 	MedioDePago medioDePago;
 	@OneToMany
-	@JoinColumn(name = "id_operacion_egreso")
+	@JoinColumn(name = "operacionEgreso_id")
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	@ManyToMany
 	List<Usuario> revisores;

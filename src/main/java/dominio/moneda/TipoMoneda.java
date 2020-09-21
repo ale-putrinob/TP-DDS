@@ -6,17 +6,17 @@ import javax.persistence.Id;
 @Entity
 public class TipoMoneda {
     @Id
-	String id;
+	String moneda_id;
     
     String description;
     String symbol;
     int decimal_places;
 
     public String getId() {
-        return id;
+        return moneda_id;
     }
     public void setId(String id) {
-        this.id = id;
+        this.moneda_id = id;
     }
 
     public String getDescription() {
