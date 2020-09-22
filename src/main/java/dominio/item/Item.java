@@ -38,4 +38,7 @@ public class Item {
 	public boolean tieneTipo(String tipoItem) {
 		return tipo.equals(tipoItem);
 	}
+	public Long getId() {
+		return item_id;
+	}
 }
