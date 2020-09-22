@@ -2,7 +2,6 @@ package gesoc;
 
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
-import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
@@ -50,7 +49,7 @@ public class Main {
 		MedioDePago medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		List<Presupuesto> presupuestos = new ArrayList<>();
 		List<Usuario> revisores = new ArrayList<>();
-		CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor = new MenorValor();
+		CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		List<Presupuesto> presupuestos2 = new ArrayList<>();
 		etiquetas.add("AMOBLAMIENTO");
 		

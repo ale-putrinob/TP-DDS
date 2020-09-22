@@ -1,6 +1,5 @@
 package dominio.mensajes;
 
-import javax.persistence.Transient;
 import java.util.ArrayList;
 import java.util.List;
 

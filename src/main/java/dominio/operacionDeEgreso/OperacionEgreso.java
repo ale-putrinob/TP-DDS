@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -57,7 +56,7 @@ public class OperacionEgreso {
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	@ManyToMany
 	List<Usuario> revisores;
-	@Transient
+	@Enumerated
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 	@Enumerated
 	EstadoEgreso estado = EstadoEgreso.SIN_VALIDAR;

@@ -1,6 +1,5 @@
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
-import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
@@ -59,9 +58,9 @@ public class TestOperacionEgreso {
 		documento = new DocumentoComercial("Factura", 5);
 		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
 		medioDePago = new MedioDePago(TiposDePago.TarjetaDeCredito, 1234567890);
-		criterioDeSeleccionDeProveedor = new MenorValor();
+		criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
-		criterioDeSeleccionDeProveedor = new MenorValor();
+		criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		revisores.add(new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes));
 		etiquetas.add("AMOBLAMIENTO");
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());

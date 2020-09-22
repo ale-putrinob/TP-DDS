@@ -10,7 +10,6 @@ import dominio.categoriaEntidad.BloquearSerParteDeEntidadJuridica;
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.categoriaEntidad.Funcionalidad;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
-import dominio.criterioDeSeleccionDeProveedor.MenorValor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.EntidadException;
 import dominio.item.Item;
@@ -57,10 +56,10 @@ public class TestEntidades {
 		validador.agregarValidacion(new ValidacionSeleccionProveedor());
 		etiquetas = new ArrayList<>();
 		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
-		criterioDeSeleccionDeProveedor = new MenorValor();
+		criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		otrosItems.add(new Item (200,"carne",null));
 		otrosItems.add(new Item (200,"sopa", null));
-		criterioDeSeleccionDeProveedor=new MenorValor();
+		criterioDeSeleccionDeProveedor= CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		etiquetas.add("AMOBLAMIENTO");
 		
 		funcionalidad1 = new BloquearNuevasEntidadesBase();
