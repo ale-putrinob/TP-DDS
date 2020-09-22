@@ -14,9 +14,9 @@ import junit.framework.Assert;
 public class Test_CambiarNombre extends AbstractPersistenceTest implements WithGlobalEntityManager {
 	Item item1=new Item(100, "carne", null);
 	Item item2=new Item(50, "polenta",null);
-	@SuppressWarnings("deprecation")
+	
 	@Test 
-	public void ItemTest() {
+	public void Test() {
 		entityManager().persist(item1);
 		entityManager().persist(item2); 
 		
