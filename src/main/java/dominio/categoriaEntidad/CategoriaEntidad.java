@@ -3,10 +3,22 @@ package dominio.categoriaEntidad;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
 import dominio.organizacion.Entidad;
 
+@Entity
 public class CategoriaEntidad {
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	String nombre;
+	
+	@Transient
 	List<Funcionalidad> funcionalidades = new ArrayList<>();
 	
 	public void validarNuevosEgresos(Entidad entidad) {

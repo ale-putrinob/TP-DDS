@@ -65,7 +65,7 @@ public class OperacionEgreso {
 	@Transient
 	ValidadorEgresos validador = new ValidadorEgresos();
 	/*arreglar lo de la entidad y su herencia*/
-	@Transient
+	@ManyToOne
 	Entidad entidad;
 	
 	// Seteamos valor de prueba

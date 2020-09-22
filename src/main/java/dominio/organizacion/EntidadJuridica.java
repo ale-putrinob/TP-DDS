@@ -1,13 +1,19 @@
 package dominio.organizacion;
 
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+
 import dominio.categoriaEntidad.CategoriaEntidad;
 
+@Entity
 public class EntidadJuridica extends Entidad {
 	String nombreFicticio;
 	int razonSocial;
 	int cuit;
 	String dirPostal;
 	int codInscripto;
+	
+	@Enumerated
 	Tipo categoria;
 	
 	public EntidadJuridica(String nombreFicticio, int razonSocial, int cuit, String dirPostal, int codInscripto, Tipo categoria, CategoriaEntidad categoriaEntidad) {

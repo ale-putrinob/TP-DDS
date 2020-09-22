@@ -3,14 +3,25 @@ package dominio.organizacion;
 
 import java.util.stream.Stream;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Entidad {
 	
+	@Id
+	@GeneratedValue
+	private Long id;
 	
+	@ManyToOne
 	protected CategoriaEntidad categoriaEntidad;
 	
 	
@@ -37,11 +48,5 @@ public abstract class Entidad {
 	public void validarAgregarEgreso() {
 		categoriaEntidad.validarNuevosEgresos(this);	
 	}
-	
-
-/*cada operacionEgreso tendria que tener una entidad asociada, para que cuando la filtre del repo se identifique con la
- * entidad en la que estoy parado, me las filtre, y una vez filtradas me las vuelva filtrar de acuerdo a la categoria o
- * etiqueta que le este pasando por parametro, luego hacer un sum con los valores de todas las operaciones de egresos
- * para asi obtener el reporte sobre los gastos totales. Faltaria que ese reporte se haga mensualmente. */
 	
 }

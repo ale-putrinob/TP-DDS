@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
@@ -24,7 +23,8 @@ public class Organizacion {
 	private Long organizacion_id;
 	
 	/*checkear entidades*/
-	@Transient
+	@OneToMany
+	@JoinColumn(name = "organizacion_id")
 	List<Entidad> entidades = new ArrayList<>();
 	@OneToMany
 	@JoinColumn(name = "organizacion_id")

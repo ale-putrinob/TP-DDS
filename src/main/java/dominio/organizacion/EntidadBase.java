@@ -1,10 +1,16 @@
 package dominio.organizacion;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
 import dominio.categoriaEntidad.CategoriaEntidad;
 
+@Entity
 public class EntidadBase extends Entidad {
 	String nombreFicticio;
 	String descripcion;
+	
+	@ManyToOne
 	EntidadJuridica dependencia;
 
 	public EntidadBase(String nombreFicticio, String unaDescripcion, EntidadJuridica unaDependencia, CategoriaEntidad categoriaEntidad) {
