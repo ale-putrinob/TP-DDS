@@ -41,4 +41,7 @@ public class Item {
 	public Long getId() {
 		return item_id;
 	}
+	public String getTipo() {
+		return tipo;
+	}
 }
