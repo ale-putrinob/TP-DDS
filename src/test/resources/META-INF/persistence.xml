@@ -8,11 +8,9 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
-        <class>dominio.organizacion.Organizacion</class>
         <class>dominio.organizacion.Entidad</class>
         <class>dominio.organizacion.EntidadBase</class>
         <class>dominio.organizacion.EntidadJuridica</class>
-        <class>dominio.mensajes.BandejaDeMensajes</class>
         <class>dominio.usuario.Usuario</class>
         <class>dominio.mensajes.Mensaje</class>
      	<class>dominio.operacionDeEgreso.OperacionEgreso</class>
@@ -26,20 +24,21 @@
         <class>dominio.repositorioApiML.Ciudad</class>
         <class>dominio.repositorioApiML.Provincia</class>
         <class>dominio.repositorioApiML.Pais</class>
-        
+        <class>dominio.categoriaEntidad.Funcionalidad</class>
+
 			<properties>
             <property name="hibernate.archive.autodetection" value="class"/>
 
-            <!--property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/proyectoDDS2020" /> 
             <property name="hibernate.connection.username" value="root" /> 
-            <property name="hibernate.connection.password" value="ruger" /> -->
+            <property name="hibernate.connection.password" value="ruger" />  
 
-            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
+            <!-- property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
             <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db"/>
             <property name="hibernate.connection.username" value="sa"/>
             <property name="hibernate.connection.password" value=""/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/> --> 
 
 
             <property name="hibernate.show_sql" value="true"/>

@@ -3,9 +3,11 @@ package dominio.categoriaEntidad;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
 import dominio.organizacion.Entidad;
@@ -18,7 +20,7 @@ public class CategoriaEntidad {
 	
 	String nombre;
 	
-	@Transient
+	@ManyToMany
 	List<Funcionalidad> funcionalidades = new ArrayList<>();
 	
 	public void validarNuevosEgresos(Entidad entidad) {

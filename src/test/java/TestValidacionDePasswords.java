@@ -1,11 +1,13 @@
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dominio.excepcion.PasswordInseguraException;
-import dominio.mensajes.BandejaDeMensajes;
+import dominio.mensajes.Mensaje;
 import dominio.usuario.Usuario;
 import dominio.validacionPassword.LongitudPassword;
 import dominio.validacionPassword.NoEstaEntrePasswordsMasInseguras;
@@ -18,11 +20,10 @@ import junit.framework.Assert;
 @SuppressWarnings("deprecation")
 public class TestValidacionDePasswords {
 	Usuario usuario;
-	static BandejaDeMensajes bandejaDeMensajes;
+	List<Mensaje> bandejaDeMensajes = new ArrayList<>();;
 	
 	@BeforeClass 
 	public static void init() {
-		bandejaDeMensajes = new BandejaDeMensajes();
 		ValidadorPassword.agregarValidaciones(new SinCaracteresRepetidos());
 		ValidadorPassword.agregarValidaciones(new SinCaracteresConsecutivos());
 		ValidadorPassword.agregarValidaciones(new LongitudPassword());

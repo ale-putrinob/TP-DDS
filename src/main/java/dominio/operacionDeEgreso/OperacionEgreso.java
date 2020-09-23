@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -35,21 +37,20 @@ public class OperacionEgreso {
 	@GeneratedValue
 	private Long operacionEgreso_id;
 	
-	/*agregar despues*/
-	@Transient
+	@ElementCollection
 	List<String> etiquetas = new ArrayList<>(); 
 	Date fechaOp = new Date();
 	@ManyToMany
 	List<Item> items = new ArrayList<>();
 	// moneda va a tener todos los campos del JSON
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	TipoMoneda moneda;
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name = "documentoComercial_id")
 	DocumentoComercial documentoComercial;
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	Proveedor proveedor;
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	MedioDePago medioDePago;
 	@OneToMany
 	@JoinColumn(name = "operacionEgreso_id")
@@ -64,8 +65,7 @@ public class OperacionEgreso {
 	List<String> resultadosDeValidaciones = new ArrayList<>();
 	@Transient
 	ValidadorEgresos validador = new ValidadorEgresos();
-	/*arreglar lo de la entidad y su herencia*/
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	Entidad entidad;
 	
 	// Seteamos valor de prueba

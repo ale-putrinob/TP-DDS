@@ -5,7 +5,6 @@ import dominio.excepcion.PresupuestoException;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.operacionDeEgreso.OperacionEgreso;
-import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.EntidadJuridica;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
@@ -14,15 +13,17 @@ import dominio.repositorioApiML.Pais;
 import dominio.repositorioApiML.Provincia;
 import dominio.usuario.Usuario;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
-public class TestPresupuesto {
+public class TestPresupuesto extends AbstractPersistenceTest implements WithGlobalEntityManager{
 	static OperacionEgreso operacion;
 	static List<DocumentoComercial> documentosComerciales = new ArrayList<>();
 	static List<Item> items = new ArrayList<>();
@@ -41,8 +42,8 @@ public class TestPresupuesto {
 	static Item item1,item2,otroItem;
 	static EntidadJuridica entidad;
 	
-	@BeforeClass //Antes tardaba 13,722s, ahora 0.013s
-    public static void init(){
+	@Before //Antes tardaba 13,722s, ahora 0.013s
+    public void init(){
 		documento1 = new DocumentoComercial("Factura A",150);
 		documento2 = new DocumentoComercial("Factura",200);
 		List<String> etiquetas = new ArrayList<>();
@@ -63,7 +64,7 @@ public class TestPresupuesto {
 		
 		operacion = new OperacionEgreso(etiquetas, new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
-		RepositorioEgresos.getInstance().agregarEgreso(operacion);
+		/*RepositorioEgresos.getInstance().agregarEgreso(operacion);*/
 		
 		documentosComerciales.add(documento1); 
 		documentosComerciales.add(documento2);
@@ -71,6 +72,7 @@ public class TestPresupuesto {
 		items.add(item2);
 		otrosItems.add(otroItem);
 		
+		entityManager().persist(operacion);
 		presupuesto = new Presupuesto(documentosComerciales,items,proveedor,null);
     }
     
@@ -78,7 +80,7 @@ public class TestPresupuesto {
 	public void testCrearPresupuestoValido() {
 		Assert.assertEquals(presupuesto.getProveedor(),proveedor);
 	}
-    
+   
     @Test(expected = PresupuestoException.class)
     public void testCrearPresupuestoInvalido() {
 	    presupuesto2 = new Presupuesto(documentosComerciales,otrosItems,proveedor,null);
@@ -93,5 +95,5 @@ public class TestPresupuesto {
     @Test
     public void testPresupuestoTotal() {
     	Assert.assertEquals(150, presupuesto.presupuestoTotal(),0);
-	}
+	} 
 }

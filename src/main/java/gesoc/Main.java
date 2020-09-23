@@ -6,7 +6,7 @@ import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
-import dominio.mensajes.BandejaDeMensajes;
+import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
@@ -26,9 +26,11 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Main {
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
-	public static void main(String[] args) throws InterruptedException {
+public class Main implements WithGlobalEntityManager {
+
+	public void main(String[] args) throws InterruptedException {
 		System.out.println(" - Bienvenido a GeSoc - ");
 		System.out.println("Gestion de Proyectos Sociales");
 		System.out.println("");
@@ -69,7 +71,8 @@ public class Main {
 		operacion2.setValidador(validador);
 		
 		/*usuarios*/
-		revisores.add(new Usuario("pepe","890754983gh",false,new BandejaDeMensajes()));
+		List<Mensaje> bandejaDeMensajes = new ArrayList<>();
+		revisores.add(new Usuario("pepe","890754983gh",false,bandejaDeMensajes));
 		
 		/*presupuestos*/
 		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
@@ -83,8 +86,8 @@ public class Main {
 		 TimerTask timerTask = new TimerTask()
 	     {
 	         public void run() {
-	        	 	organizacion.agregarOperacionesEgreso(operacion1);
-	        	 	organizacion.agregarOperacionesEgreso(operacion2);
+	        	 	entityManager().persist(operacion1);
+	        	 	entityManager().persist(operacion2);
 	        	 	organizacion.validarOperacionesPendientes();
 	        	 	
 	        	 	System.out.println("Se terminaron de procesar las validaciones exitosamente!");
