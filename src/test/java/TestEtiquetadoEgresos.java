@@ -1,9 +1,12 @@
 import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
 
 import dominio.categoriaEntidad.CategoriaEntidad;
@@ -16,7 +19,7 @@ import junit.framework.Assert;
 
 
 @SuppressWarnings("deprecation")
-public class TestEtiquetadoEgresos {
+public class TestEtiquetadoEgresos extends AbstractPersistenceTest implements WithGlobalEntityManager {
 	
 	static List<String> etiquetas1;
 	static List<String> etiquetas2;
@@ -33,8 +36,8 @@ public class TestEtiquetadoEgresos {
 	
 	static Entidad entidad;
 	
-	@BeforeClass
-	public static void init() {
+	@Before
+	public void init() {
 		
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null,new CategoriaEntidad());
 		
@@ -65,9 +68,13 @@ public class TestEtiquetadoEgresos {
 		operacion3 = new OperacionEgreso(etiquetas3, fechaOp3, items3, null, 
 				null, null, null, null, null, null, entidad);
 		
-		RepositorioEgresos.getInstance().agregarEgreso(operacion1);
+		/* RepositorioEgresos.getInstance().agregarEgreso(operacion1);
 		RepositorioEgresos.getInstance().agregarEgreso(operacion2);
-		RepositorioEgresos.getInstance().agregarEgreso(operacion3);
+		RepositorioEgresos.getInstance().agregarEgreso(operacion3); */ 
+		
+		entityManager().persist(operacion1);
+		entityManager().persist(operacion2);
+		entityManager().persist(operacion3);
 	}
 	
 		@Test

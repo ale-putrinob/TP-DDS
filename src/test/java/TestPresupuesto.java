@@ -10,7 +10,7 @@ import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.usuario.Usuario;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
@@ -36,8 +36,8 @@ public class TestPresupuesto extends AbstractPersistenceTest implements WithGlob
 	static Item item1,item2,otroItem;
 	static EntidadJuridica entidad;
 	
-	@BeforeClass //Antes tardaba 13,722s, ahora 0.013s
-    public static void init(){
+	@Before //Antes tardaba 13,722s, ahora 0.013s
+    public void init(){
 		documento1 = new DocumentoComercial("Factura A",150);
 		documento2 = new DocumentoComercial("Factura",200);
 		List<String> etiquetas = new ArrayList<>();
@@ -60,35 +60,29 @@ public class TestPresupuesto extends AbstractPersistenceTest implements WithGlob
 		items.add(item1);
 		items.add(item2);
 		otrosItems.add(otroItem);
-
+		
+		entityManager().persist(operacion);
+		presupuesto = new Presupuesto(documentosComerciales,items,proveedor,null);
     }
     
 	@Test 
 	public void testCrearPresupuestoValido() {
-		entityManager().persist(operacion);
-		presupuesto = new Presupuesto(documentosComerciales,items,proveedor,null);
 		Assert.assertEquals(presupuesto.getProveedor(),proveedor);
 	}
    
     @Test(expected = PresupuestoException.class)
     public void testCrearPresupuestoInvalido() {
-    	entityManager().persist(operacion);
-		presupuesto = new Presupuesto(documentosComerciales,items,proveedor,null);
 	    presupuesto2 = new Presupuesto(documentosComerciales,otrosItems,proveedor,null);
     }
     
 	@Test 
 	public void testContieneMismosItemsYNoContieneOtros() {
-		entityManager().persist(operacion);
-		presupuesto = new Presupuesto(documentosComerciales,items,proveedor,null);
 		Assert.assertTrue(presupuesto.contieneItems(items));
 		Assert.assertFalse(presupuesto.contieneItems(otrosItems));
 	}
 	
     @Test
     public void testPresupuestoTotal() {
-    	entityManager().persist(operacion);
-		presupuesto = new Presupuesto(documentosComerciales,items,proveedor,null);
     	Assert.assertEquals(150, presupuesto.presupuestoTotal(),0);
 	} 
 }

@@ -80,8 +80,11 @@ public class TestOperacionEgreso extends AbstractPersistenceTest implements With
 		otraOperacion.agregarItem(new Item (200,"carne premium",null));
 		otraOperacion.agregarItem(new Item (200,"sopa premium", null));
 		
-		RepositorioEgresos.getInstance().agregarEgreso(operacion);
-		RepositorioEgresos.getInstance().agregarEgreso(otraOperacion);
+		/* RepositorioEgresos.getInstance().agregarEgreso(operacion);
+		RepositorioEgresos.getInstance().agregarEgreso(otraOperacion); */
+		
+		entityManager().persist(operacion);
+		entityManager().persist(otraOperacion);
 		
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor,null));
 		operacion.agregarPresupuesto(new Presupuesto(documentos,otrosItems,otroProveedor,null));

@@ -3,6 +3,7 @@ package dominio.organizacion;
 
 import java.util.stream.Stream;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public abstract class Entidad {
 	@GeneratedValue
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	protected CategoriaEntidad categoriaEntidad;
 	
 	

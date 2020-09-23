@@ -15,7 +15,7 @@ public class RepositorioEgresos implements WithGlobalEntityManager{
 	@SuppressWarnings("unchecked")
 	public List<OperacionEgreso> getEgresos(){
 		return entityManager()
-				.createQuery("from operacionegreso")
+				.createQuery("from OperacionEgreso")
 				.getResultList();
 	}
 
