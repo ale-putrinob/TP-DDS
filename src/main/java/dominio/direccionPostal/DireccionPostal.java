@@ -21,7 +21,7 @@ public class DireccionPostal {
         this.departamento = departamento;
         this.ciudad = ciudad.getName();
         this.provincia = ciudad.getState().getName();
-        this.pais = ciudad.getCountry().getName();
+      /*  this.pais = ciudad.getCountry().getName();*/
     };
 
     //Getters para TSTs

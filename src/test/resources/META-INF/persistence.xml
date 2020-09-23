@@ -23,7 +23,9 @@
         <class>dominio.presupuesto.Presupuesto</class>
         <class>dominio.medioDePago.MedioDePago</class>
         <class>dominio.categoriaEntidad.CategoriaEntidad</class>
-        
+        <class>dominio.repositorioApiML.Ciudad</class>
+        <class>dominio.repositorioApiML.Provincia</class>
+        <class>dominio.repositorioApiML.Pais</class>
         
 			<properties>
             <property name="hibernate.archive.autodetection" value="class"/>

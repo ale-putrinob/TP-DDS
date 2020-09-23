@@ -9,6 +9,9 @@ import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.EntidadJuridica;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
+import dominio.repositorioApiML.Ciudad;
+import dominio.repositorioApiML.Pais;
+import dominio.repositorioApiML.Provincia;
 import dominio.usuario.Usuario;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -24,6 +27,9 @@ public class TestPresupuesto {
 	static List<DocumentoComercial> documentosComerciales = new ArrayList<>();
 	static List<Item> items = new ArrayList<>();
 	static List<Item> otrosItems = new ArrayList<>();
+	static Ciudad ciudad;
+	static Provincia provincia;
+	static Pais pais;
 	static Proveedor proveedor; 
 	static Presupuesto presupuesto;
 	static Presupuesto presupuesto2;
@@ -45,8 +51,13 @@ public class TestPresupuesto {
 		item2 = new Item(50, "polenta", null);
 		otroItem = new Item(150, "arroz", null);
 		etiquetas.add("AMOBLAMIENTO");
-		
-		proveedor = new Proveedor("Juan","Juan SA",45678978,2045678889,1567);
+
+		pais = new Pais("UY", "Uruguay");
+		provincia = new Provincia("UY-RO", "Rocha", pais);
+		ciudad = new Ciudad("TUxVQ0NBQjY1MmQ1", "Cabo Polonio", provincia);
+
+		proveedor = new Proveedor("Juan","Juan SA",45678978,2045678889,"1567",
+								"Diego A. Maradona",1986 ,1 , 'A');
 		
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
 		

@@ -1,14 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import dominio.categoriaEntidad.BloquearNuevasEntidadesBase;
-import dominio.categoriaEntidad.BloquearNuevosEgresos;
-import dominio.categoriaEntidad.BloquearSerParteDeEntidadJuridica;
-import dominio.categoriaEntidad.CategoriaEntidad;
-import dominio.categoriaEntidad.Funcionalidad;
+import dominio.categoriaEntidad.*;
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.EntidadException;
@@ -25,6 +15,11 @@ import dominio.validacionEgresos.ValidacionCantidadPresupuestos;
 import dominio.validacionEgresos.ValidacionSeleccionProveedor;
 import dominio.validacionEgresos.ValidadorEgresos;
 import junit.framework.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class TestEntidades {
@@ -55,7 +50,7 @@ public class TestEntidades {
 		validador.agregarValidacion(new ValidacionCantidadPresupuestos());
 		validador.agregarValidacion(new ValidacionSeleccionProveedor());
 		etiquetas = new ArrayList<>();
-		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
+		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,"1567","Evita", 31, 2, 'A');
 		criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		otrosItems.add(new Item (200,"carne",null));
 		otrosItems.add(new Item (200,"sopa", null));

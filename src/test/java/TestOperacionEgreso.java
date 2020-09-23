@@ -56,7 +56,7 @@ public class TestOperacionEgreso {
 		validador.agregarValidacion(new ValidacionSeleccionProveedor());
 		etiquetas = new ArrayList<>();
 		documento = new DocumentoComercial("Factura", 5);
-		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,1567);
+		proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,"1567","Evita", 31, 2, 'A');
 		medioDePago = new MedioDePago(TiposDePago.TarjetaDeCredito, 1234567890);
 		criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
@@ -136,9 +136,9 @@ public class TestOperacionEgreso {
 	public void revisorRecibeTodosMensajesDeValidacionesPositivas() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se estï¿½ aplicando alguno de los presupuestos en la compra"));
 		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
+		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto segï¿½n el criterio elegido"));
 	}
 	
 	@Test

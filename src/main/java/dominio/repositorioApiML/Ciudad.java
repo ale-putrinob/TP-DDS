@@ -1,11 +1,31 @@
 package dominio.repositorioApiML;
 
+import javax.persistence.*;
+
+@Entity
 public class Ciudad {
+
+    @Id
+    @GeneratedValue
+    private Long id_ciudad;
+
     private String id;
     private String name;
-    private Provincia state;
-    private Pais country;
+    @ManyToOne
+    Provincia state;
+    @Transient
     private Object geoInformation;
+
+
+    public Ciudad (String id, String name, Provincia state) {
+        this.id = id;
+        this.name = name;
+        this.state = state;
+    };
+
+    public Long getIdCiudad() {
+        return id_ciudad;
+    }
 
     public String getId() {
         return id;
@@ -26,13 +46,6 @@ public class Ciudad {
     }
     public void setState(Provincia state) {
         this.state = state;
-    }
-
-    public Pais getCountry() {
-        return country;
-    }
-    public void setCountry(Pais country) {
-        this.country = country;
     }
 
     public Object getGeoInformation() {

@@ -45,7 +45,7 @@ public class Main {
 		Date fechaOp = new Date();
 		List<Item> items = new ArrayList<>();
 		DocumentoComercial documentoComercial = new DocumentoComercial("DNI", 43545454);
-		Proveedor proveedor = new Proveedor("carlosGardel", "peronia", 43523423, 2043523423, 1424);
+		Proveedor proveedor = new Proveedor("carlosGardel", "peronia", 43523423, 2043523423, "1424", "Evita",1945, 3, 'F');
 		MedioDePago medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		List<Presupuesto> presupuestos = new ArrayList<>();
 		List<Usuario> revisores = new ArrayList<>();
@@ -105,7 +105,7 @@ public class Main {
 	     };
 	     
 	     Timer timer = new Timer();
-	     // Dentro de 0 milisegundos avísame cada 10000 milisegundos
+	     // Dentro de 0 milisegundos avï¿½same cada 10000 milisegundos
 	     timer.scheduleAtFixedRate(timerTask, 0, 10000);
 	/*     timer.wait();  */
 	     Thread.sleep(600000);
