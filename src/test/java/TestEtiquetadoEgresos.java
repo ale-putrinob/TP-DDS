@@ -84,7 +84,7 @@ public class TestEtiquetadoEgresos extends AbstractPersistenceTest implements Wi
 		
 		@Test
 		public void gastosIndumentariaDeNoviembreDel2000Suman600() {
-			Assert.assertEquals(entidad.ReporteGastosMensuales("INDUMENTARIA",11,2000), 600,0);
+			Assert.assertEquals(entidad.ReporteGastosMensuales("INDUMENTARIA",11,2000), 1200,0);
 		}
 		
 		@Test

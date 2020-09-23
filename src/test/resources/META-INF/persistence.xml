@@ -21,6 +21,7 @@
         <class>dominio.presupuesto.Presupuesto</class>
         <class>dominio.medioDePago.MedioDePago</class>
         <class>dominio.categoriaEntidad.CategoriaEntidad</class>
+        <class>dominio.categoriaEntidad.Funcionalidad</class>
         
         
 			<properties>
