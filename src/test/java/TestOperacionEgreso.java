@@ -4,7 +4,6 @@ import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
-import dominio.mensajes.BandejaDeMensajes;
 import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
@@ -20,13 +19,15 @@ import dominio.validacionEgresos.ValidadorEgresos;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
-public class TestOperacionEgreso {
+public class TestOperacionEgreso extends AbstractPersistenceTest implements WithGlobalEntityManager {
 	List<String> etiquetas;
 	DocumentoComercial documento;
 	List<Item> items = new ArrayList<Item>();
@@ -40,13 +41,15 @@ public class TestOperacionEgreso {
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 
 	List<DocumentoComercial> documentos; 
-	BandejaDeMensajes bandejaDeMensajes = new BandejaDeMensajes();
+	List<Mensaje> bandejaDeMensajes = new ArrayList<>();
 	ValidadorEgresos validador = new ValidadorEgresos();
 	Mensaje mensaje1;
 	Mensaje mensaje2;
 	Mensaje mensaje3;
 	
 	Entidad entidad;
+	
+	Usuario juan;
 	
 	@SuppressWarnings("deprecation")
 	@Before
@@ -61,7 +64,8 @@ public class TestOperacionEgreso {
 		criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		medioDePago = new MedioDePago(TiposDePago.Efectivo, 200);
 		criterioDeSeleccionDeProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
-		revisores.add(new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes));
+		juan = new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes);
+		revisores.add(juan);
 		etiquetas.add("AMOBLAMIENTO");
 		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
 		operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, documento, 
@@ -136,9 +140,9 @@ public class TestOperacionEgreso {
 	public void revisorRecibeTodosMensajesDeValidacionesPositivas() {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
+		Assert.assertTrue(juan.tieneMensajeConEseContenido("Se está aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(juan.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
+		Assert.assertTrue(juan.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto según el criterio elegido"));
 	}
 	
 	@Test
@@ -146,6 +150,6 @@ public class TestOperacionEgreso {
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
-		Assert.assertTrue(bandejaDeMensajes.tieneMensajeConEseContenido("Cantidad incorrecta de presupuestos cargados"));
+		Assert.assertTrue(juan.tieneMensajeConEseContenido("Cantidad incorrecta de presupuestos cargados"));
 	}
 }

@@ -13,7 +13,7 @@ import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.EntidadException;
 import dominio.item.Item;
-import dominio.mensajes.BandejaDeMensajes;
+import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.organizacion.EntidadBase;
 import dominio.organizacion.EntidadJuridica;
@@ -38,7 +38,7 @@ public class TestEntidades {
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 
 	List<DocumentoComercial> documentos; 
-	BandejaDeMensajes bandejaDeMensajes = new BandejaDeMensajes();
+	List<Mensaje> bandejaDeMensajes = new ArrayList<>();
 	ValidadorEgresos validador = new ValidadorEgresos();
 	
 	EntidadJuridica entidadJuridica;

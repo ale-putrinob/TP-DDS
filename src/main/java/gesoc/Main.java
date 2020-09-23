@@ -6,7 +6,7 @@ import dominio.documentoComercial.DocumentoComercial;
 import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
-import dominio.mensajes.BandejaDeMensajes;
+import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
@@ -69,7 +69,8 @@ public class Main {
 		operacion2.setValidador(validador);
 		
 		/*usuarios*/
-		revisores.add(new Usuario("pepe","890754983gh",false,new BandejaDeMensajes()));
+		List<Mensaje> bandejaDeMensajes = new ArrayList<>();
+		revisores.add(new Usuario("pepe","890754983gh",false,bandejaDeMensajes));
 		
 		/*presupuestos*/
 		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));

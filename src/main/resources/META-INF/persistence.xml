@@ -8,6 +8,21 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
+        	<class>dominio.organizacion.Entidad</class>
+        	<class>dominio.organizacion.EntidadBase</class>
+        	<class>dominio.organizacion.EntidadJuridica</class>
+        	<class>dominio.mensajes.BandejaDeMensajes</class>
+        	<class>dominio.usuario.Usuario</class>
+       	 	<class>dominio.mensajes.Mensaje</class>
+     		<class>dominio.operacionDeEgreso.OperacionEgreso</class>
+        	<class>dominio.item.Item</class>
+        	<class>dominio.moneda.TipoMoneda</class>
+        	<class>dominio.documentoComercial.DocumentoComercial</class>
+        	<class>dominio.proveedor.Proveedor</class>
+        	<class>dominio.presupuesto.Presupuesto</class>
+        	<class>dominio.medioDePago.MedioDePago</class>
+        	<class>dominio.categoriaEntidad.CategoriaEntidad</class>
+        
         	<properties>
             <property name="hibernate.archive.autodetection" value="class"/>
 

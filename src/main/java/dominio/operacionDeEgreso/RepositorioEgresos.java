@@ -1,23 +1,23 @@
 package dominio.operacionDeEgreso;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RepositorioEgresos {
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
+public class RepositorioEgresos implements WithGlobalEntityManager{
 	
-	private List<OperacionEgreso> egresos = new ArrayList<>();	
 	private final static RepositorioEgresos INSTANCE = new RepositorioEgresos();
 	 
 	public static RepositorioEgresos getInstance() {
 		return INSTANCE;
-	}
+	}	
 	
+	@SuppressWarnings("unchecked")
 	public List<OperacionEgreso> getEgresos(){
-		return egresos;
+		return entityManager()
+				.createQuery("from operacionegreso")
+				.getResultList();
 	}
 
-	public void agregarEgreso(OperacionEgreso egreso) {
-		egresos.add(egreso);
-	}
 
 }
