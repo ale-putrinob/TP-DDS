@@ -19,5 +19,7 @@ public class RepositorioEgresos implements WithGlobalEntityManager{
 				.getResultList();
 	}
 
-
+	public void agregarEgreso(OperacionEgreso egreso) {
+		entityManager().persist(egreso);
+	}
 }

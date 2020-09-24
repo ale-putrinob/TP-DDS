@@ -44,14 +44,14 @@ public class OperacionEgreso {
 	@ManyToMany
 	List<Item> items = new ArrayList<>();
 	// moneda va a tener todos los campos del JSON
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	TipoMoneda moneda;
-	@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "documentoComercial_id")
 	DocumentoComercial documentoComercial;
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	Proveedor proveedor;
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	MedioDePago medioDePago;
 	@OneToMany
 	@JoinColumn(name = "operacionEgreso_id")
@@ -62,11 +62,11 @@ public class OperacionEgreso {
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
 	@Enumerated(EnumType.STRING)
 	EstadoEgreso estado = EstadoEgreso.SIN_VALIDAR;
-	@Transient
+	@ElementCollection
 	List<String> resultadosDeValidaciones = new ArrayList<>();
 	@Transient
 	ValidadorEgresos validador = new ValidadorEgresos();
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	Entidad entidad;
 	
 	// Seteamos valor de prueba
