@@ -1,5 +1,6 @@
 package dominio.repositorioApiML;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ public class Provincia {
 
     String id;
     String name;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     Pais country;
 
     public Provincia (String id, String name, Pais country) {

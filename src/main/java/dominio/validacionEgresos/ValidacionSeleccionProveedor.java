@@ -11,7 +11,7 @@ public class ValidacionSeleccionProveedor implements ValidacionEgreso {
 
 	@Override
 	public String mensajePositivo() {
-		return "Se ha seleccionado al proveedor correcto según el criterio elegido";
+		return "Se ha seleccionado al proveedor correcto segun el criterio elegido";
 	}
 
 	@Override

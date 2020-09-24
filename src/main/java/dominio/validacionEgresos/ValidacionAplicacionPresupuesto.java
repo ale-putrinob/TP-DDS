@@ -12,7 +12,7 @@ public class ValidacionAplicacionPresupuesto implements ValidacionEgreso {
 	@Override
 	public String mensajePositivo() {
 		// TODO Auto-generated method stub
-		return "Se está aplicando alguno de los presupuestos en la compra";
+		return "Se esta aplicando alguno de los presupuestos en la compra";
 	}
 
 	@Override

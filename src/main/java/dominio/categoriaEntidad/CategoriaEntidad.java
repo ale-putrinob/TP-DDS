@@ -7,7 +7,9 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import dominio.organizacion.Entidad;
@@ -20,7 +22,8 @@ public class CategoriaEntidad {
 	
 	String nombre;
 	
-	@ManyToMany
+	@OneToMany
+	@JoinColumn(name = "categoriaEntidad_id")
 	List<Funcionalidad> funcionalidades = new ArrayList<>();
 	
 	public void validarNuevosEgresos(Entidad entidad) {

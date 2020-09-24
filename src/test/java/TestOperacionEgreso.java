@@ -80,9 +80,6 @@ public class TestOperacionEgreso extends AbstractPersistenceTest implements With
 		otraOperacion.agregarItem(new Item (200,"carne premium",null));
 		otraOperacion.agregarItem(new Item (200,"sopa premium", null));
 		
-		/* RepositorioEgresos.getInstance().agregarEgreso(operacion);
-		RepositorioEgresos.getInstance().agregarEgreso(otraOperacion); */
-		
 		entityManager().persist(operacion);
 		entityManager().persist(otraOperacion);
 		
@@ -144,9 +141,9 @@ public class TestOperacionEgreso extends AbstractPersistenceTest implements With
 		operacion.agregarPresupuesto(new Presupuesto(documentos,items,proveedor,null));
 		operacion.validarse();
 
-		Assert.assertTrue(juan.tieneMensajeConEseContenido("Se est� aplicando alguno de los presupuestos en la compra"));
+		Assert.assertTrue(juan.tieneMensajeConEseContenido("Se esta aplicando alguno de los presupuestos en la compra"));
 		Assert.assertTrue(juan.tieneMensajeConEseContenido("Cantidad correcta de presupuestos cargados"));
-		Assert.assertTrue(juan.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto seg�n el criterio elegido"));
+		Assert.assertTrue(juan.tieneMensajeConEseContenido("Se ha seleccionado al proveedor correcto segun el criterio elegido"));
 	}
 	
 	@Test

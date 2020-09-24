@@ -21,6 +21,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -57,9 +58,9 @@ public class OperacionEgreso {
 	List<Presupuesto> presupuestos = new ArrayList<>();
 	@ManyToMany
 	List<Usuario> revisores;
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor;
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	EstadoEgreso estado = EstadoEgreso.SIN_VALIDAR;
 	@Transient
 	List<String> resultadosDeValidaciones = new ArrayList<>();

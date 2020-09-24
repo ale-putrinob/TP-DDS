@@ -3,6 +3,7 @@ package dominio.proveedor;
 import dominio.repositorioApiML.Ciudad;
 import dominio.repositorioApiML.MerLibAPI;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Proveedor {
 	int cuil;
 	/*agregarlo dps*/
 	//Desnormalizamos la dirección postal porque a un proveedor le pertenece una única dirección postal
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	Ciudad ciudad;
 	String calle;
 	int altura;
