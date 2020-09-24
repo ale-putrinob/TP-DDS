@@ -13,7 +13,7 @@ public class Mensaje {
 	
 	@Id
 	@GeneratedValue
-	private Long mensaje_id;
+	private Long id;
 	
 	
 	String contenido;

@@ -14,7 +14,7 @@ public class Item {
 	
 	@Id
 	@GeneratedValue
-	private Long item_id;
+	private Long id;
 	
 	double valorItem;
 	String tipo;
@@ -39,7 +39,7 @@ public class Item {
 		return tipo.equals(tipoItem);
 	}
 	public Long getId() {
-		return item_id;
+		return id;
 	}
 	public String getTipo() {
 		return tipo;

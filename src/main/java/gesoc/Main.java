@@ -41,7 +41,8 @@ public class Main implements WithGlobalEntityManager {
 		List<Usuario> usuarios = new ArrayList<>();
 		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso, usuarios);
 
-		Entidad entidad = new EntidadJuridica(null, 0, 0, null,0,null,new CategoriaEntidad());
+		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
+		Entidad entidad = new EntidadJuridica(null, 0, 0, null,0,null,categoria);
 		/* datos de la operacion */
 		List<String> etiquetas = new ArrayList<>();
 		Date fechaOp = new Date();

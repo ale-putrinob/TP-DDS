@@ -36,7 +36,7 @@ public class OperacionEgreso {
 	
 	@Id
 	@GeneratedValue
-	private Long operacionEgreso_id;
+	private Long id;
 	
 	@ElementCollection
 	List<String> etiquetas = new ArrayList<>(); 

@@ -10,7 +10,7 @@ public class TipoMoneda {
 	
     @Id
     @GeneratedValue
-    private Long id_moneda;
+    private Long id;
     
     String moneda_id; 
     String description;

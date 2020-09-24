@@ -15,7 +15,7 @@ public class Proveedor {
 	
 	@Id
 	@GeneratedValue
-	private Long proveedor_id;
+	private Long id;
 	
 	String nombreApellido;
 	String razonSocial;

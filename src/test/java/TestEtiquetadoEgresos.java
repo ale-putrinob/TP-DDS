@@ -7,12 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
-
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.item.Item;
 import dominio.operacionDeEgreso.OperacionEgreso;
-import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
 import dominio.organizacion.EntidadJuridica;
 import junit.framework.Assert;
@@ -39,7 +36,8 @@ public class TestEtiquetadoEgresos extends AbstractPersistenceTest implements Wi
 	@Before
 	public void init() {
 		
-		entidad = new EntidadJuridica(null, 0, 0, null, 0, null,new CategoriaEntidad());
+		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
+		entidad = new EntidadJuridica(null, 0, 0, null, 0, null,categoria);
 		
 		etiquetas1 = new ArrayList<>();
 		fechaOp1 = new Date(2000,10,15);

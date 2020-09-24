@@ -60,7 +60,8 @@ public class TestPresupuesto extends AbstractPersistenceTest implements WithGlob
 		proveedor = new Proveedor("Juan","Juan SA",45678978,2045678889,"1567",
 								"Diego A. Maradona",1986 ,1 , 'A');
 		
-		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
+		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
+		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, categoria);
 		
 		operacion = new OperacionEgreso(etiquetas, new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		

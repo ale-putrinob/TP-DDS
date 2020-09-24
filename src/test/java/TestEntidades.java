@@ -61,8 +61,8 @@ public class TestEntidades {
 		funcionalidad2 = new BloquearNuevosEgresos(0);
 		funcionalidad3 = new BloquearSerParteDeEntidadJuridica();
 		
-		categoria1 = new CategoriaEntidad();
-		categoria2 = new CategoriaEntidad();
+		categoria1 = new CategoriaEntidad("BlackFreedom");
+		categoria2 = new CategoriaEntidad("Wannabe");
 		
 		/*operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, null, 
 				proveedor, null, presupuestos, null, criterioDeSeleccionDeProveedor, null, entidadBase);*/

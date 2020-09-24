@@ -23,7 +23,7 @@ public class Presupuesto {
 	
 	@Id
 	@GeneratedValue
-	private Long presupuesto_id;
+	private Long id;
 	
 	@OneToMany
 	@JoinColumn(name = "presupuesto_id")

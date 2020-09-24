@@ -6,7 +6,6 @@ import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
 import dominio.mensajes.Mensaje;
 import dominio.operacionDeEgreso.OperacionEgreso;
-import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
 import dominio.organizacion.EntidadJuridica;
 import dominio.presupuesto.Presupuesto;
@@ -67,7 +66,8 @@ public class TestOperacionEgreso extends AbstractPersistenceTest implements With
 		juan = new Usuario("Juan", "PasswordSegura",false, bandejaDeMensajes);
 		revisores.add(juan);
 		etiquetas.add("AMOBLAMIENTO");
-		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, new CategoriaEntidad());
+		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
+		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, categoria);
 		operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, documento, 
 				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
