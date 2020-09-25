@@ -1,5 +1,6 @@
 package dominio.categoriaEntidad;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ import dominio.organizacion.Entidad;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipoValidacion")
 public abstract class Funcionalidad {
 	@Id
 	@GeneratedValue
