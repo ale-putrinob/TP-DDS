@@ -1,15 +1,10 @@
 package dominio.documentoComercial;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import dominio.persistentEntity.PersistentEntity;
 
 @Entity
-public class DocumentoComercial {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+public class DocumentoComercial extends PersistentEntity{
 	
 	String tipo;
 	int numero;

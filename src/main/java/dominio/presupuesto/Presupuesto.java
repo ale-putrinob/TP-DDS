@@ -4,6 +4,7 @@ import dominio.documentoComercial.DocumentoComercial;
 import dominio.excepcion.PresupuestoException;
 import dominio.item.Item;
 import dominio.moneda.TipoMoneda;
+import dominio.persistentEntity.PersistentEntity;
 import dominio.proveedor.Proveedor;
 import dominio.repositorioApiML.MerLibAPI;
 
@@ -11,19 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Presupuesto {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Presupuesto extends PersistentEntity{
 	
 	@OneToMany
 	@JoinColumn(name = "presupuesto_id")

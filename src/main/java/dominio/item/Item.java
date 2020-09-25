@@ -1,21 +1,16 @@
 package dominio.item;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import dominio.moneda.TipoMoneda;
 import dominio.operacionDeEgreso.RepositorioEgresos;
+import dominio.persistentEntity.PersistentEntity;
 import dominio.repositorioApiML.MerLibAPI;
 
 @Entity
-public class Item {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
-	
+public class Item extends PersistentEntity{
+		
 	double valorItem;
 	String tipo;
 	@ManyToOne

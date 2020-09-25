@@ -5,22 +5,17 @@ import java.util.stream.Stream;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
+import dominio.persistentEntity.PersistentEntity;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Entidad {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+public abstract class Entidad extends PersistentEntity{
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST})
 	protected CategoriaEntidad categoriaEntidad;

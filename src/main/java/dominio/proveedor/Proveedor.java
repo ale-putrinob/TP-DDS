@@ -1,21 +1,16 @@
 package dominio.proveedor;
 
+import dominio.persistentEntity.PersistentEntity;
 import dominio.repositorioApiML.Ciudad;
 import dominio.repositorioApiML.MerLibAPI;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 
 @Entity
-public class Proveedor {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Proveedor extends PersistentEntity{
 	
 	String nombreApellido;
 	String razonSocial;

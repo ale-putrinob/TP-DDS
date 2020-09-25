@@ -4,19 +4,18 @@ package dominio.medioDePago;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
-import javax.persistence.Id;
+
+import dominio.persistentEntity.PersistentEntity;
 
 @Entity
-public class MedioDePago {
+public class MedioDePago extends PersistentEntity{
 	
-	@Id
-	int id;
-	/*agregarlo despues*/
 	@Enumerated
 	TiposDePago tipo;
-
+	int identificador;
+	
     public MedioDePago(TiposDePago tipo, int identificador) {
         this.tipo = tipo;
-        this.id = identificador;
+        this.identificador = identificador;
     }
 }

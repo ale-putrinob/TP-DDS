@@ -7,6 +7,7 @@ import dominio.medioDePago.MedioDePago;
 import dominio.mensajes.Mensaje;
 import dominio.moneda.TipoMoneda;
 import dominio.organizacion.Entidad;
+import dominio.persistentEntity.PersistentEntity;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.repositorioApiML.MerLibAPI;
@@ -23,8 +24,6 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -32,11 +31,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class OperacionEgreso {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+public class OperacionEgreso extends PersistentEntity{
 	
 	@ElementCollection
 	List<String> etiquetas = new ArrayList<>(); 

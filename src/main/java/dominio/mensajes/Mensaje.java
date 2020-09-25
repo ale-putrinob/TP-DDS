@@ -1,21 +1,15 @@
 package dominio.mensajes;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.persistentEntity.PersistentEntity;
 
 @Entity
-public class Mensaje {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
-	
-	
+public class Mensaje extends PersistentEntity{
+			
 	String contenido;
 	@ManyToOne
 	OperacionEgreso operacionEgreso;

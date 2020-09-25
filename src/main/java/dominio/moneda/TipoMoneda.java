@@ -2,16 +2,11 @@ package dominio.moneda;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import dominio.persistentEntity.PersistentEntity;
 
 @Entity
-public class TipoMoneda {
+public class TipoMoneda extends PersistentEntity{
 	
-    @Id
-    @GeneratedValue
-    private Long id;
-    
     String moneda_id; 
     String description;
     String symbol;

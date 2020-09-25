@@ -3,22 +3,17 @@ package dominio.usuario;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.annotations.Type;
 
 import dominio.mensajes.Mensaje;
+import dominio.persistentEntity.PersistentEntity;
 import dominio.validacionPassword.ValidadorPassword;
 
 
 @Entity
-public class Usuario {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
+public class Usuario extends PersistentEntity{
 	
 	String nombreUsuario;
 	String password;
