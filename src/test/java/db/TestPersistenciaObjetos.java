@@ -3,6 +3,7 @@ package db;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
@@ -13,10 +14,14 @@ public class TestPersistenciaObjetos extends AbstractPersistenceTest implements 
 	Item item1=new Item(100, "carne", null);
 	Item item2=new Item(50, "polenta",null);
 	
+	@Before
+	public void init() {
+	entityManager().persist(item1);
+	entityManager().persist(item2); 
+	}
+	
 	@Test 
 	public void Test() {
-		entityManager().persist(item1);
-		entityManager().persist(item2); 
 		
 		Item item1DesdeBD = entityManager().find(Item.class, new Long(1));
 		Item item2DesdeBD = entityManager().find(Item.class, new Long(2));

@@ -30,12 +30,17 @@ public class TestPersistencia extends AbstractPersistenceTest implements WithGlo
 		categoria = new CategoriaEntidad("BlackFreedom");
 		entidadJuridica=new EntidadJuridica("MySKL", 31,91218,"1425",1, Tipo.EmpresaMedianaTramo1, categoria);
 		entidadBase = new EntidadBase("DDS","Curso de 3º anio de Ing. en Sistemas",entidadJuridica,categoria);
-	}
-	//EntidadBase entidadBase=new EntidadBase("DDS","Curso de 3º anio de Ing. en Sistemas",entidadJuridica,null);
-	@Test 
-	public void TestItem() {
+	
 		entityManager().persist(item1);
 		entityManager().persist(item2);
+	
+		entityManager().persist(entidadJuridica);
+		entityManager().persist(entidadBase);
+	}
+	//EntidadBase entidadBase=new EntidadBase("DDS","Curso de 3º anio de Ing. en Sistemas",entidadJuridica,null);
+	
+	@Test 
+	public void TestItem() {
 		
 		assertNotEquals(item1.getId(), item2.getId());
 	}
@@ -43,7 +48,6 @@ public class TestPersistencia extends AbstractPersistenceTest implements WithGlo
 	public void TestEntidad() {
 		//entidadBase=new EntidadBase("DDS","Curso de 3º anio de Ing. en Sistemas",entidadJuridica,null);
 		//entityManager().persist(entidadBase);
-		entityManager().persist(entidadJuridica);
 		Entidad entidadBD=entityManager().find(Entidad.class, new Long(1));
 		assertEquals(entidadBD, entidadJuridica);
 		assertNotNull(entidadBD);
@@ -53,7 +57,6 @@ public class TestPersistencia extends AbstractPersistenceTest implements WithGlo
 	public void TestEntidadBase() {
 		//entidadBase=new EntidadBase("DDS","Curso de 3º anio de Ing. en Sistemas",entidadJuridica,null);
 		//entityManager().persist(entidadBase);
-		entityManager().persist(entidadBase);
 		Entidad entidadBD=entityManager().find(Entidad.class, new Long(2));
 		assertEquals(entidadBD, entidadBase);
 		assertNotNull(entidadBD);
