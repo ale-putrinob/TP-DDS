@@ -22,7 +22,7 @@ public abstract class Entidad {
 	@GeneratedValue
 	private Long id;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	protected CategoriaEntidad categoriaEntidad;
 	
 	

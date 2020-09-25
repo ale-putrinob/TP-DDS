@@ -23,7 +23,7 @@ public class Proveedor {
 	int cuil;
 	/*agregarlo dps*/
 	//Desnormalizamos la dirección postal porque a un proveedor le pertenece una única dirección postal
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.PERSIST})
 	Ciudad ciudad;
 	String calle;
 	int altura;

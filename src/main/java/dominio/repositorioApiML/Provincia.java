@@ -15,7 +15,7 @@ public class Provincia {
 
     String id;
     String name;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     Pais country;
 
     public Provincia (String id, String name, Pais country) {

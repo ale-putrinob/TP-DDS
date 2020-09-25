@@ -11,7 +11,7 @@ public class Ciudad {
 
     private String id;
     private String name;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     Provincia state;
     @Transient
     private Object geoInformation;
