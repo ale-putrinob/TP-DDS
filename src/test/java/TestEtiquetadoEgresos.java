@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Before;
 import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.item.Item;
@@ -75,21 +76,26 @@ public class TestEtiquetadoEgresos extends AbstractPersistenceTest implements Wi
 		entityManager().persist(operacion3);
 	}
 	
-		@Test
-		public void gastosAmoblamientoDeOctubreDel2000Suman1200() {
-			Assert.assertEquals(entidad.ReporteGastosMensuales("AMOBLAMIENTO",10,2000), 1200,0);
-		}
-		
-		@Test
-		public void gastosIndumentariaDeNoviembreDel2000Suman600() {
-			Assert.assertEquals(entidad.ReporteGastosMensuales("INDUMENTARIA",11,2000), 1200,0);
-		}
-		
-		@Test
-		public void gastosProveedorDeDiciembreDel2000Suman0() {
-			Assert.assertEquals(entidad.ReporteGastosMensuales("PROVEEDOR",12,2000), 0,0);
-		}
-		
-		
+	@After
+	public void cleanup() {
+		entityManager().remove(operacion1);
+		entityManager().remove(operacion2);
+		entityManager().remove(operacion3);
+		entityManager().remove(entidad);
+	}
 	
+	@Test
+	public void gastosAmoblamientoDeOctubreDel2000Suman1200() {
+		Assert.assertEquals(entidad.ReporteGastosMensuales("AMOBLAMIENTO",10,2000), 1200,0);
+	}
+	
+	@Test
+	public void gastosIndumentariaDeNoviembreDel2000Suman600() {
+		Assert.assertEquals(entidad.ReporteGastosMensuales("INDUMENTARIA",11,2000), 1200,0);
+	}
+	
+	@Test
+	public void gastosProveedorDeDiciembreDel2000Suman0() {
+		Assert.assertEquals(entidad.ReporteGastosMensuales("PROVEEDOR",12,2000), 0,0);
+	}
 }

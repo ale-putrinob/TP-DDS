@@ -2,7 +2,6 @@ package db;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,8 +10,6 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.test.AbstractPersistenceTest;
 
 import dominio.categoriaEntidad.CategoriaEntidad;
-import dominio.item.Item;
-import dominio.organizacion.Entidad;
 import dominio.organizacion.EntidadBase;
 import dominio.organizacion.EntidadJuridica;
 import dominio.organizacion.Tipo;
@@ -34,16 +31,12 @@ public class TestPersistenciaEntidades extends AbstractPersistenceTest implement
 	
 	@After
 	public void cleanup() {
-	    
-		EntidadJuridica entidadBD1 = entityManager().find(EntidadJuridica.class, new Long(1));
-		EntidadBase entidadBD2 = entityManager().find(EntidadBase.class, new Long(2));
-		
-		entityManager().remove(entidadBD1);
-		entityManager().remove(entidadBD2);
+		entityManager().remove(entidadJuridica);
+		entityManager().remove(entidadBase);
 	}
 	
 	@Test
-	public void Test() {
+	public void TestEntidades() {
 
 		EntidadJuridica entidadBD1 = entityManager().find(EntidadJuridica.class, new Long(1));
 		assertEquals(entidadJuridica, entidadBD1);
