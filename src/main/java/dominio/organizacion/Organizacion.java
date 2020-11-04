@@ -16,8 +16,8 @@ public class Organizacion {
 	public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso, List<Usuario> usuarios) {
 		this.entidades = entidades;
 		this.usuarios = usuarios;
-	}
-
+	} 
+	
 	public void validarOperacionesPendientes() {
 		this.operacionesEgresoPendientesDeValidacion().forEach(operacion -> operacion.validarse());
 	}
