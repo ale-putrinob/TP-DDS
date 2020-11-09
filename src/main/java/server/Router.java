@@ -1,18 +1,16 @@
 package server;
 
-import controllers.HomeController;
+import controllers.ControllerHome;
+import controllers.ControllerSearchEntity;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Router {
 	public static void configure() {
-		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
-		Spark.staticFiles.location("/public");
+		HandlebarsTemplateEngine transformer = 
+				new HandlebarsTemplateEngine();
 		
-
-		HomeController homeController=new HomeController();
-		
-		//Home 
-		Spark.get("/", homeController::pantallaPrincipal, engine);
+		Spark.get("/", ControllerHome::home, transformer);		
+		Spark.get("/buscarEntidades", ControllerSearchEntity::buscarEntidades, transformer);
 	}
 }
