@@ -49,4 +49,8 @@ public class Usuario extends PersistentEntity{
 	public List<Mensaje> getMensajes(){
 		return this.bandejaDeMensajes;
 	}
+	
+	public Boolean matchea(String unUsuario, String unaPassword) {
+		return (nombreUsuario.equals(unUsuario)) && (DigestUtils.md5Hex(unaPassword).equals(password));
+	}
 }

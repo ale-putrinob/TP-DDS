@@ -14,6 +14,7 @@ import dominio.organizacion.EntidadJuridica;
 import dominio.organizacion.Organizacion;
 import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
+import dominio.usuario.RepoUsuarios;
 import dominio.usuario.Usuario;
 import dominio.validacionEgresos.ValidacionAplicacionPresupuesto;
 import dominio.validacionEgresos.ValidacionCantidadPresupuestos;
@@ -23,6 +24,7 @@ import dominio.validacionEgresos.ValidadorEgresos;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -31,19 +33,35 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 public class Main implements WithGlobalEntityManager {
 
 	public void main(String[] args) throws InterruptedException {
+		/*
+		String nombre;
+		String password;
+		Scanner teclado = new Scanner(System.in);
+		
+		System.out.print("Ingrese nombre de usuario");
+		nombre = teclado.nextLine();
+		System.out.print("Ingrese contrasenia");
+		password = teclado.nextLine();
+		System.out.println("Nombre: " + nombre + ", contrasenia:" + password);
+		
+		Usuario admin = new Usuario(nombre, password, true, new ArrayList<Mensaje>());
+		RepoUsuarios.getInstance().agregarUsuario(admin);
+		*/
+		
+		
 		System.out.println(" - Bienvenido a GeSoc - ");
 		System.out.println("Gestion de Proyectos Sociales");
 		System.out.println("");
 
-		/* datos de la organizacion */
+		// datos de la organizacion 
 		List<Entidad> entidades = new ArrayList<>();
 		List<OperacionEgreso> operacionesEgreso = new ArrayList<>();
 		List<Usuario> usuarios = new ArrayList<>();
-		Organizacion organizacion = new Organizacion(entidades, operacionesEgreso, usuarios);
+		Organizacion organizacion = new Organizacion();
 
 		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
 		Entidad entidad = new EntidadJuridica(null, 0, 0, null,0,null,categoria);
-		/* datos de la operacion */
+		// datos de la operacion 
 		List<String> etiquetas = new ArrayList<>();
 		Date fechaOp = new Date();
 		List<Item> items = new ArrayList<>();
@@ -62,7 +80,7 @@ public class Main implements WithGlobalEntityManager {
 		OperacionEgreso operacion2 = new OperacionEgreso(etiquetas, fechaOp
 				,items, documentoComercial, proveedor,medioDePago, presupuestos2, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		
-		/*validaciones*/
+		//validaciones
 		ValidadorEgresos validador = new ValidadorEgresos();
 		validador.agregarValidacion(new ValidacionAplicacionPresupuesto());
 		validador.agregarValidacion(new ValidacionCantidadPresupuestos());
@@ -71,11 +89,11 @@ public class Main implements WithGlobalEntityManager {
 		operacion1.setValidador(validador);
 		operacion2.setValidador(validador);
 		
-		/*usuarios*/
+		//usuarios
 		List<Mensaje> bandejaDeMensajes = new ArrayList<>();
 		revisores.add(new Usuario("pepe","890754983gh",false,bandejaDeMensajes));
 		
-		/*presupuestos*/
+		//presupuestos
 		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
 		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
 		operacion1.agregarPresupuesto(new Presupuesto(new ArrayList<DocumentoComercial>(),items,proveedor,null));
@@ -111,11 +129,12 @@ public class Main implements WithGlobalEntityManager {
 	     Timer timer = new Timer();
 	     // Dentro de 0 milisegundos av�same cada 10000 milisegundos
 	     timer.scheduleAtFixedRate(timerTask, 0, 10000);
-	/*     timer.wait();  */
+	//     timer.wait();  
 	     Thread.sleep(600000);
 	     
 		System.out.println("");
 		System.out.println(" - Fin del procesamiento - ");
+	
 	}
 
 }

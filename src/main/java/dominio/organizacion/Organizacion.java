@@ -2,21 +2,22 @@ package dominio.organizacion;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
-import dominio.usuario.Usuario;
-
-import java.util.ArrayList;
 
 public class Organizacion {
 	
-	List<Entidad> entidades = new ArrayList<>();
-	List<Usuario> usuarios = new ArrayList<>();
+	//List<Entidad> entidades = new ArrayList<>();
+	//List<Usuario> usuarios = new ArrayList<>();
 
-	public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso, List<Usuario> usuarios) {
+	/*public Organizacion(List<Entidad> entidades, List<OperacionEgreso> operacionesEgreso, List<Usuario> usuarios) {
 		this.entidades = entidades;
 		this.usuarios = usuarios;
-	} 
+	}*/
+	public Organizacion() {
+	}
+	
 	
 	public void validarOperacionesPendientes() {
 		this.operacionesEgresoPendientesDeValidacion().forEach(operacion -> operacion.validarse());
