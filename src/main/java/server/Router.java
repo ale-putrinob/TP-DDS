@@ -3,6 +3,7 @@ package server;
 import org.apache.commons.lang3.StringUtils;
 
 import controllers.ControllerCategoria;
+import controllers.ControllerCrearEntidad;
 import controllers.ControllerHome;
 import controllers.ControllerLogin;
 import controllers.ControllerSearchEntity;
@@ -26,6 +27,8 @@ public class Router {
 		Spark.get("/buscarEntidades", ControllerSearchEntity::buscarEntidades, transformer);
 		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
 		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);
+		Spark.get("/entidad/new",ControllerCrearEntidad::show,transformer);
+		Spark.post("/entidad/new",ControllerCrearEntidad::crear,transformer);
 		
 	}
 }
