@@ -1,5 +1,6 @@
 package server;
 
+import controllers.ControllerCategoria;
 import controllers.ControllerHome;
 import controllers.ControllerSearchEntity;
 import spark.Spark;
@@ -12,5 +13,8 @@ public class Router {
 		
 		Spark.get("/", ControllerHome::home, transformer);		
 		Spark.get("/buscarEntidades", ControllerSearchEntity::buscarEntidades, transformer);
+		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
+		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);
+		
 	}
 }
