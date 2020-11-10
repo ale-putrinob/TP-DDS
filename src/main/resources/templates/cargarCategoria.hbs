@@ -1,0 +1,40 @@
+{{#partial "contenido"}}
+<html>
+<head>
+  <title>Crear Categoría</title>
+  	<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/main.css">
+</head>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/home">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">Categoría / Crear categoría</li>
+  </ol>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Crear categoría</h1>
+
+      	<form action="/categoria/crearCategoria" method = "post">
+        
+        <div class="form-group">
+            <label>Nombre</label>
+            <input class="form-control" name="nombre" id="nombre" placeholder="Ingrese nombre de categoria">
+        </div>
+        <div><input type="checkbox" name="bloqueo1"> Bloquear nuevas entidades bases</div>
+		<div><input type="checkbox" name="bloqueo2"> Bloquear nuevos egresos</div>
+		<div><input type="checkbox" name="bloqueo3"> Bloquear ser partes de entidad jurídica</div>
+        <br><br>
+
+		<input class="btn btn-primary" type="button" value="Guardar">
+		<input class="btn btn-outline-primary" type="button" value="Cancelar">
+		
+        <br>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+
+{{/partial}}
+{{>layout.hbs}}

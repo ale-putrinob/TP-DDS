@@ -2,6 +2,7 @@ package server;
 
 import org.apache.commons.lang3.StringUtils;
 
+import controllers.ControllerCategoria;
 import controllers.ControllerHome;
 import controllers.ControllerLogin;
 import controllers.ControllerSearchEntity;
@@ -23,5 +24,8 @@ public class Router {
 		Spark.post("/", ControllerLogin::login, transformer);
 		Spark.get("/home", ControllerHome::home, transformer);		
 		Spark.get("/buscarEntidades", ControllerSearchEntity::buscarEntidades, transformer);
+		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
+		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);
+		
 	}
 }
