@@ -1,0 +1,39 @@
+{{#partial "contenido"}}
+<html>
+	<head>
+		<title>Cargar Operacion de Egreso - Cargar Items </title>
+	</head>
+	<ol class="breadcrumb">
+    	<li class="breadcrumb-item">
+      		<a routerLink="/home">Inicio</a>
+    	</li>
+    	<li class="breadcrumb-item active">Operacion de Egreso / Cargar Operacion / Paso 2</li>
+  	</ol>
+	<body>
+		<header>
+			<h2> Cargar Operacion de Egreso - Cargar items </h2>			
+		</header><br><br>
+		<section>
+			<div>
+				Item &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input type = "number" name = "Valor" placeholder = "Ingresar valor">&nbsp&nbsp&nbsp&nbsp
+				<input type = "text" name = "Tipo" placeholder = "Ingresar tipo">&nbsp&nbsp&nbsp&nbsp
+				<select name = "Moneda">
+   						<option selected value="0"> Elige una opcion </option>
+       						<option value="1"></option>
+   						</optgroup> 
+				</select>&nbsp&nbsp&nbsp&nbsp
+				<input type = "submit" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
+			</div><br>
+			<div> <br><br>
+				<a href="/home">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input type = "submit" id = "siguiente" value = "Siguiente" class="btn btn-primary">
+			</div>
+		</section>
+	</body>
+  
+	
+</html>
+
+{{/partial}}
+{{>layout.hbs}}
