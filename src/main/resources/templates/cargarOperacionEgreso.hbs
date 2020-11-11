@@ -14,6 +14,7 @@
 			<h2> Cargar Operacion de Egreso </h2>			
 		</header>
 		<section>
+		<form method="POST" action="/operacionDeEgreso/new">
 			<div>
 				Fecha &nbsp&nbsp
 				<input type = "date" name = "Fecha" placeholder = "Ingresar fecha">			
@@ -28,8 +29,8 @@
 			</div><br>
 			<div>
 				Medio De Pago &nbsp&nbsp
-				<input type = "number" id = "Identificador" placeholder = "Ingresar ID">&nbsp&nbsp
-				<select name="Tipo de pago">
+				<input type = "number" name = "Identificador" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID">&nbsp&nbsp
+				<select name = "Tipo de pago">
    						<option selected value="0"> Elige una opcion </option>
        						<option value="1">Tarjeta de credito</option>
        						<option value="2">Tarjeta de debito</option>
@@ -41,8 +42,8 @@
 			</div><br>
 			<div>
 				Documento comercial &nbsp&nbsp
-				<input type = "text" id = "Tipo" placeholder = "Ingresar ID">&nbsp&nbsp	
-				<input type = "number" id = "Numero" placeholder = "Ingresar ID">&nbsp&nbsp	
+				<input type = "text" id = "Tipo" placeholder = "Ingresar tipo" >&nbsp&nbsp	
+				<input type = "number" id = "Numero" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID">&nbsp&nbsp	
 			</div><br>
 			<div>
 			Proveedor &nbsp&nbsp
@@ -55,9 +56,10 @@
 				</select>		
 			</div>
 			<div> <br>
-				<input type = "button" id = "cancelar" value = "Cancelar">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				<input type = "button" id = "siguiente" value = "Siguiente">
+				<a href="/home">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input type = "submit" id = "siguiente" value = "Siguiente" class="btn btn-primary">
 			</div>
+		</form>
 		</section>
 	</body>
 	
