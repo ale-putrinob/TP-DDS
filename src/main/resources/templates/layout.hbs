@@ -1,36 +1,51 @@
 <html>
 <head>
-  <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet"  href="/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/main.css">
 </head>
 <body>
 
-
 <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand"href="/home">GeSoc</a>
-      </div>
-      <div>
-        <ul class="nav navbar-nav">
-          <li><a href="/operacionDeEgreso">Operación de Egreso</a></li>
-          <li><a href="/entidades">Entidades</a></li>
-          <li><a href="/bandejaDeMensajes">Bandeja de Mensajes</a></li>
-          <li><a href="/categoria">Categoría</a></li>          
-        </ul>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home"><img src="logo.png"></a>
     </div>
-  </nav>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/operacionDeEgreso">Operación de Egreso</a>
+          <ul class="dropdown-menu">
+            <li><a href="/operacionDeEgreso/show">Ver Operaciones de Egreso</a></li>
+            <li><a href="/operacionDeEgreso/new">Cargar Operación de Egreso</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/operacionDeEgreso">Entidades</a>
+          <ul class="dropdown-menu">
+            <li><a href="/entidad/new">Crear entidad</a></li>
+            <li><a href="/entidad/search">Buscar entidades</a></li>
+          </ul>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="/operacionDeEgreso">Categoría</a>
+          <ul class="dropdown-menu">
+            <li><a href="/categoria">Cargar categoría</a></li>
+            <li><a href="/categoria/asociarEntidad">Asociar categoría con entidad</a></li>
+          </ul>
+        <li><a href="/bandejaDeMensajes">Bandeja de Mensajes</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="container">
 	{{#block "contenido"}}
 	{{/block}}
 </div>
-
-<footer class="footer">
-    <p class="text-center">
-      <center>&copy; 2020 Desarrollado por Grupo4</center>
-    </p>
-</footer>
+<div>
+{{#block "footer"}}
+{{/block}}
+</div>
 </body>
 </html>
