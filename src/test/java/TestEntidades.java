@@ -71,34 +71,34 @@ public class TestEntidades {
 	@Test(expected = EntidadException.class)
 	public void seBloqueanNuevasEntidadesBase() {
 		categoria1.agregarFuncionalidad(funcionalidad1);
-		entidadJuridica = new EntidadJuridica(null, 0, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
+		entidadJuridica = new EntidadJuridica(null, null, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
 		entidadBase = new EntidadBase(null, null, entidadJuridica, categoria2);
 	}
 	
 	@Test(expected = EntidadException.class)
 	public void seBloqueaSerParteDeEntidadJuridica() {
 		categoria2.agregarFuncionalidad(funcionalidad3);
-		entidadJuridica = new EntidadJuridica(null, 0, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
+		entidadJuridica = new EntidadJuridica(null, null, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
 		entidadBase = new EntidadBase(null, null, entidadJuridica, categoria2);
 	}
 	
 	@Test(expected = EntidadException.class)
 	public void seBloqueanNuevosEgresos() {
 		categoria1.agregarFuncionalidad(funcionalidad2);
-		entidadJuridica = new EntidadJuridica(null, 0, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
+		entidadJuridica = new EntidadJuridica(null, null, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
 		operacion = new OperacionEgreso(null, null, items, null, null, null, null, null, null, null, entidadJuridica);
 	}
 	
 	@Test
 	public void noSeBloqueanNuevasEntidadesBase() {
-		entidadJuridica = new EntidadJuridica(null, 0, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
+		entidadJuridica = new EntidadJuridica(null, null, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
 		entidadBase = new EntidadBase(null, null, entidadJuridica, categoria2);
 		Assert.assertEquals(entidadBase.getDependencia(), entidadJuridica);
 	}
 	
 	@Test
 	public void noSeBloqueanNuevosEgresos() {
-		entidadJuridica = new EntidadJuridica(null, 0, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
+		entidadJuridica = new EntidadJuridica(null, null, 0, null, 0, Tipo.EmpresaPequenia, categoria1);
 		operacion = new OperacionEgreso(null, null, items, null, null, null, null, null, null, null, entidadJuridica);
 		Assert.assertEquals(operacion.getEntidad(), entidadJuridica);
 	}

@@ -22,7 +22,7 @@ public class TestPersistenciaEntidades extends AbstractPersistenceTest implement
 	@Before
 	public void init() {
 		categoria = new CategoriaEntidad("BlackFreedom");
-		entidadJuridica = new EntidadJuridica("MySKL", 31,91218,"1425",1, Tipo.EmpresaMedianaTramo1, categoria);
+		entidadJuridica = new EntidadJuridica("MySKL", "Boca",91218,"1425",1, Tipo.EmpresaMedianaTramo1, categoria);
 		entidadBase = new EntidadBase("DDS","Curso de 3er anio de Ing. en Sistemas",entidadJuridica,categoria);
 		
 		entityManager().persist(entidadJuridica);

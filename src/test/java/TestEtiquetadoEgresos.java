@@ -38,7 +38,7 @@ public class TestEtiquetadoEgresos extends AbstractPersistenceTest implements Wi
 	public void init() {
 		
 		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
-		entidad = new EntidadJuridica(null, 0, 0, null, 0, null,categoria);
+		entidad = new EntidadJuridica(null, null, 0, null, 0, null,categoria);
 		
 		etiquetas1 = new ArrayList<>();
 		fechaOp1 = new Date(2000,10,15);

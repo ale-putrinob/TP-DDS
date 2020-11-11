@@ -61,7 +61,7 @@ public class TestPresupuesto extends AbstractPersistenceTest implements WithGlob
 								"Diego A. Maradona",1986 ,1 , 'A');
 		
 		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
-		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, categoria);
+		entidad = new EntidadJuridica(null, null, 0, null, 0, null, categoria);
 		
 		operacion = new OperacionEgreso(etiquetas, new Date(), items, documento1, proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		

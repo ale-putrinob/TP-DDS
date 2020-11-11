@@ -67,7 +67,7 @@ public class TestOperacionEgreso extends AbstractPersistenceTest implements With
 		revisores.add(juan);
 		etiquetas.add("AMOBLAMIENTO");
 		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
-		entidad = new EntidadJuridica(null, 0, 0, null, 0, null, categoria);
+		entidad = new EntidadJuridica(null, null, 0, null, 0, null, categoria);
 		operacion = new OperacionEgreso(etiquetas, new Date(2000,13,05), items, documento, 
 				proveedor, medioDePago, presupuestos, revisores, criterioDeSeleccionDeProveedor, null, entidad);
 		

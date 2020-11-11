@@ -1,0 +1,21 @@
+{{#partial "contenido"}}
+	<section>
+		<form method="POST" action="/entidad/new">
+		<center> <div class = "w3-container">
+			<h2> Cargar Entidad </h2>
+			
+			<select name="Clase">
+   				<option selected value="0"> Elige una opcion </option>
+       				<option value="1">Juridica</option> 
+       				<option value="2">Base</option> 
+   				</optgroup> 
+			</select>
+			
+			<br> <input type = "submit" class="btn btn-primary" value="Siguiente"/> <br> <br>
+		</div> </center>
+		</form>
+	</section>
+
+{{/partial}}
+
+{{>layout.hbs}}

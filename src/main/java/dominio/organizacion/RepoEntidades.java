@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
+@SuppressWarnings("unchecked")
 public class RepoEntidades implements WithGlobalEntityManager{
 	private final static RepoEntidades INSTANCE = new RepoEntidades();
 	 
@@ -11,11 +12,18 @@ public class RepoEntidades implements WithGlobalEntityManager{
 		return INSTANCE;
 	}	
 	
-	@SuppressWarnings("unchecked")
-	public List<Entidad> getEntidad(){
+	public List<Entidad> getEntidades(){
 		return entityManager().createQuery("from Entidad").getResultList();
 	}
+	
+	public List<EntidadJuridica> getEntidadesJuridicas(){
+		return entityManager().createQuery("from EntidadJuridica").getResultList();
+	}
 
+	public List<EntidadBase> getEntidadesBase(){
+		return entityManager().createQuery("from EntidadBase").getResultList();
+	}
+	
 	public void agregarEntidad(Entidad entidad) {
 		entityManager().persist(entidad);
 	}

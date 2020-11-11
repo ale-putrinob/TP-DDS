@@ -1,0 +1,31 @@
+{{#partial "contenido"}}
+	<section>
+		<form method="POST" action="/entidad/new/base">
+		<center> <div class = "w3-container">
+			<h2> Cargar Entidad Juridica </h2>
+			
+			<br> <h3> Nombre Ficticio </h3>
+			<input type="text" name = "nombreFicticio" placeholder = "Nombre Ficticio">
+			
+			<br> <h3> Razon Social </h3>
+			<input type="text" name = "razonSocial" placeholder = "Razon Social">
+			
+			<br> <h3> Dependencia </h3>
+			<select name="Dependencia">
+   						<option selected value="0"> Elige una opcion </option>
+   							{{#each entidades}}
+       						<option>{{ nombreFicticio }}</option>
+       						{{/each}}
+   						</optgroup> 
+				</select>
+			 
+			<br><br><a href="/entidad/new">Volver</a> &nbsp &nbsp &nbsp
+			
+			<input type = "submit" class="btn btn-primary" value="Siguiente"/> <br> <br>
+		</div> </center>
+		</form>
+	</section>
+
+{{/partial}}
+
+{{>layout.hbs}}

@@ -8,7 +8,7 @@ import dominio.categoriaEntidad.CategoriaEntidad;
 @Entity
 public class EntidadJuridica extends Entidad {
 	String nombreFicticio;
-	int razonSocial;
+	String razonSocial;
 	int cuit;
 	String dirPostal;
 	int codInscripto;
@@ -16,7 +16,7 @@ public class EntidadJuridica extends Entidad {
 	@Enumerated
 	Tipo categoria;
 	
-	public EntidadJuridica(String nombreFicticio, int razonSocial, int cuit, String dirPostal, int codInscripto, Tipo categoria, CategoriaEntidad categoriaEntidad) {
+	public EntidadJuridica(String nombreFicticio, String razonSocial, int cuit, String dirPostal, int codInscripto, Tipo categoria, CategoriaEntidad categoriaEntidad) {
 		this.nombreFicticio = nombreFicticio;
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
@@ -27,16 +27,22 @@ public class EntidadJuridica extends Entidad {
 	}
 	
 	// Para crear una Entidad Juridica sin codigo de inscripcion en IGJ
-	public EntidadJuridica(String nombreFicticio, int razonSocial, int cuit, String dirPostal) {
+	public EntidadJuridica(String nombreFicticio, String razonSocial, int cuit, String dirPostal) {
 		this.nombreFicticio = nombreFicticio;
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.dirPostal = dirPostal;
 		this.codInscripto = 0;
 	}
+	
+	public EntidadJuridica() {}
 
 	public void validarNuevasEntidadesBase() {
 		this.categoriaEntidad.validarNuevasEntidadesBase();
+	}
+	
+	public String getNombreFicticio() {
+		return nombreFicticio;
 	}
 	
 }
