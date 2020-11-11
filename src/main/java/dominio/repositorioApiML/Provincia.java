@@ -23,6 +23,8 @@ public class Provincia {
         this.name = name;
         this.country = country;
     };
+    
+    public Provincia() {};
 
     public String getId() {
         return id;

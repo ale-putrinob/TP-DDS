@@ -18,6 +18,8 @@ public class Pais {
         this.short_name = short_name;
         this.name = name;
     };
+    
+    public Pais() {};
 
     public String getShort_name() {
         return short_name;

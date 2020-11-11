@@ -22,6 +22,8 @@ public class Ciudad {
         this.name = name;
         this.state = state;
     };
+    
+    public Ciudad() {};
 
     public Long getIdCiudad() {
         return id_ciudad;
