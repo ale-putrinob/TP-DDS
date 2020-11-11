@@ -23,6 +23,8 @@ public class Router {
 		HandlebarsTemplateEngine transformer = 
 				new HandlebarsTemplateEngine();
 		
+		/* Spark.staticFiles.location("/public"); */
+		
 		ControllerCategoria controllerCategoria=new ControllerCategoria();
 		
 		Spark.get("/", ControllerLogin::show, transformer);

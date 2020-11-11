@@ -1,35 +1,32 @@
 {{#partial "contenido"}}
 <html>
-	<head>
-		<title>Mostrar Operaciones de Egreso</title>
-	</head>
-	
-	<body>
-		<header>
-			<h2> Listado de todas las operaciones de egreso: </h2>			
-		</header><br><br>
+<head>
+	<title> Operaciones de egreso - Listado </title>
+	<link rel = "stylesheet" href = "showOpEg.css" >
+</head>
+<body>
+	<header>
+		<h2> Listado </h2>
+	</header>
+	<section>
+		<h3> Operaciones de egreso: </h3>
+	</section>
+	<section>
 		<table>
 			<tr>
-				<th> Fecha </th>
-				<th> Criterio de seleccion del proveedor </th>
-				<th> Medio de Pago </th>
-				<th> Documento comercial </th>
+				<th> Id </th>
+				<th> Criterio de Seleccion del Proveedor </th>
+				<th> Estado </th>
+				<th>Fecha</th>&nbsp&nbsp
+				<th colspan="2"> Documento Comercial </th>
+				<th> Entidad </th>
+				<th colspan="2"> Medio de pago </th>
+				<th> Moneda </th>
 				<th> Proveedor </th>
-				<th> Items </th>
-				<th> Presupuestos </th>
 			</tr>
-			{{#each opEgresos}}
-			<tr>
-				<td> {{ pokemon.nombre }} </td>
-				<td> {{ apodo }} </td>
-				<td> {{ nivel }} </td>
-			</tr>
-			{{/each}}
 		</table>
-		
-	</body>
-	
+	</section>
+</body>
 </html>
-
 {{/partial}}
 {{>layout.hbs}}
