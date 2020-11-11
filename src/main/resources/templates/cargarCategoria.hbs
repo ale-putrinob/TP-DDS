@@ -15,8 +15,8 @@
     <div class="col-md-8">
       <h1>Crear categoría</h1>
 
-      	<form action="/categoria/crearCategoria" method = "post">
-        
+      	<form action="/categoria/crearCategoria" method = "POST">
+      	
         <div class="form-group">
             <label>Nombre</label>
             <input class="form-control" name="nombre" id="nombre" placeholder="Ingrese nombre de categoria">
@@ -26,9 +26,9 @@
 		<div><input type="checkbox" name="bloqueo3"> Bloquear ser partes de entidad jurídica</div>
         <br><br>
 
-		<input class="btn btn-primary" type="button" value="Guardar">
-		<input class="btn btn-outline-primary" type="button" value="Cancelar">
-		
+		<input class="btn btn-primary" type="submit" value="Guardar">
+		<a href="/home" class="btn btn-secondary btn-lg" role="button">Cancelar</a>
+        
         <br>
       </form>
     </div>
