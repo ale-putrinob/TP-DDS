@@ -1,0 +1,54 @@
+{{#partial "contenido"}}
+<html>
+	<head>
+		<title>Cargar Presupuesto </title>
+	</head>
+	<ol class="breadcrumb">
+    	<li class="breadcrumb-item">
+      		<a routerLink="/home">Inicio</a>
+    	</li>
+    	<li class="breadcrumb-item active">Prespuesto / Cargar Presupuesto </li>
+  	</ol>
+	<body>
+		<header>
+			<h2> Cargar presupuesto </h2>			
+		</header><br>
+		<section>
+			<div>
+				Item &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input type = "number" name = "Valor" min="0" pattern="^[0-9]+" placeholder = "Ingresar valor">&nbsp&nbsp&nbsp&nbsp
+				<input type = "text" name = "Tipo" placeholder = "Ingresar tipo">&nbsp&nbsp&nbsp&nbsp
+				<select name = "Moneda">
+   						<option selected value="0"> Elige una opcion </option>
+       						<option value="1"></option>
+   						</optgroup> 
+				</select>&nbsp&nbsp&nbsp&nbsp
+				<input type = "submit" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
+			</div><br>
+			<div>
+				Documento comercial &nbsp&nbsp
+				<input type = "text" id = "Tipo" placeholder = "Ingresar tipo" >&nbsp&nbsp	
+				<input type = "number" id = "Numero" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID">&nbsp&nbsp	
+				<input type = "submit" id = "cargarDoc" value = "Cargar Documento" class="btn btn-primary">
+			</div><br>
+			<div>
+			Proveedor &nbsp&nbsp
+				<select name="Proveedor">
+   						<option selected value="0"> Elige una opcion </option>
+   							{{#each provs}}
+       						<option>{{ nombreApellido }}</option>
+       						{{/each}}
+   						</optgroup> 
+				</select>		
+			</div>
+			<div> <br>
+				<a href="/home">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input type = "submit" id = "cargar" value = "Cargar Presupuesto" class="btn btn-primary">
+			</div> <br><br>
+		</section>
+	</body>
+  
+</html>
+
+{{/partial}}
+{{>layout.hbs}}

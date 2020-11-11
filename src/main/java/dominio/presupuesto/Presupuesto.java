@@ -39,6 +39,8 @@ public class Presupuesto extends PersistentEntity{
 		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
 	}
 	
+	public Presupuesto() {};
+	
 	public void validarItemsAsignadosAEgreso(List<Item> items) {
 		if(!(items.stream().allMatch(item->item.estaAsociadoAEgreso()))) {
 			throw new PresupuestoException("Alguno de los Items Cargados no están asociados a un egreso");

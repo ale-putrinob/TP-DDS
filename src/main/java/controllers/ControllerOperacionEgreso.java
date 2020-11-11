@@ -25,12 +25,8 @@ public class ControllerOperacionEgreso {
 	}
 	
 	public static ModelAndView show2(Request req, Response res) {
-		List<Proveedor> provs = RepoProveedores.getInstance().getProveedor();
 
-		HashMap<String, Object> viewModel = new HashMap<>();
-		viewModel.put("provs", provs);
-
-		return new ModelAndView(viewModel, "cargarOperacionEgreso2.hbs");
+		return new ModelAndView(null, "cargarOperacionEgreso2.hbs");
 	}
 	
 	public static ModelAndView cargarOperacionEgreso(Request req, Response res) {

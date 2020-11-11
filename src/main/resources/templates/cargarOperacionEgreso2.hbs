@@ -29,41 +29,6 @@
 				<input type = "submit" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
 			</div><br>
 		</section>
-		
-		<header>
-			<h3> Cargar presupuesto: </h3>			
-		</header><br>
-		<section>
-			<div>
-				Item &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				<input type = "number" name = "Valor" min="0" pattern="^[0-9]+" placeholder = "Ingresar valor">&nbsp&nbsp&nbsp&nbsp
-				<input type = "text" name = "Tipo" placeholder = "Ingresar tipo">&nbsp&nbsp&nbsp&nbsp
-				<select name = "Moneda">
-   						<option selected value="0"> Elige una opcion </option>
-       						<option value="1"></option>
-   						</optgroup> 
-				</select>&nbsp&nbsp&nbsp&nbsp
-				<input type = "submit" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
-			</div><br>
-			<div>
-				Documento comercial &nbsp&nbsp
-				<input type = "text" id = "Tipo" placeholder = "Ingresar tipo" >&nbsp&nbsp	
-				<input type = "number" id = "Numero" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID">&nbsp&nbsp	
-				<input type = "submit" id = "cargarDoc" value = "Cargar Documento" class="btn btn-primary">
-			</div><br>
-			<div>
-			Proveedor &nbsp&nbsp
-			<select name="Proveedor">
-   						<option selected value="0"> Elige una opcion </option>
-   							{{#each provs}}
-       						<option>{{ nombreApellido }}</option>
-       						{{/each}}
-   						</optgroup> 
-				</select>		
-			</div>
-			<div> <br>
-				<input type = "submit" id = "cargar" value = "Cargar Presupuesto" class="btn btn-primary">
-			</div> <br><br>
 			<div>
 				<a href="/home">Finalizar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			</div>
