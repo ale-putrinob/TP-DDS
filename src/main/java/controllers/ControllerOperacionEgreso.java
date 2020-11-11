@@ -9,4 +9,8 @@ public class ControllerOperacionEgreso {
 		return new ModelAndView(null, "cargarOperacionEgreso.hbs");
 	}
 	
+	public static ModelAndView mostrarOperacionEgreso(Request req, Response res) {
+		return new ModelAndView(null, "mostrarOperacionEgreso.hbs");
+	}
+	
 }
