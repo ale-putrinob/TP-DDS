@@ -25,8 +25,12 @@ public class ControllerOperacionEgreso {
 	}
 	
 	public static ModelAndView show2(Request req, Response res) {
+		List<Proveedor> provs = RepoProveedores.getInstance().getProveedor();
 
-		return new ModelAndView(null, "cargarOperacionEgreso2.hbs");
+		HashMap<String, Object> viewModel = new HashMap<>();
+		viewModel.put("provs", provs);
+
+		return new ModelAndView(viewModel, "cargarOperacionEgreso2.hbs");
 	}
 	
 	public static ModelAndView cargarOperacionEgreso(Request req, Response res) {
@@ -39,6 +43,14 @@ public class ControllerOperacionEgreso {
 		res.redirect("/operacionDeEgreso/new/2");
 		return null;
 	}
+	
+	public static ModelAndView cargarOperacionEgreso2(Request req, Response res) {
+	
+		res.redirect("/home");
+		return null;
+	}
+	
+	/*para cargar los items*/
 	
 	public static ModelAndView mostrarOperacionEgreso(Request req, Response res) {
 		List<OperacionEgreso> opEgresos = RepositorioEgresos.getInstance().getEgresos();

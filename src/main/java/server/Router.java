@@ -32,6 +32,7 @@ public class Router {
 		Spark.get("/operacionDeEgreso/new", ControllerOperacionEgreso::show, transformer);
 		Spark.post("/operacionDeEgreso/new", ControllerOperacionEgreso::cargarOperacionEgreso, transformer);
 		Spark.get("/operacionDeEgreso/new/2", ControllerOperacionEgreso::show2, transformer);
+		Spark.post("/operacionDeEgreso/new/2", ControllerOperacionEgreso::cargarOperacionEgreso2, transformer);
 		Spark.get("/operacionDeEgreso/show", ControllerOperacionEgreso::mostrarOperacionEgreso, transformer);
 		Spark.post("/categoria/crearCategoria",controllerCategoria::cargarCategoria);
 		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
