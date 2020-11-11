@@ -30,9 +30,8 @@ public class ControllerLogin implements WithGlobalEntityManager {
 		
 		List<Usuario> usuarios = RepoUsuarios.getInstance().getUsuarios();
 		
-		
-		//if(usuarios.stream().anyMatch(user -> user.matchea(nombre, password)))
-		if(nombre.equals("admin") && password.equals("1234"))
+		//if(nombre.equals("admin") && password.equals("1234"))
+		if(usuarios.stream().anyMatch(user -> user.matchea(nombre, password)))
 			res.redirect("/home");
 		else{
 			res.redirect("/");

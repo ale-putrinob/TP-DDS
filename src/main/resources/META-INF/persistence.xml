@@ -27,6 +27,8 @@
         <class>dominio.categoriaEntidad.Funcionalidad</class>
 
 			<properties>
+			<property name="hibernate.archive.autodetection" value="class"/>  
+			
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/proyectodds" /> 

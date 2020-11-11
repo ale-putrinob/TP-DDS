@@ -17,10 +17,8 @@ public class Usuario extends PersistentEntity{
 	
 	String nombreUsuario;
 	String password;
-	
 	@Type(type="yes_no") 
 	boolean esAdministrador;
-	
 	@ManyToMany
 	List<Mensaje> bandejaDeMensajes;
 	
@@ -32,6 +30,9 @@ public class Usuario extends PersistentEntity{
 		this.password = DigestUtils.md5Hex(password);
 		this.esAdministrador = esAdministrador;
 		this.bandejaDeMensajes = bandejaDeMensajes;
+	}
+	
+	public Usuario() {
 	}
 	
 	public String getPassword() {

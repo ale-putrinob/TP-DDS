@@ -13,10 +13,16 @@ public class RepoUsuarios implements WithGlobalEntityManager{
 	
 	@SuppressWarnings("unchecked")
 	public List<Usuario> getUsuarios(){
-		return entityManager().createQuery("from Usuario").getResultList();
+		return entityManager()
+				.createQuery("from Usuario")
+				.getResultList();
 	}
 
 	public void agregarUsuario(Usuario usuario) {
 		entityManager().persist(usuario);
 	}
+	
+	/*public Usuario buscarUsuario(String nombre, String password) {
+		return entityManager().find(Usuario.class, arg1)
+	}*/
 }
