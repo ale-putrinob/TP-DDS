@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.proveedor.Proveedor;
 import dominio.proveedor.RepoProveedores;
 import spark.ModelAndView;
@@ -40,7 +41,12 @@ public class ControllerOperacionEgreso {
 	}
 	
 	public static ModelAndView mostrarOperacionEgreso(Request req, Response res) {
-		return new ModelAndView(null, "mostrarOperacionEgreso.hbs");
+		List<OperacionEgreso> opEgresos = RepositorioEgresos.getInstance().getEgresos();
+
+		HashMap<String, Object> viewModel = new HashMap<>();
+		viewModel.put("opEgresos", opEgresos);
+
+		return new ModelAndView(viewModel, "mostrarOperacionEgreso.hbs");
 	}
 
 }
