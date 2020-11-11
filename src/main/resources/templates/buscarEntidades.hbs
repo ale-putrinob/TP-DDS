@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+{{#partial "contenido"}}
 <html>
 	<head>
-		<title> Buscar Entidades </title>
+		<title>Buscar Entidades</title>
 	</head>
+	<ol class="breadcrumb">
+    	<li class="breadcrumb-item">
+      		<a routerLink="/home">Inicio</a>
+    	</li>
+    	<li class="breadcrumb-item active">Entidad / Buscar Entidad</li>
+  	</ol>
 	<body>
-		<div>
-			<input type = "button" id = "home" value = "Home">
-		</div>
 		<header>
 			<h2> Buscar Entidades </h2>			
 		</header>
@@ -30,3 +33,6 @@
 		</section>
 	</body>
 </html>
+
+{{/partial}}
+{{>layout.hbs}}
