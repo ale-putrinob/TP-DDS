@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 
 import controllers.ControllerCategoria;
 import controllers.ControllerCrearEntidad;
+import controllers.ControllerCrearEntidadBase;
+import controllers.ControllerCrearEntidadJuridica;
 import controllers.ControllerHome;
 import controllers.ControllerLogin;
 import controllers.ControllerOperacionEgreso;
@@ -34,6 +36,10 @@ public class Router {
 		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);
 		Spark.get("/entidad/new",ControllerCrearEntidad::show,transformer);
 		Spark.post("/entidad/new",ControllerCrearEntidad::crear,transformer);
+		Spark.get("/entidad/new/juridica",ControllerCrearEntidadJuridica::show,transformer);
+		Spark.post("/entidad/new/juridica",ControllerCrearEntidadJuridica::crear,transformer);
+		Spark.get("/entidad/new/base",ControllerCrearEntidadBase::show,transformer);
+		Spark.post("/entidad/new/base",ControllerCrearEntidadBase::crear,transformer);
 		
 	}
 }

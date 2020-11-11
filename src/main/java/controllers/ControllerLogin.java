@@ -16,8 +16,6 @@ public class ControllerLogin implements WithGlobalEntityManager {
 	static Map<String, Object> modelo = new HashMap<>();
 	
 	public static ModelAndView show(Request req, Response res) {
-		/*Usuario admin = new Usuario("admin", "contraseniasegura", false, new ArrayList<Mensaje>());
-		RepoUsuarios.getInstance().agregarUsuario(admin);*/
 		return new ModelAndView(modelo, "login.hbs");
 	}
 	

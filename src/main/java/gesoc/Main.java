@@ -60,7 +60,7 @@ public class Main implements WithGlobalEntityManager {
 		Organizacion organizacion = new Organizacion();
 
 		CategoriaEntidad categoria = new CategoriaEntidad("BlackFreedom");
-		Entidad entidad = new EntidadJuridica(null, 0, 0, null,0,null,categoria);
+		Entidad entidad = new EntidadJuridica(null, null, 0, null,0,null,categoria);
 		// datos de la operacion 
 		List<String> etiquetas = new ArrayList<>();
 		Date fechaOp = new Date();
