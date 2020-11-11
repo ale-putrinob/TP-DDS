@@ -29,7 +29,8 @@ class Bootstrap implements WithGlobalEntityManager, EntityManagerOps, Transactio
 			
 			Proveedor proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,"1567","Evita", 31, 2, 'A');
 			persist(proveedor);
-
+			
+			
 		});
 		
 	}
