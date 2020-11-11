@@ -25,7 +25,7 @@ public class Router {
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
 		Spark.get("/home", ControllerHome::home, transformer);		
-		Spark.get("/buscarEntidades", ControllerSearchEntity::buscarEntidades, transformer);
+		Spark.get("/entidad/search", ControllerSearchEntity::buscarEntidades, transformer);
 		Spark.get("/operacionDeEgreso/new", ControllerOperacionEgreso::cargarOperacionEgreso, transformer);
 		Spark.get("/operacionDeEgreso/show", ControllerOperacionEgreso::mostrarOperacionEgreso, transformer);
 		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
