@@ -25,6 +25,9 @@
         <class>dominio.repositorioApiML.Provincia</class>
         <class>dominio.repositorioApiML.Pais</class>
         <class>dominio.categoriaEntidad.Funcionalidad</class>
+        <class>dominio.categoriaEntidad.BloquearNuevasEntidadesBase</class>
+        <class>dominio.categoriaEntidad.BloquearNuevaosEgresos</class>
+        <class>dominio.categoriaEntidad.BloquearSerParteDeEntidadJuridica</class>
 
 			<properties>
 			<property name="hibernate.archive.autodetection" value="class"/>  
@@ -33,7 +36,7 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/proyectodds" /> 
             <property name="hibernate.connection.username" value="root" /> 
-            <property name="hibernate.connection.password" value="ruger" /> 
+            <property name="hibernate.connection.password" value="23042010" /> 
 
             <!-- property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
             <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db"/>

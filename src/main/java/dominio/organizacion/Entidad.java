@@ -45,5 +45,15 @@ public abstract class Entidad extends PersistentEntity{
 		if(categoriaEntidad != null)
 		categoriaEntidad.validarNuevosEgresos(this);	
 	}
+
+	public void setCategoria(CategoriaEntidad categoria) {
+		// TODO Auto-generated method stub
+		this.categoriaEntidad=categoria;
+	}
+
+	public CategoriaEntidad getCategoria() {
+		// TODO Auto-generated method stub
+		return categoriaEntidad;
+	}
 	
 }

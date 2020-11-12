@@ -39,6 +39,7 @@ public class Router {
 		Spark.post("/categoria/crearCategoria",controllerCategoria::cargarCategoria);
 		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
 		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);
+		Spark.post("/categoria/asociarConEntidad",controllerCategoria::asociarEntidad);		
 		Spark.get("/entidad/new",ControllerCrearEntidad::show,transformer);
 		Spark.post("/entidad/new",ControllerCrearEntidad::crear,transformer);
 		Spark.get("/entidad/new/juridica",controllerCrearEntidadJuridica::show,transformer);
