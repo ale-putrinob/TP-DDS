@@ -55,7 +55,7 @@ public class ControllerCategoria implements WithGlobalEntityManager, Transaction
 			RepoCategoria.getInstance().agregarCategoria(categoria);
 		});
 		
-		res.redirect("/categoria");
+		res.redirect("/home");
 		return null;
 	}
 	public Void asociarEntidad(Request req, Response res) {
@@ -63,9 +63,9 @@ public class ControllerCategoria implements WithGlobalEntityManager, Transaction
 		Entidad entidad = RepoEntidades.getInstance().findEntidad(idEntidad);
 		String idCategoria = req.queryParams("categoria").split(" ")[0];
 		CategoriaEntidad categoria=RepoCategoria.getInstance().findCategoria(idCategoria);
-		System.out.println(entidad.getCategoria().getNombre()+"-----------------------------");
+		//System.out.println(entidad.getCategoria().getNombre()+"-----------------------------");
 		entidad.setCategoria(categoria);
-		System.out.println(entidad.getCategoria().getNombre()+"--------------------------------");
+		//System.out.println(entidad.getCategoria().getNombre()+"--------------------------------");
 		
 		//String bloqueo1 = req.queryParams("bloqueo1"); 
 		//String bloqueo2 = req.queryParams("bloqueo2"); 

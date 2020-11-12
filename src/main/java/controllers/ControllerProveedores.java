@@ -15,15 +15,15 @@ public class ControllerProveedores implements WithGlobalEntityManager, Transacti
 
     public ModelAndView cargarProveedores(Request req, Response res) {
 
-        String nombreApellido = req.queryParams("nombre");
+        String nombreApellido = req.queryParams("nombreYApellido");
         String razonSocial = req.queryParams("razonSocial");
-        Integer dni = new Integer(req.queryParams("dni"));
-        Integer cuil = new Integer(req.queryParams("cuil"));
-        String ciudad = req.queryParams("ciudad");
+        Integer dni = new Integer(req.queryParams("DNI"));
+        Integer cuil = new Integer(req.queryParams("CUIT"));
+        String ciudad = req.queryParams("id_ciudad");
         String calle = req.queryParams("calle");
         Integer altura = new Integer(req.queryParams("altura"));
         Integer piso = new Integer(req.queryParams("piso"));
-        char departamento = (req.queryParams("departamento")).charAt(1);
+        char departamento = (req.queryParams("departamento")).charAt(0);
 
 
 
@@ -33,7 +33,7 @@ public class ControllerProveedores implements WithGlobalEntityManager, Transacti
             RepoProveedores.getInstance().agregarProveedor(proveedor);
         });
 
-        res.redirect("/proveedores/new");
+        res.redirect("/home");
         return null;
     }
 

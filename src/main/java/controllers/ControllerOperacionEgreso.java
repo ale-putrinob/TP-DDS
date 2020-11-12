@@ -104,7 +104,7 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		@SuppressWarnings("deprecation")
 		Integer valor = new Integer(req.queryParams("Valor"));
 		String tipoItem = req.queryParams("Tipo");
-		
+		System.out.println("ID: ----------------" + req.cookie("id_egreso"));
 		OperacionEgreso opEgreso = entityManager().find(OperacionEgreso.class, new Long(req.cookie("id_egreso")));
 		
 		Item item = new Item(valor,tipoItem,null);
@@ -115,6 +115,7 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 			entityManager().persist(item);
 			opEgreso.agregarItem(item);
 			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
+			res.cookie("id_egreso", opEgreso.getId().toString());
 		});
 		
 		res.redirect("/operacionDeEgreso/new/2");

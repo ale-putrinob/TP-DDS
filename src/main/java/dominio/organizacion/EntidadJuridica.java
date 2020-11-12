@@ -38,7 +38,8 @@ public class EntidadJuridica extends Entidad {
 	public EntidadJuridica() {}
 
 	public void validarNuevasEntidadesBase() {
-		this.categoriaEntidad.validarNuevasEntidadesBase();
+		if(categoriaEntidad != null)
+			this.categoriaEntidad.validarNuevasEntidadesBase();
 	}
 	
 	public String getNombreFicticio() {

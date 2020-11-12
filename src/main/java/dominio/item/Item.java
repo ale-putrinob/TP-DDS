@@ -23,6 +23,8 @@ public class Item extends PersistentEntity{
 			this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
 	};
 	
+	public Item() {}
+	
 	public double getValorItem() {
 		return this.valorItem;
 	}

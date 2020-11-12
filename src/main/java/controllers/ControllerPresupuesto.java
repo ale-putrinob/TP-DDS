@@ -60,7 +60,7 @@ public class ControllerPresupuesto implements WithGlobalEntityManager, Transacti
 			entityManager().persist(item);
 			pres.agregarItem(item);
 			entityManager().persist(pres);
-			res.cookie("id_proveedor", pres.getId().toString());
+			res.cookie("id_presupuesto", pres.getId().toString());
 		});
 		
 		res.redirect("/presupuesto/new");
@@ -72,15 +72,15 @@ public class ControllerPresupuesto implements WithGlobalEntityManager, Transacti
 		String tipo = req.queryParams("Tipo");
 		
 		DocumentoComercial doc = new DocumentoComercial(tipo, numero);
-		System.out.println("ID: ----------------" + req.cookie("id_proveedor"));
-		Presupuesto pres = entityManager().find(Presupuesto.class, new Long(req.cookie("id_proveedor")));
-		
+		System.out.println("ID: ----------------" + req.cookie("id_presupuesto"));
+		Presupuesto pres = entityManager().find(Presupuesto.class, new Long(req.cookie("id_presupuesto")));
 		
 		
 		withTransaction(() ->{
 			entityManager().persist(doc);
 			pres.agregarDocComercial(doc);
 			entityManager().persist(pres);
+			res.cookie("id_presupuesto", pres.getId().toString());
 		});
 		
 		res.redirect("/presupuesto/new/2");
@@ -90,7 +90,7 @@ public class ControllerPresupuesto implements WithGlobalEntityManager, Transacti
 	public ModelAndView cargarPresupuesto3(Request req, Response res) {
 		String id_proveedor = req.queryParams("Proveedor").split(" ")[0];
 		Proveedor prov = RepoProveedores.getInstance().findProveedor(id_proveedor);
-		Presupuesto pres = entityManager().find(Presupuesto.class, new Long(req.cookie("id_proveedor")));
+		Presupuesto pres = entityManager().find(Presupuesto.class, new Long(req.cookie("id_presupuesto")));
 		
 		withTransaction(() ->{
 			entityManager().persist(prov);
