@@ -35,4 +35,8 @@ public class RepoEntidades implements WithGlobalEntityManager{
 	public void agregarEntidadBase(EntidadBase entidad) {
 		entityManager().persist(entidad);
 	}
+
+	public EntidadJuridica buscarEntidadJuridica(String id_dependencia) {
+		return entityManager().find(EntidadJuridica.class, new Long(id_dependencia));
+	}
 }

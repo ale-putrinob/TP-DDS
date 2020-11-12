@@ -12,7 +12,7 @@ public class TipoMoneda extends PersistentEntity{
     String symbol;
     int decimal_places;
 
-    public String getId() {
+    public String getIdMoneda() {
         return moneda_id;
     }
     public void setId(String id) {

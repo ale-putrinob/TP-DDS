@@ -6,6 +6,7 @@ import org.uqbarproject.jpa.java8.extras.EntityManagerOps;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
+import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.mensajes.Mensaje;
 import dominio.organizacion.EntidadBase;
 import dominio.organizacion.EntidadJuridica;
@@ -22,10 +23,10 @@ class Bootstrap implements WithGlobalEntityManager, EntityManagerOps, Transactio
 	public void init() {
 		withTransaction(() ->{
 			
-			EntidadJuridica ent = new EntidadJuridica("Boca Juniors", "Campeon", 0, null);
+			EntidadJuridica ent = new EntidadJuridica("Boca Juniors", "Campeon", 0, null, 0, null, new CategoriaEntidad(""));
 			persist(ent);
 			
-			EntidadBase entBase = new EntidadBase("Colimba FC", "Anti Generacion de Cristal", ent, null);
+			EntidadBase entBase = new EntidadBase("Colimba FC", "Anti Generacion de Cristal", ent, new CategoriaEntidad(""));
 			persist(entBase);
 
 			Usuario usuario = new Usuario("admin", "bocacampeon", true, new ArrayList<Mensaje>());

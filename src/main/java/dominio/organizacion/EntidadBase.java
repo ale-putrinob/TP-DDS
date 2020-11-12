@@ -14,17 +14,17 @@ public class EntidadBase extends Entidad {
 	EntidadJuridica dependencia;
 
 	public EntidadBase(String nombreFicticio, String unaDescripcion, EntidadJuridica unaDependencia, CategoriaEntidad categoriaEntidad) {
+		this.validarDependencia(unaDependencia);
 		this.nombreFicticio = nombreFicticio;
 		this.descripcion = unaDescripcion;
 		this.categoriaEntidad = categoriaEntidad;
-		this.validarDependencia(unaDependencia);
 		this.dependencia = unaDependencia;
 		
 	}
 
 	private void validarDependencia(EntidadJuridica entidadJuridica) {
-		this.categoriaEntidad.validarAdicionAEntidadJuridica();
-		entidadJuridica.validarNuevasEntidadesBase();
+		//this.categoriaEntidad.validarAdicionAEntidadJuridica();
+		//entidadJuridica.validarNuevasEntidadesBase();
 	}
 	
 	public EntidadJuridica getDependencia() {
