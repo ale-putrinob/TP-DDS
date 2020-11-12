@@ -6,6 +6,8 @@ import java.util.List;
 
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
+import dominio.organizacion.Entidad;
+import dominio.organizacion.RepoEntidades;
 import dominio.proveedor.Proveedor;
 import dominio.proveedor.RepoProveedores;
 import spark.ModelAndView;
@@ -17,9 +19,11 @@ public class ControllerOperacionEgreso {
 	
 	public static ModelAndView show(Request req, Response res) {
 		List<Proveedor> provs = RepoProveedores.getInstance().getProveedor();
+		List<Entidad> entidades = RepoEntidades.getInstance().getEntidades();
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 		viewModel.put("provs", provs);
+		viewModel.put("entidades", entidades);
 
 		return new ModelAndView(viewModel, "cargarOperacionEgreso.hbs");
 	}
@@ -30,12 +34,10 @@ public class ControllerOperacionEgreso {
 	}
 	
 	public static ModelAndView cargarOperacionEgreso(Request req, Response res) {
-		/*
-		Date fecha = req.queryParams("Fecha"); 
+/*
+		Date fecha = new Date(req.queryParams("Fecha")); 
 		String criterioProv = req.queryParams("Criterio de Seleccion del Proveedor");
-		Int identificador = req.quer
-		*/
-		
+*/		
 		res.redirect("/operacionDeEgreso/new/2");
 		return null;
 	}

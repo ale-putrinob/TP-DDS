@@ -55,6 +55,16 @@
    						</optgroup> 
 				</select>		
 			</div>
+			<div>
+			Entidad &nbsp&nbsp
+			<select name="Entidad">
+   						<option selected value="0"> Elige una opcion </option>
+   							{{#each entidades}}
+       						<option>{{ nombreFicticio }}</option>
+       						{{/each}}
+   						</optgroup> 
+				</select>		
+			</div>
 			<div> <br>
 				<a href="/home">Volver al inicio</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<input type = "submit" id = "siguiente" value = "Siguiente" class="btn btn-primary">

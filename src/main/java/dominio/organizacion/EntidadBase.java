@@ -31,4 +31,8 @@ public class EntidadBase extends Entidad {
 		return dependencia;
 	}
 	
+	public String getNombreFicticio() {
+		return nombreFicticio;
+	}
+	
 }
