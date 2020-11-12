@@ -1,6 +1,8 @@
 package dominio.organizacion;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
@@ -14,6 +16,10 @@ public class RepoEntidades implements WithGlobalEntityManager{
 	
 	public List<Entidad> getEntidades(){
 		return entityManager().createQuery("from Entidad").getResultList();
+	}
+	
+	public List<Entidad> getEntidadesTotales(){
+		return Stream.concat(this.getEntidadesJuridicas().stream(), this.getEntidadesBase().stream()) .collect(Collectors.toList());
 	}
 	
 	public List<EntidadJuridica> getEntidadesJuridicas(){

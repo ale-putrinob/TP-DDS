@@ -24,9 +24,6 @@ class Bootstrap implements WithGlobalEntityManager, EntityManagerOps, Transactio
 			
 			EntidadJuridica ent = new EntidadJuridica("Boca Juniors", "Campeon", 0, null);
 			persist(ent);
-			
-			EntidadBase entBase = new EntidadBase("Colimba FC", "Anti Generacion de Cristal", ent, null);
-			persist(entBase);
 
 			Usuario usuario = new Usuario("admin", "bocacampeon", true, new ArrayList<Mensaje>());
 			persist(usuario);

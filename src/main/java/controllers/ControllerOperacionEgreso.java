@@ -19,7 +19,7 @@ public class ControllerOperacionEgreso {
 	
 	public static ModelAndView show(Request req, Response res) {
 		List<Proveedor> provs = RepoProveedores.getInstance().getProveedor();
-		List<Entidad> entidades = RepoEntidades.getInstance().getEntidades();
+		List<Entidad> entidades = RepoEntidades.getInstance().getEntidadesTotales();
 
 		HashMap<String, Object> viewModel = new HashMap<>();
 		viewModel.put("provs", provs);
