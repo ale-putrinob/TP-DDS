@@ -16,10 +16,12 @@ public class Router {
 		HandlebarsTemplateEngine transformer = 
 				new HandlebarsTemplateEngine();
 		
-		/* Spark.staticFiles.location("/public"); */
+		/*Spark.staticFiles.location("/public");*/
 		
 		ControllerCategoria controllerCategoria=new ControllerCategoria();
 		ControllerProveedores controllerProveedores=new ControllerProveedores();
+		ControllerCrearEntidadJuridica controllerCrearEntidadJuridica = new ControllerCrearEntidadJuridica();
+		ControllerCrearEntidadBase controllerCrearEntidadBase = new ControllerCrearEntidadBase();
 		
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
@@ -37,12 +39,11 @@ public class Router {
 		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);
 		Spark.get("/entidad/new",ControllerCrearEntidad::show,transformer);
 		Spark.post("/entidad/new",ControllerCrearEntidad::crear,transformer);
-		Spark.get("/entidad/new/juridica",ControllerCrearEntidadJuridica::show,transformer);
-		Spark.post("/entidad/new/juridica",ControllerCrearEntidadJuridica::crear,transformer);
-		Spark.get("/entidad/new/base",ControllerCrearEntidadBase::show,transformer);
-		Spark.post("/entidad/new/base",ControllerCrearEntidadBase::crear,transformer);
+		Spark.get("/entidad/new/juridica",controllerCrearEntidadJuridica::show,transformer);
+		Spark.post("/entidad/new/juridica",controllerCrearEntidadJuridica::crear,transformer);
+		Spark.get("/entidad/new/base",controllerCrearEntidadBase::show,transformer);
+		Spark.post("/entidad/new/base",controllerCrearEntidadBase::crear,transformer);
 		Spark.get("/proveedores/show",controllerProveedores::obtenerProveedor,transformer);
 		Spark.post("/proveedores/new", controllerProveedores::cargarProveedores,transformer);
-		
 	}
 }

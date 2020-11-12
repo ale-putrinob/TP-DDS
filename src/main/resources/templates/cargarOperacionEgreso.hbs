@@ -50,7 +50,17 @@
 			<select name="Proveedor">
    						<option selected value="0"> Elige una opcion </option>
    							{{#each provs}}
-       						<option>{{ nombreApellido }}</option>
+       						<option>{{id}} - {{ nombreApellido }}</option>
+       						{{/each}}
+   						</optgroup> 
+				</select>		
+			</div><br>
+			<div>
+			Entidad &nbsp&nbsp
+			<select name="Entidad">
+   						<option selected value="0"> Elige una opcion </option>
+   							{{#each entidades}}
+       						<option>{{ nombreFicticio }}</option>
        						{{/each}}
    						</optgroup> 
 				</select>		
