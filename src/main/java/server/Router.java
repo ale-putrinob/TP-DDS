@@ -1,16 +1,8 @@
 package server;
 
+import controllers.*;
 import org.apache.commons.lang3.StringUtils;
 
-import controllers.ControllerCategoria;
-import controllers.ControllerCrearEntidad;
-import controllers.ControllerCrearEntidadBase;
-import controllers.ControllerCrearEntidadJuridica;
-import controllers.ControllerHome;
-import controllers.ControllerLogin;
-import controllers.ControllerOperacionEgreso;
-import controllers.ControllerPresupuesto;
-import controllers.ControllerSearchEntity;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -27,6 +19,7 @@ public class Router {
 		/* Spark.staticFiles.location("/public"); */
 		
 		ControllerCategoria controllerCategoria=new ControllerCategoria();
+		ControllerProveedores controllerProveedores=new ControllerProveedores();
 		
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
@@ -48,6 +41,8 @@ public class Router {
 		Spark.post("/entidad/new/juridica",ControllerCrearEntidadJuridica::crear,transformer);
 		Spark.get("/entidad/new/base",ControllerCrearEntidadBase::show,transformer);
 		Spark.post("/entidad/new/base",ControllerCrearEntidadBase::crear,transformer);
+		Spark.get("/proveedores/show",controllerProveedores::obtenerProveedor,transformer);
+		Spark.post("/proveedores/new", controllerProveedores::cargarProveedores,transformer);
 		
 	}
 }

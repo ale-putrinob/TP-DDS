@@ -5,6 +5,7 @@ import java.util.List;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 public class RepoProveedores implements WithGlobalEntityManager{
+
 	private final static RepoProveedores INSTANCE = new RepoProveedores();
 	 
 	public static RepoProveedores getInstance() {
