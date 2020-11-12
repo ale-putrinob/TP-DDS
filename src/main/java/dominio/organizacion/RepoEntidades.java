@@ -27,4 +27,8 @@ public class RepoEntidades implements WithGlobalEntityManager{
 	public void agregarEntidad(Entidad entidad) {
 		entityManager().persist(entidad);
 	}
+	
+	public void agregarEntidadJuridica(EntidadJuridica entidad) {
+		entityManager().persist(entidad);
+	}
 }
