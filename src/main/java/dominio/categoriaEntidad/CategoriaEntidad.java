@@ -23,8 +23,7 @@ public class CategoriaEntidad extends PersistentEntity{
 		this.nombre = nombre;
 	}
 	
-	public CategoriaEntidad() {
-	}
+	public CategoriaEntidad(){}
 	
 	public void validarNuevosEgresos(Entidad entidad) {
 		if(!funcionalidades.isEmpty())
@@ -51,5 +50,8 @@ public class CategoriaEntidad extends PersistentEntity{
 	
 	public void setNombre(String nombre) {
 		this.nombre=nombre;
+	}
+	public String getNombre() {
+		return nombre;
 	}
 }

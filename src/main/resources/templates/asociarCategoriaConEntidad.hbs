@@ -13,26 +13,27 @@
 	</ol>
 	<h3>Asociar categoría a entidad</h3>
 	<div>
-	<form action="/categoria/asociarCategoriaConEntidad" method = "get">
+	<form action="/categoria/asociarConEntidad" method = "POST">
 		<div>
 	        <label>Entidad</label><br>
-  			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    		</button>
-  				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    				<a class="dropdown-item" href="#">Action</a>
-    				<a class="dropdown-item" href="#">Another action</a>
-    				<a class="dropdown-item" href="#">Something else here</a>
-  				</div>
+  			<select class="form-control" name="entidad">
+          		{{#each entidadesJuridicas}}
+            		<option>{{id}} {{nombreFicticio}}</option>
+          		{{/each}}
+          		{{#each entidadesBases}}
+            		<option>{{id}} {{nombreFicticio}}</option>
+          		{{/each}}
+        	</select>
+        	<small class="form-text text-muted">Seleccione la entidad</small>
 		</div>
 		<div>
 			<label>Categoría</label><br>
-  			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    		</button>
-  				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    				<a class="dropdown-item" href="#">Action</a>
-    				<a class="dropdown-item" href="#">Another action</a>
-    				<a class="dropdown-item" href="#">Something else here</a>
-  				</div>
+  			<select class="form-control" name="categoria">
+          		{{#each categorias}}
+            		<option>{{id}} {{nombre}}</option>
+          		{{/each}}
+        	</select>
+        	<small class="form-text text-muted">Seleccione la categoria</small>
 		</div>
 	        <br><br>
 	    	<button type="submit" class="btn btn-lg btn-primary btn-block" style="width: 400px">Asociar</button>

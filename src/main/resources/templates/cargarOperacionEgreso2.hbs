@@ -10,6 +10,7 @@
     	<li class="breadcrumb-item active">Operacion de Egreso / Cargar Operacion / Paso 2</li>
   	</ol>
 	<body>
+	<form method="POST" action="/operacionDeEgreso/new/2">
 		<header>
 			<h2> Cargar Operacion de Egreso - Paso 2 </h2>			
 		</header><br>
@@ -17,6 +18,8 @@
 			<h3> Cargar Items: </h3>			
 		</header><br>
 		<section>
+			<form method="POST" action="/operacionDeEgreso/new/2">
+		
 			<div>
 				Item &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 				<input type = "number" name = "Valor" min="0" pattern="^[0-9]+" placeholder = "Ingresar valor">&nbsp&nbsp&nbsp&nbsp
@@ -26,13 +29,16 @@
        						<option value="1"></option>
    						</optgroup> 
 				</select>&nbsp&nbsp&nbsp&nbsp
-				<input type = "submit" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
+				<input type = "button" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
 			</div><br>
+			
+			</form>
 		</section>
 			<div>
-				<a href="/home">Finalizar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<input type = "submit" id = "finalizar" value = "Finalizar" class="btn btn-primary">			
 			</div>
 		</section>
+	</form>
 	</body>
   
 	

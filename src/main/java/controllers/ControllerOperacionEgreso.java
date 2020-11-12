@@ -9,6 +9,7 @@ import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
 import dominio.documentoComercial.DocumentoComercial;
+import dominio.item.Item;
 import dominio.medioDePago.MedioDePago;
 import dominio.medioDePago.TiposDePago;
 import dominio.moneda.RepoTipoMonedas;
@@ -24,6 +25,8 @@ import spark.Request;
 import spark.Response;
 
 public class ControllerOperacionEgreso implements WithGlobalEntityManager, TransactionalOps  {
+	
+	OperacionEgreso opEgreso;
 	
 	public ModelAndView show(Request req, Response res) {
 		List<Proveedor> provs = RepoProveedores.getInstance().getProveedor();
@@ -43,7 +46,6 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 	
 	public ModelAndView cargarOperacionEgreso(Request req, Response res) {
 		
-		@SuppressWarnings("deprecation")
 		/* Date fecha = new Date(req.queryParams("Fecha")); */
 		String criterioProv = req.queryParams("Criterio de Seleccion del Proveedor");
 		CriterioDeSeleccionDeProveedor criterioProveedor;
@@ -74,20 +76,36 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		
 		DocumentoComercial docCom = new DocumentoComercial(tipoDoc,numeroDoc);
 		MedioDePago medioPago = new MedioDePago(tipo,identificador);
-		OperacionEgreso opEgreso= new OperacionEgreso(null ,null, null,  docCom, 
+		opEgreso= new OperacionEgreso(null ,null, null,  docCom, 
 				proveedor, medioPago, null, null, criterioProveedor, null,entidad);
+		
+		/*
+		withTransaction(() ->{
+			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
+		});
+		*/
+		res.redirect("/operacionDeEgreso/new/2");
+		return null;
+	}
+	
+	public  ModelAndView cargarOperacionEgreso2(Request req, Response res) {
+		
+		@SuppressWarnings("deprecation")
+		Integer valor = new Integer(req.queryParams("Valor"));
+		String tipoItem = req.queryParams("Tipo");
+		
+		
+		/* String id_moneda = req.queryParams("TipoMoneda").split(" - ")[0];
+		TipoMoneda tipoMoneda = RepoTipoMonedas.getInstance().findTipoMoneda(id_moneda); */
+		
+		Item item = new Item(valor,tipoItem,null);
+		opEgreso.agregarItem(item);
 		
 		
 		withTransaction(() ->{
 			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
 		});
 		
-		res.redirect("/operacionDeEgreso/new/2");
-		return null;
-	}
-	
-	public  ModelAndView cargarOperacionEgreso2(Request req, Response res) {
-	
 		res.redirect("/home");
 		return null;
 	}
