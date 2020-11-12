@@ -14,11 +14,12 @@ public class EntidadBase extends Entidad {
 	EntidadJuridica dependencia;
 
 	public EntidadBase(String nombreFicticio, String unaDescripcion, EntidadJuridica unaDependencia, CategoriaEntidad categoriaEntidad) {
+		this.dependencia = unaDependencia;
 		this.validarDependencia(unaDependencia);
 		this.nombreFicticio = nombreFicticio;
 		this.descripcion = unaDescripcion;
 		this.categoriaEntidad = categoriaEntidad;
-		this.dependencia = unaDependencia;
+		
 		
 	}
 
