@@ -7,7 +7,6 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import dominio.mensajes.Mensaje;
-import dominio.organizacion.EntidadBase;
 import dominio.organizacion.EntidadJuridica;
 import dominio.proveedor.Proveedor;
 
