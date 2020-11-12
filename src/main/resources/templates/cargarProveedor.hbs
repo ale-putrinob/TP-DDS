@@ -1,6 +1,6 @@
 {{#partial "contenido"}}
 	<section>
-		<form method="POST" action="/proveedores/new>
+		<form method="POST" action="/proveedores/new">
 		<center> <div class = "w3-container">
 			<h2> Cargar Proveedor</h2>
 
@@ -13,34 +13,24 @@
 			<br> <h3> DNI </h3>
 			<input type="number" name = "DNI" placeholder = "DNI">
 
-			<br> <h3> CUIL </h3>
+			<br> <h3> CUIL </h3><>
 			<input type="number" name = "CUIT" placeholder = "CUIT">
 
 			<br> <h3> Ciudad </h3>
-			<input type="text" name = "id_ciudad" placeholder = "Id de Ciudad">
+			<input type="text" name = "id_ciudad" title ="Recordemos que este id nos permitirá traer la Ciudad correspondiente."
+			placeholder = "Id de Ciudad" required>
 
 			<br> <h3> Calle </h3>
             <input type="text" name = "calle" placeholder = "Calle">
 
 			<br> <h3> Altura </h3>
-			<input type="number" name = "codInscripto" placeholder = "Cod. Inscripto">
+			<input type="number" name = "altura" placeholder = "Cod. Inscripto">
 
 			<br> <h3> Piso </h3>
             <input type="number" name = "piso" placeholder = "Piso">
 
             <br> <h3> Departamento </h3>
-            <input type="text" name = "codInscripto" placeholder = "Departamento">
-
-			<br> <h3> Tipo </h3>
-			<select name="Tipo">
-   				<option selected value="0"> Elige una opcion </option>
-       				<option value="1">EmpresaMicro</option>
-       				<option value="2">EmpresaPequenia</option>
-       				<option value="3">EmpresaMedianaTramo1</option>
-       				<option value="4">EmpresaMedianaTramo2</option>
-       				<option value="5">OSC</option>
-   				</optgroup>
-			</select>
+            <input type="text" name = "departamento" placeholder = "Departamento">
 
 			<br><br><a href="/proveedores/new">Volver</a> &nbsp &nbsp &nbsp
 			<input type = "submit" class="btn btn-primary" value="Guardar"/> <br> <br>

@@ -14,6 +14,7 @@ public class ControllerProveedores implements WithGlobalEntityManager, Transacti
     }
 
     public ModelAndView cargarProveedores(Request req, Response res) {
+
         String nombreApellido = req.queryParams("nombre");
         String razonSocial = req.queryParams("razonSocial");
         Integer dni = new Integer(req.queryParams("dni"));
@@ -32,7 +33,7 @@ public class ControllerProveedores implements WithGlobalEntityManager, Transacti
             RepoProveedores.getInstance().agregarProveedor(proveedor);
         });
 
-        res.redirect("/proveedores/show");
+        res.redirect("/proveedores/new");
         return null;
     }
 
