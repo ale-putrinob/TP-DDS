@@ -24,9 +24,10 @@ public class Router {
 		HandlebarsTemplateEngine transformer = 
 				new HandlebarsTemplateEngine();
 		
-		/* Spark.staticFiles.location("/public"); */
+		/*Spark.staticFiles.location("/public");*/
 		
 		ControllerCategoria controllerCategoria=new ControllerCategoria();
+		ControllerCrearEntidadJuridica controllerCrearEntidadJuridica = new ControllerCrearEntidadJuridica();
 		
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
@@ -37,15 +38,15 @@ public class Router {
 		Spark.get("/operacionDeEgreso/new/2", ControllerOperacionEgreso::show2, transformer);
 		Spark.post("/operacionDeEgreso/new/2", ControllerOperacionEgreso::cargarOperacionEgreso2, transformer);
 		Spark.get("/operacionDeEgreso/show", ControllerOperacionEgreso::mostrarOperacionEgreso, transformer);
-		Spark.get("/presupuesto/new", ControllerPresupuesto::show, transformer);
-		Spark.post("/presupuesto/new", ControllerPresupuesto::cargarPresupuesto, transformer);
+		/*Spark.get("/presupuesto/new", ControllerPresupuesto::show, transformer);
+		Spark.post("/presupuesto/new", ControllerPresupuesto::cargarPresupuesto, transformer);*/
 		Spark.post("/categoria/crearCategoria",controllerCategoria::cargarCategoria);
 		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
 		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);
 		Spark.get("/entidad/new",ControllerCrearEntidad::show,transformer);
 		Spark.post("/entidad/new",ControllerCrearEntidad::crear,transformer);
-		Spark.get("/entidad/new/juridica",ControllerCrearEntidadJuridica::show,transformer);
-		Spark.post("/entidad/new/juridica",ControllerCrearEntidadJuridica::crear,transformer);
+		Spark.get("/entidad/new/juridica",controllerCrearEntidadJuridica::show,transformer);
+		Spark.post("/entidad/new/juridica",controllerCrearEntidadJuridica::crear,transformer);
 		Spark.get("/entidad/new/base",ControllerCrearEntidadBase::show,transformer);
 		Spark.post("/entidad/new/base",ControllerCrearEntidadBase::crear,transformer);
 		
