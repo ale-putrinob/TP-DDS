@@ -16,7 +16,7 @@ import dominio.usuario.Usuario;
 
 class Bootstrap implements WithGlobalEntityManager, EntityManagerOps, TransactionalOps {
 	
-	public static void main(String[] args) {
+	public static void main(String args []) {
 		new Bootstrap().init();
 	}
 	
@@ -25,9 +25,11 @@ class Bootstrap implements WithGlobalEntityManager, EntityManagerOps, Transactio
 			
 			EntidadJuridica ent = new EntidadJuridica("Boca Juniors", "Campeon", 0, null, 0, null, new CategoriaEntidad(""));
 			persist(ent);
+
 			
 			EntidadBase entBase = new EntidadBase("Colimba FC", "Anti Generacion de Cristal", ent, new CategoriaEntidad(""));
 			persist(entBase);
+
 
 			Usuario usuario = new Usuario("admin", "bocacampeon", true, new ArrayList<Mensaje>());
 			persist(usuario);

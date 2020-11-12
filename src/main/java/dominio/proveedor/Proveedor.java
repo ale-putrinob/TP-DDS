@@ -38,8 +38,8 @@ public class Proveedor extends PersistentEntity{
 		this.piso = piso;
 		this.departamento = departamento;
 	};
-	public Proveedor() {};
-	
+	public Proveedor(String nombreApellido) {};
+
 	public String getCiudad() {
 		return ciudad.getName();
 	}

@@ -23,8 +23,9 @@ public class EntidadBase extends Entidad {
 	}
 
 	private void validarDependencia(EntidadJuridica entidadJuridica) {
-		//this.categoriaEntidad.validarAdicionAEntidadJuridica();
-		//entidadJuridica.validarNuevasEntidadesBase();
+		if(categoriaEntidad != null)
+			this.categoriaEntidad.validarAdicionAEntidadJuridica();
+		entidadJuridica.validarNuevasEntidadesBase();
 	}
 	
 	public EntidadJuridica getDependencia() {

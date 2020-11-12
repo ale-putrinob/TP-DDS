@@ -2,6 +2,7 @@ package dominio.moneda;
 
 
 import javax.persistence.Entity;
+
 import dominio.persistentEntity.PersistentEntity;
 
 @Entity
