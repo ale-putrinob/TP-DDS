@@ -17,7 +17,7 @@
 		<form method="POST" action="/operacionDeEgreso/new">
 			<div>
 				Fecha &nbsp&nbsp
-				<input type = "date" name = "Fecha" placeholder = "Ingresar fecha">			
+				<input type = "date" name = "Fecha" placeholder = "Ingresar fecha" required>			
 			</div><br>
 			<div>
 				Criterio de Seleccion del Proveedor
@@ -29,8 +29,8 @@
 			</div><br>
 			<div>
 				Medio De Pago &nbsp&nbsp
-				<input type = "number" name = "Identificador" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID">&nbsp&nbsp
-				<select name = "Tipo de pago">
+				<input type = "number" name = "Identificador" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID" required>&nbsp&nbsp
+				<select name = "Tipo de pago" required>
    						<option selected value="0"> Elige una opcion </option>
        						<option value="1">Tarjeta de credito</option>
        						<option value="2">Tarjeta de debito</option>
@@ -42,12 +42,12 @@
 			</div><br>
 			<div>
 				Documento comercial &nbsp&nbsp
-				<input type = "text" id = "Tipo" placeholder = "Ingresar tipo" >&nbsp&nbsp	
-				<input type = "number" id = "Numero" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID">&nbsp&nbsp	
+				<input type = "text" name = "Tipo" placeholder = "Ingresar tipo" required>&nbsp&nbsp	
+				<input type = "number" name = "Numero" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID" required>&nbsp&nbsp	
 			</div><br>
 			<div>
-			Proveedor &nbsp&nbsp
-			<select name="Proveedor">
+				Proveedor &nbsp&nbsp
+				<select name="Proveedor" required>
    						<option selected value="0"> Elige una opcion </option>
    							{{#each provs}}
        						<option>{{id}} - {{ nombreApellido }}</option>
@@ -57,10 +57,20 @@
 			</div><br>
 			<div>
 			Entidad &nbsp&nbsp
-			<select name="Entidad">
+			<select name="Entidad" required>
    						<option selected value="0"> Elige una opcion </option>
    							{{#each entidades}}
-       						<option>{{ nombreFicticio }}</option>
+       						<option>{{id}} - {{ nombreFicticio }}</option>
+       						{{/each}}
+   						</optgroup> 
+				</select>		
+			</div><br>
+			<div>
+			Tipo Moneda &nbsp&nbsp
+			<select name="TipoMoneda" required>
+   						<option selected value="0"> Elige una opcion </option>
+   							{{#each tipoMonedas}}
+       						<option>{{idMoneda}} - {{ description }}</option>
        						{{/each}}
    						</optgroup> 
 				</select>		

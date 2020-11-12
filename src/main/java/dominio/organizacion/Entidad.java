@@ -42,6 +42,7 @@ public abstract class Entidad extends PersistentEntity{
 	}
 
 	public void validarAgregarEgreso() {
+		if(categoriaEntidad != null)
 		categoriaEntidad.validarNuevosEgresos(this);	
 	}
 	

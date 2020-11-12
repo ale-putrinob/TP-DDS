@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.persistence.EntityManager;
+
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
+import dominio.proveedor.Proveedor;
 
 @SuppressWarnings("unchecked")
 public class RepoEntidades implements WithGlobalEntityManager{
@@ -40,5 +44,15 @@ public class RepoEntidades implements WithGlobalEntityManager{
 	
 	public void agregarEntidadBase(EntidadBase entidad) {
 		entityManager().persist(entidad);
+	}
+
+	@SuppressWarnings("deprecation")
+	public Entidad findEntidad(String id_entidad) {
+		Entidad entidad1 = entityManager().find(EntidadJuridica.class,new Long(id_entidad));
+		if(entidad1 == null) {
+			entidad1 = entityManager().find(EntidadBase.class,new Long(id_entidad));
+		}
+		
+		return entidad1;
 	}
 }
