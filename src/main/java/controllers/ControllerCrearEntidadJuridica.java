@@ -1,12 +1,9 @@
 package controllers;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
+import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.organizacion.EntidadJuridica;
 import dominio.organizacion.RepoEntidades;
 import dominio.organizacion.Tipo;
@@ -37,10 +34,8 @@ public class ControllerCrearEntidadJuridica implements WithGlobalEntityManager, 
 		else if(tipoString.equals("5")) tipo = Tipo.OSC;
 		else tipo = null;
 		
-		System.out.println(nombreFic + "" + razonSoc + "" + cuit + "" + direccion + "" + codInscripto + "" + tipo + tipoString);
 		
-		
-		EntidadJuridica entidad = new EntidadJuridica(nombreFic, razonSoc, cuit, direccion, codInscripto, tipo, null);
+		EntidadJuridica entidad = new EntidadJuridica(nombreFic, razonSoc, cuit, direccion, codInscripto, tipo, new CategoriaEntidad(""));
 		
 		
 		withTransaction(() ->{

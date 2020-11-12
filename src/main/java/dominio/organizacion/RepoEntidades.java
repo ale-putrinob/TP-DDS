@@ -4,11 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.persistence.EntityManager;
-
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
-import dominio.proveedor.Proveedor;
 
 @SuppressWarnings("unchecked")
 public class RepoEntidades implements WithGlobalEntityManager{
@@ -54,5 +51,9 @@ public class RepoEntidades implements WithGlobalEntityManager{
 		}
 		
 		return entidad1;
+	}	
+	@SuppressWarnings("deprecation")
+	public EntidadJuridica buscarEntidadJuridica(String id_dependencia) {
+		return entityManager().find(EntidadJuridica.class, new Long(id_dependencia));
 	}
 }

@@ -14,15 +14,15 @@ public class EntidadJuridica extends Entidad {
 	int codInscripto;
 	
 	@Enumerated
-	Tipo categoria;
+	Tipo tipo;
 	
-	public EntidadJuridica(String nombreFicticio, String razonSocial, int cuit, String dirPostal, int codInscripto, Tipo categoria, CategoriaEntidad categoriaEntidad) {
+	public EntidadJuridica(String nombreFicticio, String razonSocial, int cuit, String dirPostal, int codInscripto, Tipo tipo, CategoriaEntidad categoriaEntidad) {
 		this.nombreFicticio = nombreFicticio;
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 		this.dirPostal = dirPostal;
 		this.codInscripto = codInscripto;
-		this.categoria = categoria;
+		this.tipo = tipo;
 		this.categoriaEntidad = categoriaEntidad;
 	}
 	
@@ -43,6 +43,10 @@ public class EntidadJuridica extends Entidad {
 	
 	public String getNombreFicticio() {
 		return nombreFicticio;
+	}
+
+	public CategoriaEntidad getCategoriaEntidad() {
+		return categoriaEntidad;
 	}
 	
 }
