@@ -11,4 +11,8 @@ public abstract class PersistentEntity {
 	@GeneratedValue
 	protected Long id;
 	
+	public Long getId() {
+		return id;
+	}
+	
 }
