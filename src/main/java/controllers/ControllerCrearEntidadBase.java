@@ -6,7 +6,6 @@ import java.util.List;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
-import dominio.categoriaEntidad.CategoriaEntidad;
 import dominio.organizacion.EntidadBase;
 import dominio.organizacion.EntidadJuridica;
 import dominio.organizacion.RepoEntidades;
@@ -27,9 +26,11 @@ public class ControllerCrearEntidadBase implements WithGlobalEntityManager, Tran
 	public ModelAndView crear(Request req, Response res) {
 		String nombreFic = req.queryParams("nombreFicticio");
 		String razonSoc = req.queryParams("razonSocial");
+		String id_dependencia = req.queryParams("Dependencia").split(" ")[0];
 		
-		EntidadBase entidad = new EntidadBase(nombreFic, razonSoc, null, null);
-		//EntidadBase(String nombreFicticio, String unaDescripcion, EntidadJuridica unaDependencia, CategoriaEntidad categoriaEntidad)
+		EntidadJuridica dependencia = RepoEntidades.getInstance().buscarEntidadJuridica(id_dependencia);
+		
+		EntidadBase entidad = new EntidadBase(nombreFic, razonSoc, dependencia, null);
 		
 		withTransaction(() ->{
 			RepoEntidades.getInstance().agregarEntidadBase(entidad);

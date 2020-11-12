@@ -1,7 +1,9 @@
 package server;
 
+import controllers.*;
 import org.apache.commons.lang3.StringUtils;
 
+<<<<<<< HEAD
 import controllers.ControllerBandejaDeMensajes;
 import controllers.ControllerCategoria;
 import controllers.ControllerCrearEntidad;
@@ -12,6 +14,8 @@ import controllers.ControllerLogin;
 import controllers.ControllerOperacionEgreso;
 import controllers.ControllerPresupuesto;
 import controllers.ControllerSearchEntity;
+=======
+>>>>>>> 4630423d4c0c74bd17d70d03163444c5e1cfadfb
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -28,6 +32,7 @@ public class Router {
 		/*Spark.staticFiles.location("/public");*/
 		
 		ControllerCategoria controllerCategoria=new ControllerCategoria();
+		ControllerProveedores controllerProveedores=new ControllerProveedores();
 		ControllerCrearEntidadJuridica controllerCrearEntidadJuridica = new ControllerCrearEntidadJuridica();
 		ControllerCrearEntidadBase controllerCrearEntidadBase = new ControllerCrearEntidadBase();
 		ControllerBandejaDeMensajes controllerMensajes = new ControllerBandejaDeMensajes();
@@ -53,5 +58,7 @@ public class Router {
 		Spark.get("/entidad/new/base",controllerCrearEntidadBase::show,transformer);
 		Spark.post("/entidad/new/base",controllerCrearEntidadBase::crear,transformer);
 		Spark.get("/bandejaDeMensajes", controllerMensajes::show, transformer);
+		Spark.get("/proveedores/show",controllerProveedores::obtenerProveedor,transformer);
+		Spark.post("/proveedores/new", controllerProveedores::cargarProveedores,transformer);
 	}
 }

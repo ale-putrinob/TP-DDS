@@ -1,0 +1,43 @@
+{{#partial "contenido"}}
+	<section>
+		<form method="POST" action="/proveedores/new">
+		<center> <div class = "w3-container">
+			<h2> Cargar Proveedor</h2>
+
+			<br> <h3> Nombre y Apellido </h3>
+			<input type="text" name = "nombreYApellido" placeholder = "Nombre y Apellido">
+
+			<br> <h3> Razon Social </h3>
+			<input type="text" name = "razonSocial" placeholder = "Razon Social">
+
+			<br> <h3> DNI </h3>
+			<input type="number" name = "DNI" placeholder = "DNI">
+
+			<br> <h3> CUIL </h3><>
+			<input type="number" name = "CUIT" placeholder = "CUIT">
+
+			<br> <h3> Ciudad </h3>
+			<input type="text" name = "id_ciudad" title ="Recordemos que este id nos permitirá traer la Ciudad correspondiente."
+			placeholder = "Id de Ciudad" required>
+
+			<br> <h3> Calle </h3>
+            <input type="text" name = "calle" placeholder = "Calle">
+
+			<br> <h3> Altura </h3>
+			<input type="number" name = "altura" placeholder = "Cod. Inscripto">
+
+			<br> <h3> Piso </h3>
+            <input type="number" name = "piso" placeholder = "Piso">
+
+            <br> <h3> Departamento </h3>
+            <input type="text" name = "departamento" placeholder = "Departamento">
+
+			<br><br><a href="/proveedores/new">Volver</a> &nbsp &nbsp &nbsp
+			<input type = "submit" class="btn btn-primary" value="Guardar"/> <br> <br>
+		</div> </center>
+		</form>
+	</section>
+
+{{/partial}}
+
+{{>layout.hbs}}
