@@ -20,11 +20,12 @@
             <tr>
 				<th> Validación </th>
 				<th> Operación de Egreso </th>
+				<th> Ver detalles </th>
 			</tr>
-            {{#each mensaje}}
+            {{#each mensajes}}
             <tr>
-                <td>{{validacion}}</td>
-                <td>{{operacionDeEgreso}}</td>
+                <td>{{contenido}}</td>
+                <td>{{operacionEgreso.id}}</td>
             </tr>
             {{/each}}
 		</table>

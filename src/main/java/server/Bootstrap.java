@@ -1,7 +1,19 @@
 package server;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
+import dominio.criterioDeSeleccionDeProveedor.CriterioDeSeleccionDeProveedor;
+import dominio.documentoComercial.DocumentoComercial;
+import dominio.item.Item;
+import dominio.medioDePago.MedioDePago;
+import dominio.medioDePago.TiposDePago;
+import dominio.operacionDeEgreso.OperacionEgreso;
+import dominio.presupuesto.Presupuesto;
+import dominio.validacionEgresos.ValidacionAplicacionPresupuesto;
+import dominio.validacionEgresos.ValidacionCantidadPresupuestos;
+import dominio.validacionEgresos.ValidacionSeleccionProveedor;
 import org.uqbarproject.jpa.java8.extras.EntityManagerOps;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
@@ -31,12 +43,23 @@ class Bootstrap implements WithGlobalEntityManager, EntityManagerOps, Transactio
 			persist(entBase);
 
 
-			Usuario usuario = new Usuario("admin", "bocacampeon", true, new ArrayList<Mensaje>());
-			persist(usuario);
+
 			
 			Proveedor proveedor = new Proveedor("Juan Peron","JDP",45678978,2045678889,"1567","Evita", 31, 2, 'A');
 			persist(proveedor);
-			
+
+			////////////////////////////OPERACION DE EGRESO
+
+			OperacionEgreso operacionOE = new OperacionEgreso(null, null, null, null,
+					null, null, null, null, null, null, null);
+			persist(operacionOE);
+
+			Mensaje mensaje = new Mensaje("Se esta aplicando alguno de los presupuestos en la compra", operacionOE);
+			persist(mensaje);
+			Usuario usuario = new Usuario("coquitos", "bocacampeon", true,  Arrays.asList(mensaje));
+			persist(usuario);
+
+
 			
 		});
 		

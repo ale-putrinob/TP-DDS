@@ -18,7 +18,16 @@ public class Mensaje extends PersistentEntity{
 		this.contenido = contenido;
 		this.operacionEgreso = operacionEgreso;
 	}
-	
+
+	public String getContenido(){
+		return contenido;
+	};
+	public OperacionEgreso getOperacionEgreso(){
+		return operacionEgreso;
+	};
+
+	public Mensaje(){};
+
 	public boolean coincideContenido(String otroContenido) {
 		return contenido.equals(otroContenido);
 	}
