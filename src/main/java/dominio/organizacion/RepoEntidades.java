@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
+
 @SuppressWarnings("unchecked")
 public class RepoEntidades implements WithGlobalEntityManager{
 	private final static RepoEntidades INSTANCE = new RepoEntidades();
@@ -40,5 +41,19 @@ public class RepoEntidades implements WithGlobalEntityManager{
 	
 	public void agregarEntidadBase(EntidadBase entidad) {
 		entityManager().persist(entidad);
+	}
+
+	@SuppressWarnings("deprecation")
+	public Entidad findEntidad(String id_entidad) {
+		Entidad entidad1 = entityManager().find(EntidadJuridica.class,new Long(id_entidad));
+		if(entidad1 == null) {
+			entidad1 = entityManager().find(EntidadBase.class,new Long(id_entidad));
+		}
+		
+		return entidad1;
+	}	
+	@SuppressWarnings("deprecation")
+	public EntidadJuridica buscarEntidadJuridica(String id_dependencia) {
+		return entityManager().find(EntidadJuridica.class, new Long(id_dependencia));
 	}
 }

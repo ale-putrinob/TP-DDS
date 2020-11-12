@@ -26,15 +26,18 @@ public class CategoriaEntidad extends PersistentEntity{
 	public CategoriaEntidad(){}
 	
 	public void validarNuevosEgresos(Entidad entidad) {
-		funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarNuevosEgresos(entidad));
+		if(!funcionalidades.isEmpty())
+			funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarNuevosEgresos(entidad));
 	}
 	
 	public void validarNuevasEntidadesBase() {
-		funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarNuevasEntidadesBase());
+		if(!funcionalidades.isEmpty())
+			funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarNuevasEntidadesBase());
 	}
 	
 	public void validarAdicionAEntidadJuridica() {
-		funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarAdicionAEntidadJuridica());
+		if(!funcionalidades.isEmpty())
+			funcionalidades.stream().forEach(funcionalidad->funcionalidad.validarAdicionAEntidadJuridica());
 	}
 	
 	public void agregarFuncionalidad(Funcionalidad funcionalidad) {

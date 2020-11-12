@@ -80,9 +80,13 @@ public class OperacionEgreso extends PersistentEntity{
 		this.revisores = revisores;
 		this.criterioDeSeleccionDeProveedor = criterioDeSeleccionDeProveedor;
 		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
-		entidad.validarAgregarEgreso();
+		if (entidad != null) {
+			entidad.validarAgregarEgreso();
+			}
 		this.entidad = entidad;
 	}
+	
+	public OperacionEgreso() {};
 
 	public void validarse() {
 		validador.validarEgreso(this);

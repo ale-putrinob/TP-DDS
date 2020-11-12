@@ -1,0 +1,36 @@
+{{#partial "contenido"}}
+<html>
+<head>
+    <title>Bandeja de Mensajes</title>
+    <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/home">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active">Bandeja de Mensajes</li>
+  </ol>
+  <div class="row">
+  <div class="col-md-8">
+    <h1>Bandeja de Mensajes</h1>
+  </div>
+  </div>
+  	<section>
+		<table style="width:80%"
+            <tr>
+				<th> Validación </th>
+				<th> Operación de Egreso </th>
+			</tr>
+            {{#each mensaje}}
+            <tr>
+                <td>{{validacion}}</td>
+                <td>{{operacionDeEgreso}}</td>
+            </tr>
+            {{/each}}
+		</table>
+	</section>
+</html>
+
+{{/partial}}
+
+{{>layout.hbs}}

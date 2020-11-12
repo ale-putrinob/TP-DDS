@@ -1,7 +1,12 @@
 package dominio.categoriaEntidad;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import dominio.excepcion.EntidadException;
 
+@Entity
+@DiscriminatorValue("BNEB")
 public class BloquearNuevasEntidadesBase extends Funcionalidad {
 
 	@Override

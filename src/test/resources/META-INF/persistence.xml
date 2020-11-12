@@ -25,6 +25,10 @@
         <class>dominio.repositorioApiML.Provincia</class>
         <class>dominio.repositorioApiML.Pais</class>
         <class>dominio.categoriaEntidad.Funcionalidad</class>
+        <class>dominio.categoriaEntidad.BloquearNuevasEntidadesBase</class>
+        <class>dominio.categoriaEntidad.BloquearNuevaosEgresos</class>
+        <class>dominio.categoriaEntidad.BloquearSerParteDeEntidadJuridica</class>
+        
 
 			<properties>
             <property name="hibernate.archive.autodetection" value="class"/>

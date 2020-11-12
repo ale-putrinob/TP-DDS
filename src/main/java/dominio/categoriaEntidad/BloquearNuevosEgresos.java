@@ -1,8 +1,13 @@
 package dominio.categoriaEntidad;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import dominio.excepcion.EntidadException;
 import dominio.organizacion.Entidad;
 
+@Entity
+@DiscriminatorValue("BNE")
 public class BloquearNuevosEgresos extends Funcionalidad{
 	double montoMaximo;
 	
