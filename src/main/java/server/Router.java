@@ -24,6 +24,7 @@ public class Router {
 		ControllerCrearEntidadJuridica controllerCrearEntidadJuridica = new ControllerCrearEntidadJuridica();
 		ControllerCrearEntidadBase controllerCrearEntidadBase = new ControllerCrearEntidadBase();
 		ControllerBandejaDeMensajes controllerMensajes = new ControllerBandejaDeMensajes();
+		ControllerPresupuesto controllerPresupuesto = new ControllerPresupuesto();
 		
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
@@ -34,8 +35,12 @@ public class Router {
 		Spark.get("/operacionDeEgreso/new/2", controllerOperacionEgreso::show2, transformer);
 		Spark.post("/operacionDeEgreso/new/2", controllerOperacionEgreso::cargarOperacionEgreso2, transformer);
 		Spark.get("/operacionDeEgreso/show", controllerOperacionEgreso::mostrarOperacionEgreso, transformer);
-		Spark.get("/presupuesto/new", ControllerPresupuesto::show, transformer);
-		Spark.post("/presupuesto/new", ControllerPresupuesto::cargarPresupuesto, transformer);
+		Spark.get("/presupuesto/new", controllerPresupuesto::show, transformer);
+		Spark.post("/presupuesto/new", controllerPresupuesto::cargarPresupuesto, transformer);
+		Spark.get("/presupuesto/new/2", controllerPresupuesto::show2, transformer);
+		Spark.post("/presupuesto/new/2", controllerPresupuesto::cargarPresupuesto2, transformer);
+		Spark.get("/presupuesto/new/3", controllerPresupuesto::show3, transformer);
+		Spark.post("/presupuesto/new/3", controllerPresupuesto::cargarPresupuesto3, transformer);
 		Spark.post("/categoria/crearCategoria",controllerCategoria::cargarCategoria);
 		Spark.get("/categoria",ControllerCategoria::getCategoria,transformer);
 		Spark.get("/categoria/asociarEntidad",ControllerCategoria::asociarConEntidad,transformer);

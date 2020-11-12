@@ -19,7 +19,8 @@ public class Item extends PersistentEntity{
 	public Item(double valorItem, String tipo, String idMoneda) {
 		this.valorItem=valorItem;
 		this.tipo=tipo;
-		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
+		if(idMoneda != null)
+			this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
 	};
 	
 	public double getValorItem() {

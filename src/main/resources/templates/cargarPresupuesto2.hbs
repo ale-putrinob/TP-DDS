@@ -1,0 +1,35 @@
+{{#partial "contenido"}}
+<html>
+	<head>
+		<title>Cargar Presupuesto </title>
+	</head>
+	<ol class="breadcrumb">
+    	<li class="breadcrumb-item">
+      		<a routerLink="/home">Inicio</a>
+    	</li>
+    	<li class="breadcrumb-item active">Presupuesto  /  Cargar Presupuesto </li>
+  	</ol>
+  	<form method="POST" action="/presupuesto/new/2">
+	<body>
+		<header>
+			<h2> Cargar presupuesto </h2>			
+		</header><br>
+		<section>
+			<div>
+				Documento comercial &nbsp&nbsp
+				<input type = "text" name = "Tipo" placeholder = "Ingresar tipo" required>&nbsp&nbsp	
+				<input type = "number" name = "Numero" min="1" pattern="^[0-9]+" placeholder = "Ingresar ID" required>&nbsp&nbsp	
+				<input type = "submit" id = "cargarDoc" value = "Cargar Documento" class="btn btn-primary">
+			</div><br>
+			
+			<div> <br>
+				<a href="/home">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+				<a href="/presupuesto/new/3">Siguiente</a>
+			</div> <br><br>
+		</section>
+	</body>
+  	</form>
+</html>
+
+{{/partial}}
+{{>layout.hbs}}

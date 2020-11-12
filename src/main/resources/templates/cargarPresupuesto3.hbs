@@ -9,32 +9,29 @@
     	</li>
     	<li class="breadcrumb-item active">Presupuesto  /  Cargar Presupuesto </li>
   	</ol>
-  	<form method="POST" action="/presupuesto/new">
+  	<form method="POST" action="/presupuesto/new/3">
 	<body>
 		<header>
 			<h2> Cargar presupuesto </h2>			
 		</header><br>
 		<section>
 			<div>
-				Item &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				<input type = "number" name = "Valor" min="0" pattern="^[0-9]+" placeholder = "Ingresar valor">&nbsp&nbsp&nbsp&nbsp
-				<input type = "text" name = "Tipo" placeholder = "Ingresar tipo">&nbsp&nbsp&nbsp&nbsp
-				<select name = "Moneda">
+			Proveedor &nbsp&nbsp
+				<select name="Proveedor">
    						<option selected value="0"> Elige una opcion </option>
-       						<option value="1"></option>
+   							{{#each provs}}
+       						<option>{{ id }} {{ nombreApellido }}</option>
+       						{{/each}}
    						</optgroup> 
-				</select>&nbsp&nbsp&nbsp&nbsp
-				<input type = "submit" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
-			</div><br>
-			
+				</select>		
+			</div>
 			<div> <br>
 				<a href="/home">Cancelar</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-				<a href="/presupuesto/new/2">Siguiente</a>
+				<input type = "submit" id = "cargar" value = "Cargar Presupuesto" class="btn btn-primary">
 			</div> <br><br>
 		</section>
 	</body>
-	</form>
-  
+  <form/>
 </html>
 
 {{/partial}}

@@ -32,7 +32,7 @@ public class Presupuesto extends PersistentEntity{
 
 	public Presupuesto(List<DocumentoComercial> documentosComerciales, List<Item> items, Proveedor proveedor,
 						String idMoneda) {
-		this.validarItemsAsignadosAEgreso(items);
+		//this.validarItemsAsignadosAEgreso(items);
 		this.documentosComerciales = documentosComerciales;
 		this.items = items;
 		this.proveedor=proveedor;
@@ -58,6 +58,18 @@ public class Presupuesto extends PersistentEntity{
 	public boolean contieneItems (List<Item> otrosItems){
 		/*aca se verifica que las listas contengan los mismo items, y que sean del mismo tama�o, para que los presupuestos sean iguales*/
 		return this.items.containsAll(otrosItems) && this.items.size()==otrosItems.size();
+	}
+	
+	public void agregarItem(Item item) {
+		items.add(item);
+	}
+	
+	public void agregarDocComercial(DocumentoComercial doc) {
+		documentosComerciales.add(doc);
+	}
+
+	public void setProveedor(Proveedor prov) {
+		this.proveedor = prov;
 	}
 	
 }
