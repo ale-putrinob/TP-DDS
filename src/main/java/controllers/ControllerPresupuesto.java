@@ -19,7 +19,7 @@ import spark.Request;
 import spark.Response;
 
 public class ControllerPresupuesto implements WithGlobalEntityManager, TransactionalOps {
-	Long idPresupuesto;
+
 	
 	public ModelAndView show(Request req, Response res) {
 		List<Proveedor> provs = RepoProveedores.getInstance().getProveedor();

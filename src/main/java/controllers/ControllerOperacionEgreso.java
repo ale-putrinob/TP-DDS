@@ -17,7 +17,9 @@ import dominio.moneda.TipoMoneda;
 import dominio.operacionDeEgreso.OperacionEgreso;
 import dominio.operacionDeEgreso.RepositorioEgresos;
 import dominio.organizacion.Entidad;
+import dominio.organizacion.EntidadJuridica;
 import dominio.organizacion.RepoEntidades;
+import dominio.presupuesto.Presupuesto;
 import dominio.proveedor.Proveedor;
 import dominio.proveedor.RepoProveedores;
 import spark.ModelAndView;
@@ -25,8 +27,6 @@ import spark.Request;
 import spark.Response;
 
 public class ControllerOperacionEgreso implements WithGlobalEntityManager, TransactionalOps  {
-	
-	OperacionEgreso opEgreso;
 	
 	public ModelAndView show(Request req, Response res) {
 		List<Proveedor> provs = RepoProveedores.getInstance().getProveedor();
@@ -42,6 +42,16 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 	public ModelAndView show2(Request req, Response res) {
 
 		return new ModelAndView(null, "cargarOperacionEgreso2.hbs");
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ModelAndView show3(Request req, Response res) {
+		List<Presupuesto> presupuestos = entityManager().createQuery("from Presupuesto").getResultList();
+		
+		HashMap<String, Object> viewModel = new HashMap<>();
+		viewModel.put("presupuestos", presupuestos);
+		
+		return new ModelAndView(viewModel, "cargarOperacionEgreso3.hbs");
 	}
 	
 	public ModelAndView cargarOperacionEgreso(Request req, Response res) {
@@ -76,14 +86,15 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		
 		DocumentoComercial docCom = new DocumentoComercial(tipoDoc,numeroDoc);
 		MedioDePago medioPago = new MedioDePago(tipo,identificador);
-		opEgreso= new OperacionEgreso(null ,null, null,  docCom, 
+		OperacionEgreso opEgreso= new OperacionEgreso(null ,null, null,  docCom, 
 				proveedor, medioPago, null, null, criterioProveedor, null,entidad);
 		
-		/*
+		
 		withTransaction(() ->{
 			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
+			res.cookie("id_egreso", opEgreso.getId().toString());
 		});
-		*/
+		
 		res.redirect("/operacionDeEgreso/new/2");
 		return null;
 	}
@@ -94,15 +105,31 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		Integer valor = new Integer(req.queryParams("Valor"));
 		String tipoItem = req.queryParams("Tipo");
 		
-		
-		/* String id_moneda = req.queryParams("TipoMoneda").split(" - ")[0];
-		TipoMoneda tipoMoneda = RepoTipoMonedas.getInstance().findTipoMoneda(id_moneda); */
+		OperacionEgreso opEgreso = entityManager().find(OperacionEgreso.class, new Long(req.cookie("id_egreso")));
 		
 		Item item = new Item(valor,tipoItem,null);
-		opEgreso.agregarItem(item);
+		
 		
 		
 		withTransaction(() ->{
+			entityManager().persist(item);
+			opEgreso.agregarItem(item);
+			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
+		});
+		
+		res.redirect("/operacionDeEgreso/new/2");
+		return null;
+	}
+	
+	public  ModelAndView cargarOperacionEgreso3(Request req, Response res) {
+		String id_presupuesto = req.queryParams("Presupuesto").split(" ")[0];
+		Presupuesto presupuesto = entityManager().find(Presupuesto.class, new Long(id_presupuesto));
+		
+		OperacionEgreso opEgreso = entityManager().find(OperacionEgreso.class, new Long(req.cookie("id_egreso")));
+		
+		withTransaction(() ->{
+			entityManager().persist(presupuesto);
+			opEgreso.agregarPresupuesto(presupuesto);
 			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
 		});
 		

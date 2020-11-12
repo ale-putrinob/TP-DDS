@@ -34,6 +34,8 @@ public class Router {
 		Spark.post("/operacionDeEgreso/new", controllerOperacionEgreso::cargarOperacionEgreso, transformer);
 		Spark.get("/operacionDeEgreso/new/2", controllerOperacionEgreso::show2, transformer);
 		Spark.post("/operacionDeEgreso/new/2", controllerOperacionEgreso::cargarOperacionEgreso2, transformer);
+		Spark.get("/operacionDeEgreso/new/3", controllerOperacionEgreso::show3, transformer);
+		Spark.post("/operacionDeEgreso/new/3", controllerOperacionEgreso::cargarOperacionEgreso3, transformer);
 		Spark.get("/operacionDeEgreso/show", controllerOperacionEgreso::mostrarOperacionEgreso, transformer);
 		Spark.get("/presupuesto/new", controllerPresupuesto::show, transformer);
 		Spark.post("/presupuesto/new", controllerPresupuesto::cargarPresupuesto, transformer);

@@ -1,0 +1,44 @@
+{{#partial "contenido"}}
+<html>
+	<head>
+		<title>Cargar Operacion de Egreso - Paso 3 </title>
+	</head>
+	<ol class="breadcrumb">
+    	<li class="breadcrumb-item">
+      		<a routerLink="/home">Inicio</a>
+    	</li>
+    	<li class="breadcrumb-item active">Operacion de Egreso / Cargar Operacion / Paso 3</li>
+  	</ol>
+	<body>
+	
+		<header>
+			<h2> Cargar Operacion de Egreso - Paso 3 </h2>			
+		</header><br>
+		<section>
+			<form method="POST" action="/operacionDeEgreso/new/3">
+		
+			<div>
+				Presupuesto <br>
+				<select name = "Presupuesto">
+   						<option selected value="0"> Elige una opcion </option>
+   							{{#each presupuestos}}
+       						<option>{{ id }}</option>
+       						{{/each}}
+   						</optgroup> 
+				</select>			
+			</div><br>
+			
+			
+		</section>
+			<div>
+				<input type = "submit" id = "finalizar" value = "Finalizar" class="btn btn-primary">			
+			</div>
+		</section>
+	</form>
+	</body>
+  
+	
+</html>
+
+{{/partial}}
+{{>layout.hbs}}
