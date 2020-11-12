@@ -2,6 +2,7 @@ package server;
 
 import org.apache.commons.lang3.StringUtils;
 
+import controllers.ControllerBandejaDeMensajes;
 import controllers.ControllerCategoria;
 import controllers.ControllerCrearEntidad;
 import controllers.ControllerCrearEntidadBase;
@@ -16,10 +17,10 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 public class Router {
 	public static void configure() {
-		Spark.before((request, response) -> {
-			if((StringUtils.isEmpty(request.cookie("usuario_logueado"))) && !(request.pathInfo().equals("/")))
-				response.redirect("/");	
-		});
+		//Spark.before((request, response) -> {
+		//	if((StringUtils.isEmpty(request.cookie("usuario_logueado"))) && !(request.pathInfo().equals("/")))
+		//		response.redirect("/");	
+		//});
 		
 		HandlebarsTemplateEngine transformer = 
 				new HandlebarsTemplateEngine();
@@ -29,6 +30,7 @@ public class Router {
 		ControllerCategoria controllerCategoria=new ControllerCategoria();
 		ControllerCrearEntidadJuridica controllerCrearEntidadJuridica = new ControllerCrearEntidadJuridica();
 		ControllerCrearEntidadBase controllerCrearEntidadBase = new ControllerCrearEntidadBase();
+		ControllerBandejaDeMensajes controllerMensajes = new ControllerBandejaDeMensajes();
 		
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
@@ -50,6 +52,6 @@ public class Router {
 		Spark.post("/entidad/new/juridica",controllerCrearEntidadJuridica::crear,transformer);
 		Spark.get("/entidad/new/base",controllerCrearEntidadBase::show,transformer);
 		Spark.post("/entidad/new/base",controllerCrearEntidadBase::crear,transformer);
-		
+		Spark.get("/bandejaDeMensajes", controllerMensajes::show, transformer);
 	}
 }

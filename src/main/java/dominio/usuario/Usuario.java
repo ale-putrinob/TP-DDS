@@ -52,6 +52,10 @@ public class Usuario extends PersistentEntity{
 	}
 	
 	public Boolean matchea(String unUsuario, String unaPassword) {
-		return (nombreUsuario.equals(unUsuario)) && (DigestUtils.md5Hex(unaPassword).equals(password));
+		return (this.seLlama(unUsuario) && (DigestUtils.md5Hex(unaPassword).equals(password));
+	}
+	
+	public Boolean seLlama(String unUsuario) {
+		return nombreUsuario.equals(unUsuario);
 	}
 }
