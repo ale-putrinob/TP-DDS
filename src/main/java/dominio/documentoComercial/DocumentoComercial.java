@@ -13,6 +13,9 @@ public class DocumentoComercial extends PersistentEntity{
 		this.tipo=tipo;
 		this.numero=numero;
 	};
+	
+	public DocumentoComercial() {};
+
 
 
 }

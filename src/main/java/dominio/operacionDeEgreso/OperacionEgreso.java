@@ -85,6 +85,8 @@ public class OperacionEgreso extends PersistentEntity{
 			}
 		this.entidad = entidad;
 	}
+	
+	public OperacionEgreso() {};
 
 	public void validarse() {
 		validador.validarEgreso(this);

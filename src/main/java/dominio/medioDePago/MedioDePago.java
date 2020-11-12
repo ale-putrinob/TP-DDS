@@ -18,4 +18,7 @@ public class MedioDePago extends PersistentEntity{
         this.tipo = tipo;
         this.identificador = identificador;
     }
+    
+	public MedioDePago() {};
+
 }
