@@ -28,6 +28,7 @@ public class Router {
 		
 		ControllerCategoria controllerCategoria=new ControllerCategoria();
 		ControllerCrearEntidadJuridica controllerCrearEntidadJuridica = new ControllerCrearEntidadJuridica();
+		ControllerCrearEntidadBase controllerCrearEntidadBase = new ControllerCrearEntidadBase();
 		
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
@@ -47,8 +48,8 @@ public class Router {
 		Spark.post("/entidad/new",ControllerCrearEntidad::crear,transformer);
 		Spark.get("/entidad/new/juridica",controllerCrearEntidadJuridica::show,transformer);
 		Spark.post("/entidad/new/juridica",controllerCrearEntidadJuridica::crear,transformer);
-		Spark.get("/entidad/new/base",ControllerCrearEntidadBase::show,transformer);
-		Spark.post("/entidad/new/base",ControllerCrearEntidadBase::crear,transformer);
+		Spark.get("/entidad/new/base",controllerCrearEntidadBase::show,transformer);
+		Spark.post("/entidad/new/base",controllerCrearEntidadBase::crear,transformer);
 		
 	}
 }
