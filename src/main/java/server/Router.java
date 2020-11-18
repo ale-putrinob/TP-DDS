@@ -1,14 +1,12 @@
 package server;
 
 import controllers.*;
-import spark.Request;
-import spark.Response;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.StringUtils;
 
 public class Router {
-	private static void chequearLoginInexistente(Request req, Response res) {
+	/*private static void chequearLoginInexistente(Request req, Response res) {
 		if (req.session(false) == null) {
 			res.redirect("/");
 			Spark.halt();
@@ -20,7 +18,7 @@ public class Router {
 			res.redirect("/");
 			Spark.halt();
 		}
-	}
+	}*/
 	
 	public static void configure() {
 		Spark.before((request, response) -> {
@@ -75,6 +73,7 @@ public class Router {
 		Spark.get("/proveedores/new",controllerProveedores::obtenerProveedor,transformer);
 		Spark.post("/proveedores/new", controllerProveedores::cargarProveedores,transformer);
 		
+		/*
 		Spark.before("/entidad/*", Router::chequearLoginInexistente);
 		Spark.before("/entidad", Router::chequearLoginInexistente);
 		Spark.before("/proveedores/*", Router::chequearLoginInexistente);
@@ -84,6 +83,7 @@ public class Router {
 		Spark.before("/presupuesto/*", Router::chequearLoginInexistente);
 		Spark.before("/operacionDeEgreso/*", Router::chequearLoginInexistente);
 		
-		
+		Spark.before("/", Router::chequearLoginExistente);
+		*/
 	}
 }

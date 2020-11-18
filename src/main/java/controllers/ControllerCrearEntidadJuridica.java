@@ -21,9 +21,10 @@ public class ControllerCrearEntidadJuridica implements WithGlobalEntityManager, 
 	public ModelAndView crear(Request req, Response res) {
 		String nombreFic = req.queryParams("nombreFicticio");
 		String razonSoc = req.queryParams("razonSocial");
-		Integer cuit = new Integer(req.queryParams("CUIT"));
+		int cuit = Integer.parseInt(req.queryParams("CUIT"));
 		String direccion = req.queryParams("direccion");
-		Integer codInscripto = new Integer(req.queryParams("codInscripto"));
+		int codInscripto = Integer.parseInt(req.queryParams("codInscripto"));
+		//Tipo tipo = Tipo.valueOf(req.queryParams("Tipo"));
 		String tipoString = req.queryParams("Tipo");
 		Tipo tipo;
 
@@ -33,7 +34,6 @@ public class ControllerCrearEntidadJuridica implements WithGlobalEntityManager, 
 		else if(tipoString.equals("4")) tipo = Tipo.EmpresaMedianaTramo2;
 		else if(tipoString.equals("5")) tipo = Tipo.OSC;
 		else tipo = null;
-		
 		
 		EntidadJuridica entidad = new EntidadJuridica(nombreFic, razonSoc, cuit, direccion, codInscripto, tipo, new CategoriaEntidad(""));
 		
