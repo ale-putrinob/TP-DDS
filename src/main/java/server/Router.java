@@ -25,10 +25,12 @@ public class Router {
 		ControllerCrearEntidadBase controllerCrearEntidadBase = new ControllerCrearEntidadBase();
 		ControllerBandejaDeMensajes controllerMensajes = new ControllerBandejaDeMensajes();
 		ControllerPresupuesto controllerPresupuesto = new ControllerPresupuesto();
+		ControllerLogin controllerLogin = new ControllerLogin();
 		
 		Spark.get("/", ControllerLogin::show, transformer);
 		Spark.post("/", ControllerLogin::login, transformer);
-		Spark.get("/home", ControllerHome::home, transformer);		
+		Spark.get("/home", ControllerHome::home, transformer);
+		Spark.post("/logout", controllerLogin::logout,transformer);
 		Spark.get("/entidad/search", ControllerSearchEntity::buscarEntidades, transformer);
 		Spark.get("/operacionDeEgreso/new", controllerOperacionEgreso::show, transformer);
 		Spark.post("/operacionDeEgreso/new", controllerOperacionEgreso::cargarOperacionEgreso, transformer);

@@ -38,4 +38,10 @@ public class ControllerLogin implements WithGlobalEntityManager {
 		
 		return null;
 	}
+	
+	public ModelAndView logout(Request req, Response res) {
+		req.session().invalidate();
+		res.redirect("/");
+		return null;
+	}
 }
