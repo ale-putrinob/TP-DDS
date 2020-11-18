@@ -1,17 +1,33 @@
 package server;
 
 import controllers.*;
-
+import spark.Request;
+import spark.Response;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.utils.StringUtils;
 
 public class Router {
+	private static void chequearLoginInexistente(Request req, Response res) {
+		if (req.session(false) == null) {
+			res.redirect("/");
+			Spark.halt();
+		}
+	}
+	
+	private static void chequearLoginExistente(Request req, Response res) {
+		if (req.session(false) != null) {
+			res.redirect("/");
+			Spark.halt();
+		}
+	}
+	
 	public static void configure() {
 		Spark.before((request, response) -> {
 			if((StringUtils.isEmpty(request.cookie("usuario_logueado"))) && !(request.pathInfo().equals("/")))
 				response.redirect("/");	
 		});
+		
 		
 		HandlebarsTemplateEngine transformer = 
 				new HandlebarsTemplateEngine();
@@ -58,5 +74,16 @@ public class Router {
 		Spark.get("/bandejaDeMensajes", controllerMensajes::show, transformer);
 		Spark.get("/proveedores/new",controllerProveedores::obtenerProveedor,transformer);
 		Spark.post("/proveedores/new", controllerProveedores::cargarProveedores,transformer);
+		
+		Spark.before("/entidad/*", Router::chequearLoginInexistente);
+		Spark.before("/entidad", Router::chequearLoginInexistente);
+		Spark.before("/proveedores/*", Router::chequearLoginInexistente);
+		Spark.before("/bandejaDeMensajes", Router::chequearLoginInexistente);
+		Spark.before("/categoria/*", Router::chequearLoginInexistente);
+		Spark.before("/categoria", Router::chequearLoginInexistente);
+		Spark.before("/presupuesto/*", Router::chequearLoginInexistente);
+		Spark.before("/operacionDeEgreso/*", Router::chequearLoginInexistente);
+		
+		
 	}
 }
