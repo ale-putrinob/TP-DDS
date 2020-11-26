@@ -36,7 +36,7 @@ public class OperacionEgreso extends PersistentEntity{
 	@ElementCollection
 	List<String> etiquetas = new ArrayList<>(); 
 	Date fechaOp = new Date();
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST})
 	List<Item> items = new ArrayList<>();
 	// moneda va a tener todos los campos del JSON
 	@ManyToOne(cascade = {CascadeType.PERSIST})
@@ -161,6 +161,10 @@ public class OperacionEgreso extends PersistentEntity{
 	public Entidad getEntidad() {
 		return entidad;
 	}
+	
+	public void setEntidad(Entidad entidad) {
+		this.entidad = entidad;
+	}
 
 	@SuppressWarnings("deprecation")
 	public boolean esDelMes(int mes, int anio) {
@@ -177,5 +181,9 @@ public class OperacionEgreso extends PersistentEntity{
 
 	public void agregarItem(Item item) {
 		items.add(item);
+	}
+
+	public List<Item> getItems() {
+		return items;
 	}
 }

@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -40,8 +41,14 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 	}
 	
 	public ModelAndView show2(Request req, Response res) {
-
-		return new ModelAndView(null, "cargarOperacionEgreso2.hbs");
+		
+		HashMap<String, Object> viewModel = new HashMap<>();
+		OperacionEgreso opEgreso = req.session().attribute("opEgreso");
+		List<Item> items = opEgreso.getItems();
+		
+		viewModel.put("items", items);
+		
+		return new ModelAndView(viewModel, "cargarOperacionEgreso2.hbs");
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -86,14 +93,12 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		
 		DocumentoComercial docCom = new DocumentoComercial(tipoDoc,numeroDoc);
 		MedioDePago medioPago = new MedioDePago(tipo,identificador);
-		OperacionEgreso opEgreso= new OperacionEgreso(null ,null, null,  docCom, 
-				proveedor, medioPago, null, null, criterioProveedor, null,entidad);
+		OperacionEgreso opEgreso= new OperacionEgreso(null ,null, new ArrayList<Item>(),  docCom, 
+				proveedor, medioPago, new ArrayList<Presupuesto>(), null, criterioProveedor, null,entidad);
 		
 		
-		withTransaction(() ->{
-			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
-			res.cookie("id_egreso", opEgreso.getId().toString());
-		});
+		req.session().attribute("opEgreso", opEgreso);;
+
 		
 		res.redirect("/operacionDeEgreso/new/2");
 		return null;
@@ -104,34 +109,26 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		@SuppressWarnings("deprecation")
 		Integer valor = new Integer(req.queryParams("Valor"));
 		String tipoItem = req.queryParams("Tipo");
-		System.out.println("ID: ----------------" + req.cookie("id_egreso"));
-		OperacionEgreso opEgreso = entityManager().find(OperacionEgreso.class, new Long(req.cookie("id_egreso")));
+
+		OperacionEgreso opEgreso = req.session().attribute("opEgreso");
 		
 		Item item = new Item(valor,tipoItem,null);
 		
-		
-		
-		withTransaction(() ->{
-			entityManager().persist(item);
-			opEgreso.agregarItem(item);
-			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
-			res.cookie("id_egreso", opEgreso.getId().toString());
-		});
+		opEgreso.agregarItem(item);
+		req.session().attribute("opEgreso", opEgreso);
 		
 		res.redirect("/operacionDeEgreso/new/2");
 		return null;
 	}
 	
 	public  ModelAndView cargarOperacionEgreso3(Request req, Response res) {
-		String id_presupuesto = req.queryParams("Presupuesto").split(" ")[0];
-		Presupuesto presupuesto = entityManager().find(Presupuesto.class, new Long(id_presupuesto));
-		
-		OperacionEgreso opEgreso = entityManager().find(OperacionEgreso.class, new Long(req.cookie("id_egreso")));
+		//String id_presupuesto = req.queryParams("Presupuesto").split(" ")[0];
+		//Presupuesto presupuesto = entityManager().find(Presupuesto.class, new Long(id_presupuesto));
 		
 		withTransaction(() ->{
-			entityManager().persist(presupuesto);
-			opEgreso.agregarPresupuesto(presupuesto);
+			OperacionEgreso opEgreso = req.session().attribute("opEgreso");
 			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
+			req.session().removeAttribute("opEgreso");
 		});
 		
 		res.redirect("/home");

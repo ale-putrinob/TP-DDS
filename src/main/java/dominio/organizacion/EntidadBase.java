@@ -1,5 +1,6 @@
 package dominio.organizacion;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -10,7 +11,7 @@ public class EntidadBase extends Entidad {
 	String nombreFicticio;
 	String descripcion;
 	
-	@ManyToOne
+	@ManyToOne (cascade = {CascadeType.PERSIST})
 	EntidadJuridica dependencia;
 
 	public EntidadBase(String nombreFicticio, String unaDescripcion, EntidadJuridica unaDependencia, CategoriaEntidad categoriaEntidad) {

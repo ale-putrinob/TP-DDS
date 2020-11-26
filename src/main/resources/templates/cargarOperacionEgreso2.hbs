@@ -32,6 +32,23 @@
 				<input type = "submit" id = "cargarItem" value = "Cargar Item" class="btn btn-primary">			
 			</div><br>
 			
+			<div>
+				<table>
+					<tr>
+						<th> Item </th> &nbsp&nbsp&nbsp
+						<th> Valor </th> &nbsp&nbsp&nbsp
+						<th> Moneda </th>
+					</tr>
+					{{#each items}}
+						<tr>
+							<td> {{ tipo }} </td>
+							<td> {{ valorItem }} </td>
+							<td> {{ moneda }} </td>
+						</tr> 
+					{{/each}}
+				</table>
+			</div>
+			
 			</form>
 		</section>
 			<div>
