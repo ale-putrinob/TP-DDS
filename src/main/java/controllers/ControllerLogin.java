@@ -26,10 +26,8 @@ public class ControllerLogin implements WithGlobalEntityManager {
 		
 		res.cookie("usuario_logueado", nombre);
 		
-		List<Usuario> usuarios = RepoUsuarios.getInstance().getUsuarios();
-		
 		//if(nombre.equals("admin") && password.equals("1234"))
-		if(usuarios.stream().anyMatch(user -> user.matchea(nombre, password)))
+		if(RepoUsuarios.getInstance().tieneUsuario(nombre, password))
 			res.redirect("/home");
 		else{
 			res.redirect("/");

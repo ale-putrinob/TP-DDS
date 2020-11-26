@@ -2,6 +2,7 @@ package dominio.usuario;
 
 import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 public class RepoUsuarios implements WithGlobalEntityManager{
@@ -20,6 +21,12 @@ public class RepoUsuarios implements WithGlobalEntityManager{
 
 	public void agregarUsuario(Usuario usuario) {
 		entityManager().persist(usuario);
+	}
+
+	public boolean tieneUsuario(String nombre, String password) {
+		List<Usuario> usuarios = entityManager().createQuery("from Usuario where nombreUsuario = :nombre and password = :password", Usuario.class).setParameter("nombre",nombre).setParameter("password",DigestUtils.md5Hex(password)).getResultList();		
+		
+		return !usuarios.isEmpty();
 	}
 	
 	/*public Usuario buscarUsuario(String nombre, String password) {

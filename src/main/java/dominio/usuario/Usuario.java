@@ -35,6 +35,10 @@ public class Usuario extends PersistentEntity{
 	public Usuario() {
 	}
 	
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+	
 	public String getPassword() {
 		return password;
 	}
