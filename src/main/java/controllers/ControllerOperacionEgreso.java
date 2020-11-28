@@ -68,8 +68,7 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		CriterioDeSeleccionDeProveedor criterioProveedor;
 		@SuppressWarnings("deprecation")
 		Integer identificador = new Integer(req.queryParams("Identificador"));
-		String tipoString = req.queryParams("Tipo de pago");
-		TiposDePago tipo;
+		TiposDePago tipo = TiposDePago.valueOf(req.queryParams("Tipo de pago"));
 		String tipoDoc = req.queryParams("Tipo");
 		@SuppressWarnings("deprecation")
 		Integer numeroDoc = new Integer(req.queryParams("Numero"));
@@ -81,13 +80,6 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		/* String id_moneda = req.queryParams("TipoMoneda").split(" - ")[0];
 		TipoMoneda tipoMoneda = RepoTipoMonedas.getInstance().findTipoMoneda(id_moneda); */
 				
-		if(tipoString.equals("1")) tipo = TiposDePago.TarjetaDeCredito; 
-		else if(tipoString.equals("2")) tipo = TiposDePago.TarjetaDeDebito;
-		else if(tipoString.equals("3")) tipo = TiposDePago.Efectivo;
-		else if(tipoString.equals("4")) tipo = TiposDePago.DineroEnCuenta;
-		else if(tipoString.equals("5")) tipo = TiposDePago.CajeroAutomatico;
-		else tipo = null;
-		
 		if(criterioProv.equals("1")) criterioProveedor = CriterioDeSeleccionDeProveedor.MENOR_VALOR;
 		else criterioProveedor = null;
 		

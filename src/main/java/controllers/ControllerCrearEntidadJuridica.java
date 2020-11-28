@@ -10,6 +10,7 @@ import dominio.organizacion.Tipo;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import java.util.Enumeration;
 
 
 public class ControllerCrearEntidadJuridica implements WithGlobalEntityManager, TransactionalOps {
@@ -24,16 +25,7 @@ public class ControllerCrearEntidadJuridica implements WithGlobalEntityManager, 
 		int cuit = Integer.parseInt(req.queryParams("CUIT"));
 		String direccion = req.queryParams("direccion");
 		int codInscripto = Integer.parseInt(req.queryParams("codInscripto"));
-		//Tipo tipo = Tipo.valueOf(req.queryParams("Tipo"));
-		String tipoString = req.queryParams("Tipo");
-		Tipo tipo;
-
-		if(tipoString.equals("1")) tipo = Tipo.EmpresaMicro; 
-		else if(tipoString.equals("2")) tipo = Tipo.EmpresaPequenia;
-		else if(tipoString.equals("3")) tipo = Tipo.EmpresaMedianaTramo1;
-		else if(tipoString.equals("4")) tipo = Tipo.EmpresaMedianaTramo2;
-		else if(tipoString.equals("5")) tipo = Tipo.OSC;
-		else tipo = null;
+		Tipo tipo = Tipo.valueOf(req.queryParams("Tipo"));
 		
 		EntidadJuridica entidad = new EntidadJuridica(nombreFic, razonSoc, cuit, direccion, codInscripto, tipo, new CategoriaEntidad(""));
 		
