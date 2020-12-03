@@ -50,4 +50,7 @@ public class EntidadJuridica extends Entidad {
 		return categoriaEntidad;
 	}
 	
+	public String getTipoEntidad() {
+		return "Juridica";
+	}
 }

@@ -51,9 +51,11 @@ public abstract class Entidad extends PersistentEntity{
 		this.categoriaEntidad=categoria;
 	}
 
-	public CategoriaEntidad getCategoria() {
+	public CategoriaEntidad getCategoriaEntidad() {
 		// TODO Auto-generated method stub
 		return categoriaEntidad;
 	}
+	
+	public abstract String getTipoEntidad();
 	
 }

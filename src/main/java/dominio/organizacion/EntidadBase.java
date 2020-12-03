@@ -40,4 +40,7 @@ public class EntidadBase extends Entidad {
 		return nombreFicticio;
 	}
 	
+	public String getTipoEntidad() {
+		return "Base";
+	}
 }

@@ -30,6 +30,23 @@
 			<div> <br>
 				<input type = "button" id = "filtrar" value = "Filtrar">
 			</div>
+			
+			<div>
+				<table>
+					<tr>
+						<th> Id </th> &nbsp&nbsp&nbsp
+						<th> Tipo </th> &nbsp&nbsp&nbsp
+						<th> Categoria </th>
+					</tr>
+					{{#each entidades}}
+						<tr>
+							<td> {{ id }} </td> &nbsp&nbsp&nbsp
+							<td> {{ tipoEntidad }} </td> &nbsp&nbsp&nbsp
+							<td> {{ categoriaEntidad }} </td>
+						</tr> 
+					{{/each}}
+				</table>
+			</div>
 		</section>
 	</body>
 </html>
