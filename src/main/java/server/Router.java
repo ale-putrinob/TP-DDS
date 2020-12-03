@@ -86,6 +86,7 @@ public class Router {
 		Spark.get("/proveedores/new",controllerProveedores::obtenerProveedor,transformer);
 		Spark.post("/proveedores/new", controllerProveedores::cargarProveedores,transformer);
 		
+		
 		/*
 		Spark.before("/entidad/*", Router::chequearLoginInexistente);
 		Spark.before("/entidad", Router::chequearLoginInexistente);
