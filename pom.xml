@@ -98,41 +98,43 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.4</version>
-        <executions>
-          <execution>
-            <id>dist</id>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <executions>
+        <execution>
             <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-            <configuration>
-              <descriptorRefs>
-                 <descriptorRef>jar-with-dependencies</descriptorRef>
-              </descriptorRefs>
-              <archive>
-                <manifest>
-                  <mainClass>gesoc.Main</mainClass>
-                </manifest>
-              </archive>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.0.1</version>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <goals><goal>copy-dependencies</goal></goals>
-          </execution>
-     	</executions>
-      </plugin>
+             <goals>
+                 <goal>single</goal>
+             </goals>
+         </execution>
+     </executions>
+     <configuration>
+         <descriptorRefs>
+             <!-- This tells Maven to include all dependencies -->
+             <descriptorRef>jar-with-dependencies</descriptorRef>
+         </descriptorRefs>
+         <archive>
+             <manifest>
+                 <mainClass>/2020-ju-ma-group-04/src/main/java/server/Server.java</mainClass>
+             </manifest>
+         </archive>
+    </configuration>
+</plugin>
+<plugin>
+    <groupId>com.heroku.sdk</groupId>
+    <artifactId>heroku-maven-plugin</artifactId>
+    <configuration>
+        <jdkVersion>1.8</jdkVersion>
+        <!-- Use your own application name -->
+        <appName>proyectodds</appName>
+        <processTypes>
+            <!-- Tell Heroku how to launch your application -->
+            <!-- You might have to remove the ./ in front   -->
+            <web>java -jar target/2020-ju-ma-group-04-1-SNAPSHOT-jar-with-dependencies.jar</web>
+        </processTypes>
+    </configuration>
+</plugin>
+
+
     </plugins>
   </build>
 </project>
