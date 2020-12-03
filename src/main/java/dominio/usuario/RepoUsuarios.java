@@ -24,7 +24,9 @@ public class RepoUsuarios implements WithGlobalEntityManager{
 	}
 
 	public boolean tieneUsuario(String nombre, String password) {
-		List<Usuario> usuarios = entityManager().createQuery("from Usuario where nombreUsuario = :nombre and password = :password", Usuario.class).setParameter("nombre",nombre).setParameter("password",DigestUtils.md5Hex(password)).getResultList();		
+		List<Usuario> usuarios = entityManager().createQuery("from Usuario where nombreUsuario = :nombre and password = :password", Usuario.class).
+									setParameter("nombre",nombre).setParameter("password",DigestUtils.md5Hex(password)).
+									getResultList();		
 		
 		return !usuarios.isEmpty();
 	}
