@@ -114,7 +114,7 @@
          </descriptorRefs>
          <archive>
              <manifest>
-                 <mainClass>/2020-ju-ma-group-04/src/main/java/server/Server.java</mainClass>
+                 <mainClass>server.Server</mainClass>
              </manifest>
          </archive>
     </configuration>
@@ -133,8 +133,6 @@
         </processTypes>
     </configuration>
 </plugin>
-
-
     </plugins>
   </build>
 </project>
