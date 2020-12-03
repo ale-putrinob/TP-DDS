@@ -18,8 +18,8 @@ public class RepoProveedores implements WithGlobalEntityManager{
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Proveedor findProveedor(String id) {
-		return entityManager().find(Proveedor.class,new Long(id));
+	public Proveedor findProveedor(Long id) {
+		return entityManager().find(Proveedor.class,id);
 	}
 
 	public void agregarProveedor(Proveedor proveedor) {

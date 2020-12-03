@@ -45,12 +45,7 @@ public class RepoEntidades implements WithGlobalEntityManager{
 
 	@SuppressWarnings("deprecation")
 	public Entidad findEntidad(String id_entidad) {
-		Entidad entidad1 = entityManager().find(EntidadJuridica.class,new Long(id_entidad));
-		if(entidad1 == null) {
-			entidad1 = entityManager().find(EntidadBase.class,new Long(id_entidad));
-		}
-		
-		return entidad1;
+		return entityManager().find(Entidad.class,new Long(id_entidad));
 	}	
 	@SuppressWarnings("deprecation")
 	public EntidadJuridica buscarEntidadJuridica(String id_dependencia) {

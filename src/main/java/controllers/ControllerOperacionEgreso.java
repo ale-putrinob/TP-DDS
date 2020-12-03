@@ -72,9 +72,9 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		String tipoDoc = req.queryParams("Tipo");
 		@SuppressWarnings("deprecation")
 		Integer numeroDoc = new Integer(req.queryParams("Numero"));
-		String id_proveedor = req.queryParams("Proveedor").split(" - ")[0];
-		Proveedor proveedor = RepoProveedores.getInstance().findProveedor(id_proveedor);
-		String id_entidad = req.queryParams("Entidad").split(" - ")[0];
+		String id_proveedor = req.queryParams("Proveedor");
+		Proveedor proveedor = RepoProveedores.getInstance().findProveedor(new Long(id_proveedor));
+		String id_entidad = req.queryParams("Entidad");
 		Entidad entidad = RepoEntidades.getInstance().findEntidad(id_entidad);
 		
 		/* String id_moneda = req.queryParams("TipoMoneda").split(" - ")[0];
@@ -86,10 +86,15 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		DocumentoComercial docCom = new DocumentoComercial(tipoDoc,numeroDoc);
 		MedioDePago medioPago = new MedioDePago(tipo,identificador);
 		OperacionEgreso opEgreso= new OperacionEgreso(null ,null, new ArrayList<Item>(),  docCom, 
-				proveedor, medioPago, new ArrayList<Presupuesto>(), null, criterioProveedor, null,entidad);
+				null, medioPago, new ArrayList<Presupuesto>(), null, criterioProveedor, null,null);
+		if(proveedor != null)
+			opEgreso.setProveedor(proveedor);
+		if(entidad != null)
+			opEgreso.setEntidad(entidad);
 		
-		
-		req.session().attribute("opEgreso", opEgreso);;
+		req.session().attribute("opEgreso", opEgreso);
+		req.session().attribute("proveedor", proveedor);
+		req.session().attribute("entidad", entidad);
 
 		
 		res.redirect("/operacionDeEgreso/new/2");

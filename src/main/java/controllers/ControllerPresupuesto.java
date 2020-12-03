@@ -89,7 +89,7 @@ public class ControllerPresupuesto implements WithGlobalEntityManager, Transacti
 
 	public ModelAndView cargarPresupuesto3(Request req, Response res) {
 		String id_proveedor = req.queryParams("Proveedor").split(" ")[0];
-		Proveedor prov = RepoProveedores.getInstance().findProveedor(id_proveedor);
+		Proveedor prov = RepoProveedores.getInstance().findProveedor(new Long(id_proveedor));
 		Presupuesto pres = entityManager().find(Presupuesto.class, new Long(req.cookie("id_presupuesto")));
 		
 		withTransaction(() ->{

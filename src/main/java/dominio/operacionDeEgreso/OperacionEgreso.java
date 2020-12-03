@@ -24,6 +24,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -61,7 +62,7 @@ public class OperacionEgreso extends PersistentEntity{
 	List<String> resultadosDeValidaciones = new ArrayList<>();
 	@Transient
 	ValidadorEgresos validador = new ValidadorEgresos();
-	@ManyToOne(cascade = {CascadeType.PERSIST})
+	@ManyToOne(cascade = CascadeType.MERGE)
 	Entidad entidad;
 	
 	// Seteamos valor de prueba
@@ -165,6 +166,7 @@ public class OperacionEgreso extends PersistentEntity{
 	public void setEntidad(Entidad entidad) {
 		this.entidad = entidad;
 	}
+	
 
 	@SuppressWarnings("deprecation")
 	public boolean esDelMes(int mes, int anio) {
