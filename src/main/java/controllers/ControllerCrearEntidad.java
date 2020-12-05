@@ -15,10 +15,10 @@ public static ModelAndView crear(Request req, Response res) {
 	System.out.println(clase + "-------------------------");
 	
 	if(clase.equals("0"))
-		res.redirect("/entidad/new");
+		res.redirect("/entidades/new");
 	if(clase.equals("1"))
-		res.redirect("/entidad/new/juridica");
-	else res.redirect("/entidad/new/base");
+		res.redirect("/entidades/juridicas/new");
+	else res.redirect("/entidades/bases/new");
 	
 		return null;
 	}

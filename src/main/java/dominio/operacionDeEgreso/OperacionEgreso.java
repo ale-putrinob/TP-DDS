@@ -45,7 +45,7 @@ public class OperacionEgreso extends PersistentEntity{
 	@OneToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "documentoComercial_id")
 	DocumentoComercial documentoComercial;
-	@ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+	@ManyToOne(cascade = CascadeType.MERGE)
 	Proveedor proveedor;
 	@ManyToOne(cascade = {CascadeType.PERSIST})
 	MedioDePago medioDePago;

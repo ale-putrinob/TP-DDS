@@ -1,6 +1,6 @@
 {{#partial "contenido"}}
 	<section>
-		<form method="POST" action="/entidad/new/juridica">
+		<form method="POST" action="/entidades/juridicas/new">
 		<center> <div class = "w3-container">
 			<h2> Cargar Entidad Juridica </h2>
 			
@@ -22,15 +22,15 @@
 			<br> <h3> Tipo </h3>
 			<select name="Tipo">
    				<option selected value="0"> Elige una opcion </option>
-       				<option value="1">EmpresaMicro</option> 
-       				<option value="2">EmpresaPequenia</option> 
-       				<option value="3">EmpresaMedianaTramo1</option> 
-       				<option value="4">EmpresaMedianaTramo2</option> 
-       				<option value="5">OSC</option> 
+       				<option value="EmpresaMicro">EmpresaMicro</option>
+       				<option value="EmpresaPequenia">EmpresaPequenia</option>
+       				<option value="EmpresaMedianaTramo1">EmpresaMedianaTramo1</option>
+       				<option value="EmpresaMedianaTramo2">EmpresaMedianaTramo2</option>
+       				<option value="OSC">OSC</option>
    				</optgroup> 
 			</select>
 			 
-			<br><br><a href="/entidad/new">Volver</a> &nbsp &nbsp &nbsp
+			<br><br><a href="/entidades/new">Volver</a> &nbsp &nbsp &nbsp
 			<input type = "submit" class="btn btn-primary" value="Guardar"/> <br> <br>
 		</div> </center>
 		</form>

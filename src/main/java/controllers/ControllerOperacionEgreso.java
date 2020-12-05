@@ -97,7 +97,7 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		req.session().attribute("entidad", entidad);
 
 		
-		res.redirect("/operacionDeEgreso/new/2");
+		res.redirect("/operacionesDeEgresos/new/2");
 		return null;
 	}
 	
@@ -114,7 +114,7 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 		opEgreso.agregarItem(item);
 		req.session().attribute("opEgreso", opEgreso);
 		
-		res.redirect("/operacionDeEgreso/new/2");
+		res.redirect("/operacionesDeEgresos/new/2");
 		return null;
 	}
 	

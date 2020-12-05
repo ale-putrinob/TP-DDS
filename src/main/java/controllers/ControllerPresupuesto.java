@@ -63,7 +63,7 @@ public class ControllerPresupuesto implements WithGlobalEntityManager, Transacti
 			res.cookie("id_presupuesto", pres.getId().toString());
 		});
 		
-		res.redirect("/presupuesto/new");
+		res.redirect("/presupuestos/new/1");
 		return null;
 	}
 	
@@ -83,7 +83,7 @@ public class ControllerPresupuesto implements WithGlobalEntityManager, Transacti
 			res.cookie("id_presupuesto", pres.getId().toString());
 		});
 		
-		res.redirect("/presupuesto/new/2");
+		res.redirect("/presupuestos/new/2");
 		return null;
 	}
 
