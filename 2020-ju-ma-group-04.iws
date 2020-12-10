@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7703c4f-3fe9-488d-bfe1-deaa26d39fb4" name="Default Changelist" comment="">
+    <list default="true" id="01007f9a-bab7-41e4-8cb8-3031e620ced7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/2020-ju-ma-group-04.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2020-ju-ma-group-04.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ControllerCrearEntidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ControllerCrearEntidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ControllerOperacionEgreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ControllerOperacionEgreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ControllerPresupuesto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ControllerPresupuesto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dominio/operacionDeEgreso/OperacionEgreso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dominio/operacionDeEgreso/OperacionEgreso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Router.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Router.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/asociarCategoriaConEntidad.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/asociarCategoriaConEntidad.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cargarCategoria.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cargarCategoria.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cargarOperacionEgreso.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cargarOperacionEgreso.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cargarOperacionEgreso2.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cargarOperacionEgreso2.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cargarOperacionEgreso3.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cargarOperacionEgreso3.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cargarPresupuesto.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cargarPresupuesto.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cargarPresupuesto2.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cargarPresupuesto2.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/cargarPresupuesto3.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/cargarPresupuesto3.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/crearEntidad.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/crearEntidad.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/crearEntidadBase.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/crearEntidadBase.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/crearEntidadJuridica.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/crearEntidadJuridica.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-ju-ma-group-04.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/2020-ju-ma-group-04.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2020-ju-ma-group-04.iws" beforeDir="false" afterPath="$PROJECT_DIR$/2020-ju-ma-group-04.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -240,7 +226,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
-  <component name="ProjectId" id="1lFsir85q4wnKY9Xqis0Dj1vf0u" />
+  <component name="ProjectId" id="1lU4TIIlqz3UmoG4Rgw3tzjdl4c" />
   <component name="ProjectViewSettings">
     <navigator currentView="ProjectPane" flattenPackages="false" showMembers="false" showStructure="false" autoscrollToSource="false" splitterProportion="0.5" />
     <view id="ProjectPane">
@@ -264,9 +250,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
     <configuration selected="false" default="true" type="Applet" factoryName="Applet">
@@ -279,35 +262,8 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="VM_PARAMETERS" />
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.Server" />
-      <module name="2020-ju-ma-group-04" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -323,11 +279,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Server" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="StarteamConfiguration">
@@ -343,6 +294,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="" />
     <option name="CHECKIN_DIALOG_SPLITTER_PROPORTION" value="0.8" />
   </component>
+  <component name="StructureViewFactory">
+    <option name="SORT_MODE" value="0" />
+    <option name="GROUP_INHERITED" value="true" />
+    <option name="AUTOSCROLL_MODE" value="true" />
+    <option name="SHOW_FIELDS" value="true" />
+    <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
+    <option name="GROUP_GETTERS_AND_SETTERS" value="true" />
+    <option name="SHOW_INHERITED" value="false" />
+    <option name="HIDE_NOT_PUBLIC" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -351,13 +312,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f7703c4f-3fe9-488d-bfe1-deaa26d39fb4" name="Default Changelist" comment="" />
-      <created>1607204304056</created>
+      <changelist id="01007f9a-bab7-41e4-8cb8-3031e620ced7" name="Default Changelist" comment="" />
+      <created>1607638342086</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1607204304056</updated>
-      <workItem from="1607204305157" duration="189000" />
-      <workItem from="1607205070183" duration="2412000" />
+      <updated>1607638342086</updated>
+      <workItem from="1607638343119" duration="253000" />
     </task>
     <servers />
   </component>
@@ -427,31 +387,5 @@
   </component>
   <component name="WebViewSettings">
     <webview flattenPackages="false" showMembers="false" autoscrollToSource="false" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="163" y="0" key="#Project_Structure" timestamp="1607204330756">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="163" y="0" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1607204330756" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1607207354697">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1607207354697" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1607207354697">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1607207354697" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1607207354697">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1607207354697" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1607207354697">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1607207354697" />
-    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1607206605389">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1607206605389" />
   </component>
 </project>
