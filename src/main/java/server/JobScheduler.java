@@ -3,20 +3,23 @@ package server;
 import dominio.Quartz.ValidacionEgresosPendientes;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.SimpleScheduleBuilder.repeatSecondlyForever;
 import static org.quartz.TriggerBuilder.newTrigger;
 
-class JobScheduler {
+class SchedulerMain {
 
-    public static void execute(String[] args) throws Exception {
-        Scheduler scheduler =  StdSchedulerFactory.getDefaultScheduler();
+    final static Logger logger = LoggerFactory.getLogger(SchedulerMain.class);
 
-        (scheduler).start();
+    public static void main(String[] args) throws Exception {
+        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
-        JobDetail jobDetail = newJob(ValidacionEgresosPendientes.class)
-                .build();
+        scheduler.start();
+
+        JobDetail jobDetail = newJob(ValidacionEgresosPendientes.class).build();
 
         Trigger trigger = newTrigger()
                 .startNow()
