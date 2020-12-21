@@ -35,13 +35,11 @@ public class Server {
 		EntityManagerFactory emf =
 				Persistence.createEntityManagerFactory("db", configOverrides);
 
-		String tarea = "Server";
-
-		if (tarea.equals("Server")) {
+		if (args.length == 0) {
 			Spark.port(9000);
 			DebugScreen.enableDebugScreen();
 			Router.configure();
-		} else if (tarea.equals("Jobs")){
+		} else if (args[0].equals("Jobs")){
 			Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
 			scheduler.start();
