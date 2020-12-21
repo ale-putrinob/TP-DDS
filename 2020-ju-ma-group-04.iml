@@ -198,6 +198,13 @@ under the License.
     <orderEntry type="module-library">
       <library>
         <CLASSES>
+          <root url="jar://C:/Users/Lenovo/.m2/repository/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
           <root url="jar://C:/Users/Lenovo/.m2/repository/com/sun/jersey/jersey-client/1.8/jersey-client-1.8.jar!/"/>
         </CLASSES>
       </library>

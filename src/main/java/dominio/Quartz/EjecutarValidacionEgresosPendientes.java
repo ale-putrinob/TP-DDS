@@ -11,7 +11,7 @@ import org.quartz.JobDetail;
 
 public class EjecutarValidacionEgresosPendientes {
 	
-	public static void main(String[] args) throws SchedulerException {
+	/*public static void main(String[] args) throws SchedulerException {
 
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 		
@@ -28,7 +28,7 @@ public class EjecutarValidacionEgresosPendientes {
                 .build();
 		
 	scheduler.scheduleJob(job,trigger);
-}
+}*/
 
 }
 

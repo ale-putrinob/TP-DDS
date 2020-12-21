@@ -1,6 +1,7 @@
 package server;
 
 import dominio.Quartz.ValidacionEgresosPendientes;
+import dominio.operacionDeEgreso.RepositorioEgresos;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.Trigger;
@@ -40,18 +41,7 @@ public class Server {
 			DebugScreen.enableDebugScreen();
 			Router.configure();
 		} else if (args[0].equals("Jobs")){
-			Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
-
-			scheduler.start();
-
-			JobDetail jobDetail = newJob(ValidacionEgresosPendientes.class).build();
-
-			Trigger trigger = newTrigger()
-					.startNow()
-					.withSchedule(repeatSecondlyForever(2))
-					.build();
-
-			scheduler.scheduleJob(jobDetail, trigger);
+			RepositorioEgresos.getInstance().validarOperacionesPendientes();
 		}
 	}
 }
