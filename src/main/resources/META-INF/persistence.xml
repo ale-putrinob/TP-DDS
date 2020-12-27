@@ -31,17 +31,18 @@
 
 			<properties>
 
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-			<property name="hibernate.connection.url" value="jdbc:mysql://o3kxlmfx1lgp22f5:a8zx4mtpkaldxewj@de1tmi3t63foh7fa.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/hxrumer1ct3vz9th"/>
-			<property name="hibernate.connection.username" value="USERNAME"/>
-			<property name="hibernate.connection.password" value="PASSWORD"/>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+                <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+                <property name="hibernate.connection.url" value="jdbc:mysql://o3kxlmfx1lgp22f5:a8zx4mtpkaldxewj@de1tmi3t63foh7fa.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/hxrumer1ct3vz9th"/>
+                <property name="hibernate.connection.username" value="USERNAME"/>
+                <property name="hibernate.connection.password" value="PASSWORD"/>
+                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
 
-            <!-- <property name="hibernate.archive.autodetection" value="class"/>
-            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/proyectodds" />
-            <property name="hibernate.connection.username" value="root" />
-            <property name="hibernate.connection.password" value="131299" /> -->
+                <!--
+                 <property name="hibernate.archive.autodetection" value="class"/>
+                <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+                <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/proyectodds" />
+                <property name="hibernate.connection.username" value="root" />
+                <property name="hibernate.connection.password" value="131299" /> -->
 
             <!-- property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
             <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:app-db"/>

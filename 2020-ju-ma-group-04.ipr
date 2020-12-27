@@ -9,6 +9,9 @@
       <entry name="!?*.java" />
     </wildcardResourcePatterns>
   </component>
+  <component name="Encoding">
+    <file url="PROJECT" charset="windows-1252" />
+  </component>
   <component name="ExportToHTMLSettings">
     <option name="PRINT_LINE_NUMBERS" value="false" />
     <option name="OPEN_IN_BROWSER" value="false" />

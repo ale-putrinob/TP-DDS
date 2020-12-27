@@ -92,6 +92,8 @@ public class OperacionEgreso extends PersistentEntity{
 	public void validarse() {
 		validador.validarEgreso(this);
 		this.actualizarEstado();
+		System.out.println("LLEGUE ACá ----------------------------------------------" + estado);
+		RepositorioEgresos.getInstance().actualizarEgreso(this);
 	}
 
 	private void actualizarEstado() {
@@ -116,11 +118,14 @@ public class OperacionEgreso extends PersistentEntity{
 	}
 
 	public boolean seEligioProveedorSegunCriterio() {
-		return this.proveedorSegunCriterio().equals(proveedor);
+		if(criterioDeSeleccionDeProveedor != null && !presupuestos.isEmpty())
+			return this.proveedorSegunCriterio().equals(proveedor);
+		else
+			return false;
 	}
 
 	private Proveedor proveedorSegunCriterio() {
-		return this.criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos);
+			return this.criterioDeSeleccionDeProveedor.elegirSegunCriterio(presupuestos);
 	}
 
 	public boolean cumpleConLosPresupuestosRequeridos() {
@@ -159,10 +164,6 @@ public class OperacionEgreso extends PersistentEntity{
 		return etiquetas.contains(etiqueta);
 	}
 	
-	public Entidad getEntidad() {
-		return entidad;
-	}
-	
 	public void setEntidad(Entidad entidad) {
 		this.entidad = entidad;
 	}
@@ -188,4 +189,32 @@ public class OperacionEgreso extends PersistentEntity{
 	public List<Item> getItems() {
 		return items;
 	}
+
+	public Entidad getEntidad() {
+		return entidad;
+	}
+
+	public List<String> getEtiquetas() { return etiquetas; }
+
+	public Date getFechaOp() { return fechaOp; }
+
+	public TipoMoneda getMoneda() { return moneda; }
+
+	public DocumentoComercial getDocumentoComercial() { return documentoComercial; }
+
+	public Proveedor getProveedor() { return proveedor; }
+
+	public MedioDePago getMedioDePago() { return medioDePago; }
+
+	public List<Presupuesto> getPresupuestos() { return presupuestos; }
+
+	public List<Usuario> getRevisores() { return revisores; }
+
+	public CriterioDeSeleccionDeProveedor getCriterioDeSeleccionDeProveedor() { return criterioDeSeleccionDeProveedor; }
+
+	public EstadoEgreso getEstado() { return estado; }
+
+	public List<String> getResultadosDeValidaciones() { return resultadosDeValidaciones; }
+
+	public ValidadorEgresos getValidador() { return validador; }
 }

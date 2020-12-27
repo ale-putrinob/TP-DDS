@@ -24,6 +24,20 @@
 				<th> Moneda </th>
 				<th> Proveedor </th>
 			</tr>
+
+            {{#each opEgresos}}
+			<tr>
+            	<td> {{id}} </td>
+            	<td> {{criterioDeSeleccionDeProveedor}} </td>
+            	<td> {{estado}} </td>
+            	<td> {{fechaOp}} </td>&nbsp&nbsp
+            	<td colspan="2"> {{documentoComercial}} </td>
+            	<td> {{entidad}} </td>
+            	<td colspan="2"> {{medioDePago}} </td>
+            	<td> {{moneda}} </td>
+            	<td> {{proveedor}} </td>
+            </tr>
+            {{/each}}
 		</table>
 	</section>
 </body>

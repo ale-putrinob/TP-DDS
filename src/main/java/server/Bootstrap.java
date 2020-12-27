@@ -51,7 +51,7 @@ class Bootstrap implements WithGlobalEntityManager, EntityManagerOps, Transactio
 			////////////////////////////OPERACION DE EGRESO
 
 			OperacionEgreso operacionOE = new OperacionEgreso(null, null, null, null,
-					null, null, null, null, null, null, null);
+					null, null, null, null, CriterioDeSeleccionDeProveedor.MENOR_VALOR, null, null);
 			persist(operacionOE);
 
 			Mensaje mensaje = new Mensaje("Se esta aplicando alguno de los presupuestos en la compra", operacionOE);

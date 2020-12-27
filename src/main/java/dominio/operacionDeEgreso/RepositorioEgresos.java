@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
-public class RepositorioEgresos implements WithGlobalEntityManager{
+public class RepositorioEgresos implements WithGlobalEntityManager, TransactionalOps {
 	
 	private final static RepositorioEgresos INSTANCE = new RepositorioEgresos();
 	 
@@ -16,7 +17,7 @@ public class RepositorioEgresos implements WithGlobalEntityManager{
 	@SuppressWarnings("unchecked")
 	public List<OperacionEgreso> getEgresos(){
 		return entityManager()
-				.createQuery("from OperacionEgreso")
+				.createQuery("from OperacionEgreso", OperacionEgreso.class)
 				.getResultList();
 	}
 
@@ -24,14 +25,22 @@ public class RepositorioEgresos implements WithGlobalEntityManager{
 		entityManager().persist(egreso);
 	}
 
+	public void actualizarEgreso(OperacionEgreso egreso){
+		withTransaction(() -> {
+			entityManager().persist(egreso);
+		});
+	}
+
 	public List<OperacionEgreso> operacionesEgresoPendientesDeValidacion() {
-		return entityManager()
-				.createQuery("from OperacionEgreso where estado = :estado", OperacionEgreso.class)
+		List<OperacionEgreso> operacionesEgresos = entityManager().createQuery("from OperacionEgreso", OperacionEgreso.class).getResultList();
+		return operacionesEgresos.stream().filter(egreso -> egreso.estaPendienteDeValidacion()).collect(Collectors.toList());
+				/*.createQuery("from OperacionEgreso where estado = :estado", OperacionEgreso.class)
 				.setParameter("estado", "SIN_VALIDAR")
-				.getResultList();
+				.getResultList();*/
 	}
 
 	public void validarOperacionesPendientes() {
+		System.out.println(operacionesEgresoPendientesDeValidacion().size() + "---------------------------");
 		this.operacionesEgresoPendientesDeValidacion().forEach(operacion -> operacion.validarse());
 	}
 
