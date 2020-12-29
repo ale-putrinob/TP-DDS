@@ -11,10 +11,13 @@ public enum CriterioDeSeleccionDeProveedor {
 	
 	MENOR_VALOR{
 		public Proveedor elegirSegunCriterio(List<Presupuesto> presupuestos) {
-			Comparator<Presupuesto> totalDelPresupuesto = Comparator.comparing(Presupuesto::presupuestoTotal );
-			//Con la siguiente linea obtenemos el presupuesto que buscamos
-			Presupuesto presupuestoElegido = presupuestos.stream().min(totalDelPresupuesto).get();
-			return presupuestoElegido.getProveedor();
+			if (presupuestos.size() != 0 && presupuestos != null) {
+				Comparator<Presupuesto> totalDelPresupuesto = Comparator.comparing(Presupuesto::presupuestoTotal);
+				//Con la siguiente linea obtenemos el presupuesto que buscamos
+				Presupuesto presupuestoElegido = presupuestos.stream().min(totalDelPresupuesto).orElse(null);
+				return presupuestoElegido.getProveedor();
+			}
+			else return null;
 		}
 		};
 	

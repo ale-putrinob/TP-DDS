@@ -36,7 +36,8 @@ public class Presupuesto extends PersistentEntity{
 		this.documentosComerciales = documentosComerciales;
 		this.items = items;
 		this.proveedor=proveedor;
-		this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
+		if(idMoneda != null)
+			this.moneda = MerLibAPI.getUnaMoneda(idMoneda);
 	}
 	
 	public Presupuesto() {};

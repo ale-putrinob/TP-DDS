@@ -9,9 +9,6 @@
       <entry name="!?*.java" />
     </wildcardResourcePatterns>
   </component>
-  <component name="Encoding">
-    <file url="PROJECT" charset="windows-1252" />
-  </component>
   <component name="ExportToHTMLSettings">
     <option name="PRINT_LINE_NUMBERS" value="false" />
     <option name="OPEN_IN_BROWSER" value="false" />
@@ -52,10 +49,16 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
+  <component name="ProjectCodeStyleConfiguration">
+    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module filepath="$PROJECT_DIR$/2020-ju-ma-group-04.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="IntelliJ IDEA IU-202.7660.26" project-jdk-type="IDEA JDK" />
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+  </component>
 </project>

@@ -24,7 +24,6 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -36,7 +35,7 @@ public class OperacionEgreso extends PersistentEntity{
 	
 	@ElementCollection
 	List<String> etiquetas = new ArrayList<>(); 
-	Date fechaOp = new Date();
+	Date fecha = new Date();
 	@ManyToMany(cascade = {CascadeType.PERSIST})
 	List<Item> items = new ArrayList<>();
 	// moneda va a tener todos los campos del JSON
@@ -45,7 +44,7 @@ public class OperacionEgreso extends PersistentEntity{
 	@OneToOne(cascade = {CascadeType.PERSIST})
 	@JoinColumn(name = "documentoComercial_id")
 	DocumentoComercial documentoComercial;
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
 	Proveedor proveedor;
 	@ManyToOne(cascade = {CascadeType.PERSIST})
 	MedioDePago medioDePago;
@@ -66,13 +65,13 @@ public class OperacionEgreso extends PersistentEntity{
 	Entidad entidad;
 	
 	// Seteamos valor de prueba
-	static final int presupuestosRequeridos = 3; /* el numero de presupuestos requeridos va de [0; ...) */
+	static final int presupuestosRequeridos = 1; /* el numero de presupuestos requeridos va de [0; ...) */
 
 	public OperacionEgreso(List<String> etiquetas ,Date fechaOp, List<Item> items,  DocumentoComercial documentoComercial, 
 			Proveedor proveedor, MedioDePago medioDePago, List<Presupuesto> presupuestos, List<Usuario> revisores,
 			CriterioDeSeleccionDeProveedor criterioDeSeleccionDeProveedor, String idMoneda,Entidad entidad) {
 		this.etiquetas = etiquetas;
-		this.fechaOp = fechaOp;
+		this.fecha = fechaOp;
 		this.items = items;
 		this.documentoComercial = documentoComercial;
 		this.proveedor = proveedor;
@@ -92,7 +91,7 @@ public class OperacionEgreso extends PersistentEntity{
 	public void validarse() {
 		validador.validarEgreso(this);
 		this.actualizarEstado();
-		System.out.println("LLEGUE ACá ----------------------------------------------" + estado);
+		System.out.println("LLEGUE ACï¿½ ----------------------------------------------" + estado);
 		RepositorioEgresos.getInstance().actualizarEgreso(this);
 	}
 
@@ -118,10 +117,10 @@ public class OperacionEgreso extends PersistentEntity{
 	}
 
 	public boolean seEligioProveedorSegunCriterio() {
-		if(criterioDeSeleccionDeProveedor != null && !presupuestos.isEmpty())
-			return this.proveedorSegunCriterio().equals(proveedor);
-		else
+		if((this.proveedorSegunCriterio() == null || presupuestos.isEmpty()))
 			return false;
+		else
+			return this.proveedorSegunCriterio().equals(proveedor);
 	}
 
 	private Proveedor proveedorSegunCriterio() {
@@ -171,7 +170,7 @@ public class OperacionEgreso extends PersistentEntity{
 
 	@SuppressWarnings("deprecation")
 	public boolean esDelMes(int mes, int anio) {
-		return (fechaOp.getMonth() == mes) && (fechaOp.getYear() == anio);
+		return (fecha.getMonth() == mes) && (fecha.getYear() == anio);
 	}
 
 	public void setValidador(ValidadorEgresos validador) {
@@ -196,7 +195,7 @@ public class OperacionEgreso extends PersistentEntity{
 
 	public List<String> getEtiquetas() { return etiquetas; }
 
-	public Date getFechaOp() { return fechaOp; }
+	public Date getFecha() { return fecha; }
 
 	public TipoMoneda getMoneda() { return moneda; }
 

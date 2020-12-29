@@ -18,11 +18,6 @@
 				<th> Criterio de Seleccion del Proveedor </th>
 				<th> Estado </th>
 				<th>Fecha</th>&nbsp&nbsp
-				<th colspan="2"> Documento Comercial </th>
-				<th> Entidad </th>
-				<th colspan="2"> Medio de pago </th>
-				<th> Moneda </th>
-				<th> Proveedor </th>
 			</tr>
 
             {{#each opEgresos}}
@@ -30,12 +25,7 @@
             	<td> {{id}} </td>
             	<td> {{criterioDeSeleccionDeProveedor}} </td>
             	<td> {{estado}} </td>
-            	<td> {{fechaOp}} </td>&nbsp&nbsp
-            	<td colspan="2"> {{documentoComercial}} </td>
-            	<td> {{entidad}} </td>
-            	<td colspan="2"> {{medioDePago}} </td>
-            	<td> {{moneda}} </td>
-            	<td> {{proveedor}} </td>
+            	<td> {{fecha}} </td>&nbsp&nbsp
             </tr>
             {{/each}}
 		</table>

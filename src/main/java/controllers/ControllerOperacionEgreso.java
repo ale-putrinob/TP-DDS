@@ -119,11 +119,11 @@ public class ControllerOperacionEgreso implements WithGlobalEntityManager, Trans
 	}
 	
 	public  ModelAndView cargarOperacionEgreso3(Request req, Response res) {
-		//String id_presupuesto = req.queryParams("Presupuesto").split(" ")[0];
-		//Presupuesto presupuesto = entityManager().find(Presupuesto.class, new Long(id_presupuesto));
+		Presupuesto presupuesto = entityManager().find(Presupuesto.class, new Long(req.queryParams("Presupuesto")));
 		
 		withTransaction(() ->{
 			OperacionEgreso opEgreso = req.session().attribute("opEgreso");
+			opEgreso.agregarPresupuesto(presupuesto);
 			RepositorioEgresos.getInstance().agregarEgreso(opEgreso);
 			req.session().removeAttribute("opEgreso");
 		});

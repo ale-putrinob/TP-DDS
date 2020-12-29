@@ -22,7 +22,7 @@
 				<select name = "Presupuesto">
    						<option selected value="0"> Elige una opcion </option>
    							{{#each presupuestos}}
-       						<option>{{ id }}</option>
+       						<option value = {{id}} >{{ id }}</option>
        						{{/each}}
    						</optgroup> 
 				</select>			

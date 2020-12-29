@@ -1,11 +1,6 @@
 package server;
 
-import dominio.Quartz.ValidacionEgresosPendientes;
 import dominio.operacionDeEgreso.RepositorioEgresos;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
-import org.quartz.Trigger;
-import org.quartz.impl.StdSchedulerFactory;
 import spark.Spark;
 import spark.debug.DebugScreen;
 
@@ -13,10 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.quartz.JobBuilder.newJob;
-import static org.quartz.SimpleScheduleBuilder.repeatSecondlyForever;
-import static org.quartz.TriggerBuilder.newTrigger;
 
 public class Server {
 	public static void main(String[] args) throws Exception {
@@ -37,6 +28,7 @@ public class Server {
 				Persistence.createEntityManagerFactory("db", configOverrides);
 
 		if (args.length == 0) {
+			new Bootstrap().init();
 			Spark.port(9000);
 			DebugScreen.enableDebugScreen();
 			Router.configure();
